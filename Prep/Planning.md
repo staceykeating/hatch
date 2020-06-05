@@ -1,9 +1,9 @@
 ## Project Description
-Title: Hatch
+- Title: Hatch
 
-Description: An application that lets users plan vacations by keeping all relevant information consolidated on our virtual journal. You can collaborate with other users and plan multiple trips and destinations.
+- Description: An application that lets users plan vacations by keeping all relevant information consolidated on our virtual journal. You can collaborate with other users and plan multiple trips and destinations.
 
-Audience: All travellers who like to be prepared for their adventures.
+- Audience: All travellers who like to be prepared for their adventures.
 Team Members: Jyoti Khabra, Stacey Keating, Joey Kishiuchi
 
 ## User Stories
