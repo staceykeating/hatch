@@ -66,3 +66,14 @@ Ruby Rails Routes
 - Best way to implement drag and drop feature?
 - Are we doing too much or too little?
 - Insight in how to best make rails and react work together - we were thinking of doing two   seperate repos.
+
+## Fonts
+- hatch font : Libre Baskersville
+- Cities / Titles : Manrope 300/500
+- main text : Roboto light 
+
+
+## Colors
+- #63aba5 - :hatch airplane
+
+
