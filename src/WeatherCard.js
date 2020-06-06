@@ -18,24 +18,7 @@ export default class WeatherCard extends React.Component {
       )
       .then((res) => {
         const data = res.data;
-        // console.log(data.daily[0].temp.day); //temp (0) is first day
-        // console.log(data.daily[0].weather[0].icon); // icon for day
-        // console.log(data.daily[0].weather[0].main); // icon for day
-
         this.setState({ forecast: data.daily });
-        console.log(
-          this.state.forecast
-            .slice(0, 5)
-            .map((item, index) =>
-              console.log(
-                "item:",
-                item.weather[0].main,
-                item.temp.day,
-                index,
-                "done"
-              )
-            )
-        );
       })
       .catch((err) => console.log("Error:", err));
   }
