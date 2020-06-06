@@ -6,10 +6,7 @@ export default class WeatherCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      forecast: {
-        list: [],
-        city: {},
-      },
+      forecast: [],
     };
   }
 
@@ -21,22 +18,38 @@ export default class WeatherCard extends React.Component {
       )
       .then((res) => {
         const data = res.data;
-        this.setState({ forecast: data });
+        // console.log(data.daily[0].temp.day); //temp (0) is first day
+        // console.log(data.daily[0].weather[0].icon); // icon for day
+        // console.log(data.daily[0].weather[0].main); // icon for day
+
+        this.setState({ forecast: data.daily });
+        console.log(
+          this.state.forecast
+            .slice(0, 5)
+            .map((item, index) =>
+              console.log(
+                "item:",
+                item.weather[0].main,
+                item.temp.day,
+                index,
+                "done"
+              )
+            )
+        );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("Error:", err));
   }
 
   render() {
     return (
       <div>
-        <h1>{this.state.forecast.city.name} Weather</h1>
-        {this.state.forecast.list.slice(0, 5).map((item, index) => (
+        <h1> Weather</h1>
+        {this.state.forecast.slice(0, 5).map((item, index) => (
           <WeatherItem
             key={index}
-            temp={item.main.temp}
+            temp={item.temp.day}
             weatherName={item.weather[0].main}
             icon={item.weather[0].icon}
-            datetime={new Date(item.dt_txt)}
           />
         ))}
       </div>
