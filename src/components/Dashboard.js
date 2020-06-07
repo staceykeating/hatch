@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick.css";
 import './Dashboard.scss'
 
 
-
 // export default function Dashboard() {
 //   return (
   //   <div>
@@ -67,9 +66,10 @@ const trips = [
             <div class="photo" >
               <img width = "50%" src={trip.url} />
               <div class="trip-details">
-              <p class="name">{trip.name}</p>
+              <p class="name">{trip.name}
+              <span class="edit">edit</span>
+              </p>
               <p class="decription">{trip.description}</p>
-              <p>edit</p>
               </div>
             </div>
           )
@@ -78,7 +78,7 @@ const trips = [
         </Slider>
         <div>
           <Link to='/create-trip'>
-          <button class="trip-button">CREATE A TRIP</button>
+          <button class="trip-button">HATCH A TRIP</button>
           </Link>
         </div>
 
