@@ -23,12 +23,7 @@ function App() {
       path='/dashboard'
       component={ Dashboard }
       />
-<<<<<<< HEAD
-      <Route 
-      exact 
-=======
       <Route
->>>>>>> 8a4bda76b8ec776c02027466b0a88cf7d3669b72
       path='/'
       component={ Home }
       />
