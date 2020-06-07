@@ -1,0 +1,107 @@
+
+
+body{
+  background: offwhite;
+
+}
+
+.slick-slider {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: all;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+// .slick-prev, .slick-next {
+//   position: sticky;
+//   top: 50%;
+//   width: 20px;
+//   height: 20px;
+//   padding: 34px;
+//   transform: translate(0, -50%);
+//   color: transparent;
+//   border: none;
+//   outline: 30px;
+//   background: transparent;
+// }
+
+.slick-slide img {
+  margin-top: 12.5em;
+  margin-right: 3em;
+  margin-bottom: 2em;
+  margin-left: 3em;
+  padding-left: 5em;
+  padding-bottom: 1.5em;
+}
+
+// .slick-prev:before {
+//   content: "<";
+//   color: teal;
+//   font-size: 40px;
+// }
+
+// .slick-next:before {
+//   content: ">";
+//   color: teal;
+//   font-size: 40px;
+// }
+
+.slick-dots {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  -webkit-text-stroke: thick;
+  font-size: 10vw;
+  padding: 1px;
+}
+
+.trip-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+  font-size: 2vw;
+  letter-spacing: 0.3em;
+  position: absolute;
+  top: 7.5em;
+  background: white;
+  left: 18em;
+}
+.trip-button:hover {
+  font-weight: bolder;
+}
+
+.trip-details {
+  border-style: solid;
+  border-width: thin;
+  border-color: 333333;
+  position: absolute;
+  top: 23em;
+  left: 52.5em;
+  transform: translate(-13%, -50%);
+}
+.name{
+  font-size: 2vw;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+.description{
+  font-size: 1vw;
+  text-align: center;
+  padding: 10em;
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+  font-size: 4vw;
+  letter-spacing: 0.1em;
+  position: absolute;
+  top: 2em;
+  left: 7.5em;
+}
+
+

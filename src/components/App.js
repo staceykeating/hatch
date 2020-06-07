@@ -2,30 +2,32 @@ import React from "react";
 import "./App.css";
 import Login from "./Login";
 import Home from "./Home";
-// import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard";
 // import TripForm from "./TripForm";
 // import Trip form "./Trip.js";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
-      <Route 
+      <Switch>
+      <Route
       path='/login'
       component={ Login }
       />
-      <Route 
+      <Route
       path='/create-trip'
       component={ Home }
       />
-      <Route 
+      <Route
       path='/dashboard'
-      component={ Home }
+      component={ Dashboard }
       />
-      <Route 
+      <Route
       path='/'
       component={ Home }
       />
+      </Switch>
     </Router>
   );
 }
