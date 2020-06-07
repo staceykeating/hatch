@@ -1,17 +1,12 @@
 import React from "react";
-import ProfileButton from "./ProfileButton";
+import HomeProfileButton from "./HomeProfileButton";
 import "./Home.scss";
-import Button from "@material-ui/core/Button";
 
 export default function Home() {
   return (
     <>
       <div class="home-page">
-        <div class="right-menu">
-          <Button variant="outlined">Login</Button>
-          <ProfileButton />
-          <h2>Joey</h2>
-        </div>
+        <HomeProfileButton />
         <img
           class="header-logo-main"
           src="./hatch-main-logo-dark.png"

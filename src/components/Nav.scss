@@ -1,6 +1,38 @@
 .navbar {
   background-color: #333333;
-  height: 100px;
+  height: 90px;
+  display: inline-flex;
+  color: white;
+  width: 100vw;
+  justify-content: space-between;
+  padding-left: 1em;
+  padding-top: 1em;
+}
+.navbar .right-menu {
+  padding-right: 2em;
+  .profile-icon {
+    display: flex;
+    display: none;
+    justify-content: flex-end;
+    height: fit-content;
+    color: white;
+    vertical-align: middle;
+    margin-right: 1em;
+    h2 {
+      vertical-align: middle;
+      font-family: "Roboto", sans-serif;
+    }
+  }
+}
+
+.nav-login-button .MuiButton-outlined {
+  display: flex;
+  margin-top: 1vw;
+  margin-right: 1vw;
+  justify-content: flex-end;
+  color: white;
+  border: 1px solid white;
+  background-color: #353535;
 }
 
 .header-logo {

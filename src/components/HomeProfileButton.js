@@ -33,7 +33,6 @@ export default function ProfileButton() {
             >
               <AccountCircle />
             </IconButton>
-            <h2>Joey</h2>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
@@ -52,8 +51,9 @@ export default function ProfileButton() {
               <MenuItem onClick={handleClose}>Profile</MenuItem>
               <MenuItem onClick={handleClose}>My account</MenuItem>
             </Menu>
+            <h2>Joey</h2>
           </div>
-          <div class="nav-login-button">
+          <div class="home-login-button">
             <Button a href="/login" variant="outlined">
               Login
             </Button>
