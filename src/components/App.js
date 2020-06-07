@@ -3,7 +3,7 @@ import "./App.css";
 import Login from "./Login";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
-// import TripForm from "./TripForm";
+import CreateTrip from "./CreateTrip";
 // import Trip form "./Trip.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -17,7 +17,7 @@ function App() {
       />
       <Route
       path='/create-trip'
-      component={ Home }
+      component={ CreateTrip }
       />
       <Route
       path='/dashboard'
