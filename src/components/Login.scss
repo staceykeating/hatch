@@ -1,0 +1,66 @@
+
+.main {
+  background-color: #3b3b3b;
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  justify-content: center;
+
+
+  .login {
+    width: 500px;
+    height: 600px;
+    margin: 100px;
+    background-color: #333333;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 0px 12px;
+
+    .login-header {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      font-size: 2.5em;
+      color: white;
+      margin: 50px auto ;
+    }
+
+    .MuiTextField-root {
+      border-radius: 50px;
+      margin: 10px auto;
+    }
+
+    .MuiOutlinedInput-root {
+      height: 50px;
+      width: 300px;
+      border-radius: 50px;
+      box-shadow: 0px 0px 5px;
+      background-color: white;
+    }
+
+    .MuiButton-containedPrimary {
+      width: 300px;
+    }
+
+    .login-submit {
+      width: 300px;
+      margin: 10px auto;
+      border-radius: 50px;
+      height: 50px;
+      font-size: 17px;
+    }
+
+    .login-or {
+      color: white;
+      margin-top: 37px;
+    }
+
+    .google-login {
+      width: 200px;
+      margin: 50px auto;
+      border-radius: 50px;
+    }
+  }
+}
