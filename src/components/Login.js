@@ -8,17 +8,31 @@ import './Login.scss'
 
 
 function Login() {
-  const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [url, setURL] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const responseGoogle = response => {
-    setName(response.profileObj.name);
-    console.log(response)
+    setEmail(response.profileObj.name);
+    // console.log(response)
     // setEmail(response.profileObj.email);
     // setURL(response.profileObj.imageUrl);
-      console.log(response);
+      // console.log(response);
   };
+
+  function validate() {
+   if (!email) {
+    setEmailError(true)
+   } else {
+    setEmailError(false)
+   }
+   if (!password) {
+    setPasswordError(true)
+   } else {
+    setPasswordError(false)
+   }
+  }
 
   return (
     <div>
@@ -32,16 +46,28 @@ function Login() {
               className="login-input"
               label="Email"
               variant="outlined" 
-              color=""/>
+              color=""
+              value={ email }
+              onChange={ event => setEmail(event.target.value) }
+              error={ emailError }
+              helperText={ emailError ? "Please enter a valid email." : ""}
+              />
             <TextField 
               id="outlined-basic"
               className="login-input"
               label="Password"
-              variant="outlined" />
+              variant="outlined" 
+              type="password"
+              value={ password }
+              onChange={ event => setPassword(event.target.value) }
+              error={ passwordError }
+              helperText={ passwordError ? "Please enter a valid password." : ""}
+              />
             <Button
               className="login-submit"
               color="primary"
               variant="contained"
+              onClick={() => validate()}
               >Submit</Button>
           </form>
           <span class="login-or">- OR -</span>
