@@ -13,7 +13,7 @@ export default function Home() {
           <h2>Joey</h2>
         </div>
         <img
-          class="header-logo"
+          class="header-logo-main"
           src="./hatch-main-logo-dark.png"
           alt="Main Header"
         />
