@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import GoogleLogin from "react-google-login";
+import bcrypt from 'bcryptjs';
 
 import { Button, TextField } from '@material-ui/core';
 
@@ -14,7 +15,7 @@ function Login() {
   const [passwordError, setPasswordError] = useState(false);
 
   const responseGoogle = response => {
-    setEmail(response.profileObj.name);
+    // setEmail(response.profileObj.email);
     // console.log(response)
     // setEmail(response.profileObj.email);
     // setURL(response.profileObj.imageUrl);
@@ -22,15 +23,16 @@ function Login() {
   };
 
   function validate() {
-   if (!email) {
-    setEmailError(true)
-   } else {
+   if (email) {
     setEmailError(false)
-   }
-   if (!password) {
-    setPasswordError(true)
    } else {
+    setEmailError(true)
+   }
+   if (password) {
     setPasswordError(false)
+    // bcrypt.hashSync(password, 10)
+   } else {
+    setPasswordError(true)
    }
   }
 
@@ -45,8 +47,7 @@ function Login() {
               id="outlined-basic"
               className="login-input"
               label="Email"
-              variant="outlined" 
-              color=""
+              variant="outlined"
               value={ email }
               onChange={ event => setEmail(event.target.value) }
               error={ emailError }
