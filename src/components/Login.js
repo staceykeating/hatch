@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import GoogleLogin from "react-google-login";
 import bcrypt from 'bcryptjs';
+import axios from 'axios';
 
 import { Button, TextField } from '@material-ui/core';
 
@@ -9,6 +10,7 @@ import './Login.scss'
 
 
 function Login() {
+  const [users, setUsers] = useState([])
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
@@ -21,6 +23,14 @@ function Login() {
     // setURL(response.profileObj.imageUrl);
       // console.log(response);
   };
+
+  useEffect(() => {
+    axios.get('api/users')
+    .then(data => {
+      console.log(data);
+      
+    } )
+  })
 
   function validate() {
    if (email) {
@@ -41,7 +51,7 @@ function Login() {
       <Nav />
       <div className="main">
         <div className="login">
-          <h1 className="login-header">Welcome to Hatch!</h1>
+          <h1 className="login-title">Welcome to Hatch!</h1>
           <form>
             <TextField
               id="outlined-basic"
