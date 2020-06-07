@@ -1,0 +1,64 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./mug-watch-and-planner-book-on-brown-wooden-surface-2736499.jpg");
+  background-size: cover;
+  color: white;
+  background-color: #353535;
+  width: 100vw;
+  height: 50vw;
+  padding: 0;
+  margin-top: 0;
+}
+
+.header-logo {
+  padding-top: 7vw;
+  padding-left: 6vw;
+  width: 25vw;
+  height: auto;
+}
+
+.learn-section {
+  padding-top: 5vw;
+  background-color: #353535;
+  color: white;
+  font-family: "Manrope", sans-serif;
+  font-size: larger;
+  display: inline-flex;
+  width: 100vw;
+  height: 30vw;
+  justify-content: space-evenly;
+}
+
+.globe {
+  width: 20vw;
+}
+
+.icon-with-text {
+  text-align: center;
+}
+
+.right-menu {
+  display: inline-flex;
+  justify-content: flex-end;
+  padding-right: 2vw;
+  height: fit-content;
+  width: 100vw;
+  color: #353535;
+}
+
+.right-menu h2 {
+  vertical-align: middle;
+  font-family: "Roboto", sans-serif;
+  display: none;
+}
+
+.right-menu .profile-icon {
+  display: none;
+  vertical-align: middle;
+}
+
+.right-menu .MuiButton-outlined {
+  margin-top: 1vw;
+  margin-right: 1vw;
+}
