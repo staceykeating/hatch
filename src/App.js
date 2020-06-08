@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard";
 // import TripForm from "./TripForm";
 import Trip from "./components/Trip.js";
 import CreateTrip from "./components/CreateTrip";
+import UserSearch from "./components/UserSearch";
 // import Trip form "./Trip.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/create-trip" component={CreateTrip} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/trip" component={Trip} />
+        <Route path="/user-search" component={UserSearch} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>
