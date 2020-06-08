@@ -1,0 +1,12 @@
+.login-error {
+    max-width: 300px;
+    color:red;
+    font-size: 13px;
+    
+    &--enabled {
+      visibility: visible;
+    }
+    &--disabled {
+    visibility: hidden;
+    }
+}

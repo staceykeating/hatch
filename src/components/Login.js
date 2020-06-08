@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import GoogleLogin from "react-google-login";
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
-
+import { Redirect } from "react-router-dom";
 import { Button, TextField } from '@material-ui/core';
-
+import Alert from '@material-ui/lab/Alert'
 import Nav from './Nav'
+import Error from './Error'
 import './Login.scss'
 
 
@@ -13,8 +14,12 @@ function Login() {
   const [users, setUsers] = useState([])
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+  const [errors, setErrors] = useState({
+    emptyPassword: false,
+    emptyEmail: false
+  });
+  const [invalidCred, setInvalidCred] = useState(false)
+  const [auth, setAuth] = useState(false)
 
   const responseGoogle = response => {
     // setEmail(response.profileObj.email);
@@ -26,32 +31,42 @@ function Login() {
 
   useEffect(() => {
     axios.get('api/users')
-    .then(data => {
-      console.log(data);
-      
-    } )
-  })
+    .then(res => {
+      setUsers(res.data);
+    })
+  }, [])
 
   function validate() {
-   if (email) {
-    setEmailError(false)
-   } else {
-    setEmailError(true)
-   }
-   if (password) {
-    setPasswordError(false)
-    // bcrypt.hashSync(password, 10)
-   } else {
-    setPasswordError(true)
-   }
+    if (email && password) {
+      setErrors({...errors, emptyPassword: false, emptyEmail: false})
+      let currentUser = users.filter(user => user.email === email)[0];
+      if (!currentUser || currentUser.password_digest !== password) {
+        console.log('We cant find an account with that email');
+        setInvalidCred(true)
+      } else {
+        setAuth(true); // redirect to dashboard
+      }
+    } else {
+      if(!email && !password) {
+        setErrors({errors, emptyEmail: true, emptyPassword: true})
+      } else {
+        if (!email) {
+          setErrors({errors, emptyEmail: true})
+        }
+        if (!password) {
+          setErrors({errors, emptyPassword: true})
+        }
+      }
+    }
   }
 
-  return (
+  return auth ? (<Redirect to="/dashboard" /> ) : (
     <div>
       <Nav />
       <div className="main">
         <div className="login">
           <h1 className="login-title">Welcome to Hatch!</h1>
+          <Error valid={ invalidCred }/>
           <form>
             <TextField
               id="outlined-basic"
@@ -60,8 +75,8 @@ function Login() {
               variant="outlined"
               value={ email }
               onChange={ event => setEmail(event.target.value) }
-              error={ emailError }
-              helperText={ emailError ? "Please enter a valid email." : ""}
+              error={ errors.emptyEmail }
+              helperText={ errors.emptyEmail ? "Please enter a valid email." : ""}
               />
             <TextField 
               id="outlined-basic"
@@ -71,8 +86,8 @@ function Login() {
               type="password"
               value={ password }
               onChange={ event => setPassword(event.target.value) }
-              error={ passwordError }
-              helperText={ passwordError ? "Please enter a valid password." : ""}
+              error={ errors.emptyPassword }
+              helperText={ errors.emptyPassword ? "Please enter a valid password." : ""}
               />
             <Button
               className="login-submit"
