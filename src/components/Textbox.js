@@ -38,7 +38,7 @@ function Textbox() {
             autoFocus
             margin="dense"
             multiline
-            rowsMax={5}
+            rowsMax={10}
             label="Description"
             type="text"
             fullWidth
