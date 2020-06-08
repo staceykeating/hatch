@@ -1,6 +1,7 @@
-import React, {  Component } from 'react'
+import React from 'react'
 import Nav from './Nav'
 import Calendar from './Calendar'
+import Textbox from './Textbox'
 
 
 export default function CreateTrip() {
@@ -8,6 +9,7 @@ export default function CreateTrip() {
     <div>
       <Nav />
       <Calendar></Calendar>
+      <Textbox></Textbox>
     </div>
   );
 }
