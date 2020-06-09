@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./UserSearch.scss";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Button, TextField } from '@material-ui/core';
 import InputField from "./InputField";
 
