@@ -1,10 +1,11 @@
 import React from "react";
 import PackingList from "./PackingList";
-import TripLoading from "./TripLoading";
+import HatchMates from "./HatchMates";
 
 export default function Trip() {
   return (
     <>
+      <HatchMates />
       <PackingList />
     </>
   );

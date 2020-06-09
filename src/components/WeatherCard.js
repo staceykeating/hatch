@@ -27,14 +27,16 @@ export default class WeatherCard extends React.Component {
     return (
       <div>
         <h1> Weather</h1>
-        {this.state.forecast.slice(0, 5).map((item, index) => (
-          <WeatherItem
-            key={index}
-            temp={item.temp.day}
-            weatherName={item.weather[0].main}
-            icon={item.weather[0].icon}
-          />
-        ))}
+        <div class="weather-box">
+          {this.state.forecast.slice(0, 5).map((item, index) => (
+            <WeatherItem
+              key={index}
+              temp={item.temp.day}
+              weatherName={item.weather[0].main}
+              icon={item.weather[0].icon}
+            />
+          ))}
+        </div>
       </div>
     );
   }

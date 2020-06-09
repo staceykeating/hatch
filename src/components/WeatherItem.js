@@ -1,4 +1,5 @@
 import React from "react";
+import "./WeatherCard.scss";
 
 export default class WeatherItem extends React.Component {
   state = {
@@ -8,17 +9,12 @@ export default class WeatherItem extends React.Component {
   render() {
     return (
       <article className="weather-card">
-        <div className="row spaced"></div>
-        <div className="row">
-          <div className="temperature">{this.state.tempShort}°C</div>
-          <div className="weather-name">{this.props.weatherName}</div>
-          <div className="icon">
-            <img
-              src={`http://openweathermap.org/img/w/${this.props.icon}.png`}
-              alt="weather icon"
-            />
-          </div>
-        </div>
+        <img
+          src={`http://openweathermap.org/img/w/${this.props.icon}.png`}
+          alt="weather icon"
+        />
+        <div className="temperature">{this.state.tempShort}°C</div>
+        <div className="weather-name">{this.props.weatherName}</div>
       </article>
     );
   }

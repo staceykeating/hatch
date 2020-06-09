@@ -21,7 +21,7 @@ export default function PackingList() {
       <CardContent>
         <Typography variant="h5" component="h2">
           Packing List <AddCircleIcon onClick={addPackingListItem} />
-        </Typography>{" "}
+        </Typography>
         <container>
           {list.map((item) => {
             return <PackingListItem key={item.id} text={item.text} />;

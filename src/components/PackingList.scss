@@ -10,6 +10,7 @@
 #root .MuiCard-root {
   background-color: #2b2b2b;
   color: white;
+  margin-bottom: 100px;
 }
 
 #root .MuiCheckbox-colorSecondary.Mui-checked {
@@ -27,4 +28,8 @@
 #root .MuiInput-underline:before {
   transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border-bottom: 1px solid white;
+}
+
+.list-item-icons .deleter {
+  color: white;
 }

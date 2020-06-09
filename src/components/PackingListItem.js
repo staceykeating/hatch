@@ -29,7 +29,7 @@ export default function PackingListItem(props) {
 
   return (
     <ListItem key={value} role={undefined} dense button>
-      <ListItemIcon>
+      <ListItemIcon class="list-item-icons">
         <Checkbox
           edge="start"
           checked={checked.indexOf(value) !== -1}

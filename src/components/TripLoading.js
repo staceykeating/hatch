@@ -7,7 +7,8 @@ export default function TripLoading() {
     <>
       <Nav />
       <div class="center-image">
-        <img class="loading" src="./earth-light.svg" />
+        <h2> Please wait a moment while we create your trip.</h2>
+        <img class="loading" src="./earth-light.svg" alt="loading" />
       </div>
     </>
   );
