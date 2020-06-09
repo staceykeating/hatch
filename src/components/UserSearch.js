@@ -29,6 +29,7 @@ export default function UserSearch(props) {
       <section className="search">
       <form>
             <TextField
+              mulitple
               id="outlined-basic"
               className="login-input"
               label="Add Collaborator"
