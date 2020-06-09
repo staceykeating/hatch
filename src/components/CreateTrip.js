@@ -1,20 +1,41 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Nav from "./Nav";
 import Calendar from "./Calendar";
-import Search from "./Search";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import PlaceSearch from "./PlaceSearch"
+import axios from 'axios';
 
-export default function CreateTrip() {
+function CreateTrip() {
+  const [places, setPlaces] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  useEffect(() => {
+      places.forEach(place => {
+        axios.get(`/api/place_details/${place.place_id}`)
+        .then(res => {
+          console.log(`lat: ${res.data.result.geometry.location.lat} lng:${res.data.result.geometry.location.lng}`)
+        })
+      })
+  }, [isSubmitted])
+
+  
+
   return (
-    <LoadScript
-      googleMapsApiKey="AIzaSyAlNz_VzfRUMEfZgsQK0noHXmRQ3YV6OqY"
-      libraries={["places"]}
-    >
-      <div>
-        <Nav />
-        <Calendar />
-        <Search />
-      </div>
-    </LoadScript>
+    <>
+      <Nav />
+
+      {/* <Calendar /> */}
+      <form onSubmit={event => event.preventDefault()}>
+        <PlaceSearch 
+          setPlaces={ setPlaces }
+        />
+        <button 
+          type='submit'
+          onClick={ () => setIsSubmitted(true) }
+          >Submit</button>
+      </form>
+
+    </>
   );
 }
+
+export default React.memo(CreateTrip);
