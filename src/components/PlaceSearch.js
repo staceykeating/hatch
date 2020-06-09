@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from "axios";
-import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 
 function PlaceSearch(props) {
   const [input, setInput] = useState('');
@@ -14,7 +14,7 @@ function PlaceSearch(props) {
     .then(res => {
       setOptions(res.data.predictions)
     })
-  })
+  },[input])
 
   function setPlaces() {
     props.setPlaces(value)
