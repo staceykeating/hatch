@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./UserSearch.scss";
 import { Button, TextField } from '@material-ui/core';
+import InputField from "./InputField";
 
 
 export default function UserSearch(props) {
@@ -44,6 +45,7 @@ export default function UserSearch(props) {
               Added as a collaborator
             </div>
           </form>
+          <InputField/>
     </section>
   </>
   );
