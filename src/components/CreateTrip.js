@@ -1,20 +1,18 @@
 import React from "react";
 import Nav from "./Nav";
 import Calendar from "./Calendar";
-import Search from "./Search";
+import GoogleMaps from "./placesSearch";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-export default function CreateTrip() {
+function CreateTrip() {
   return (
-    <LoadScript
-      googleMapsApiKey="AIzaSyAlNz_VzfRUMEfZgsQK0noHXmRQ3YV6OqY"
-      libraries={["places"]}
-    >
-      <div>
-        <Nav />
-        <Calendar />
-        <Search />
-      </div>
-    </LoadScript>
+    <>
+      <Nav />
+      <Calendar />
+      <GoogleMaps />
+    
+    </>
   );
 }
+
+export default React.memo(CreateTrip);
