@@ -9,7 +9,8 @@ import InputField from "./InputField";
 export default function UserSearch(props) {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState('');
-  const [collaborator, setCollaborator] = useState('');
+  // const [collaborator, setCollaborator] = useState('');
+  const [value, setValue] = useState([]);
 
   useEffect(() => {
     axios.get(`/api/users`)
@@ -18,17 +19,14 @@ export default function UserSearch(props) {
     })
   }, [])
 
-  function collaborators(){
-    let user = users.filter(user => user.email === email)[0]
-  setCollaborator(user.name);
-  };
+  // function collaborators(){
+  //   let user = users.filter(user => user.email === email)[0]
+  // setCollaborator(user.name);
+  // };
 
   return (
-    <>
-      <h1>Hatch Mates</h1>
       <section className="search">
-      <form>
-            <TextField
+            {/* <TextField
               mulitple
               id="outlined-basic"
               className="login-input"
@@ -36,19 +34,30 @@ export default function UserSearch(props) {
               variant="outlined"
               value={ email }
               onChange={ event => setEmail(event.target.value) }
-              />
-            <Button
-              className="submit"
-              variant="contained"
-              onClick={ () => collaborators() }
-              >Add</Button>
-            <div>
-              {collaborator}
-              Added as a collaborator
-            </div>
-          </form>
-          <InputField/>
+              /> */}
+        <Autocomplete
+          multiple
+          id="tags-standard"
+          options={users}
+          getOptionLabel={(user) => user.name}
+          defaultValue={users}
+          value={value}
+            onChange={(event, newValue) => {
+            setValue(newValue);
+        }}
+        renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="standard"
+          id="outlined-basic"
+          label="Add Collaborator"
+          variant="outlined"
+          value={ email }
+          onChange={ event => setEmail(event.target.value) }
+        />
+        )}
+      />
+       <InputField/>
     </section>
-  </>
   );
 }
