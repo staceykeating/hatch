@@ -6,17 +6,15 @@ import axios from 'axios';
 
 function CreateTrip() {
   const [places, setPlaces] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  useEffect(() => {
-      places.forEach(place => {
-        axios.get(`/api/place_details/${place.place_id}`)
-        .then(res => {
-          console.log(`lat: ${res.data.result.geometry.location.lat} lng:${res.data.result.geometry.location.lng}`)
-        })
+  function submit() {
+    places.forEach(place => {
+      axios.get(`/api/place_details/${place.place_id}`)
+      .then(res => {
+        console.log(`lat: ${res.data.result.geometry.location.lat} lng:${res.data.result.geometry.location.lng}`)
       })
-  }, [isSubmitted])
-
+    })
+  };
   
 
   return (
@@ -30,7 +28,7 @@ function CreateTrip() {
         />
         <button 
           type='submit'
-          onClick={ () => setIsSubmitted(true) }
+          onClick={ () => submit() }
           >Submit</button>
       </form>
 
