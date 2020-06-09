@@ -1,23 +1,34 @@
-import React from "react";
-import TextField from '@material-ui/core/TextField';
+import React, { useState } from "react";
+import TextField from "@material-ui/core/TextField";
 
+export default function InputField(props) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
-
-export default function InputField() {
   return (
     <form noValidate autoComplete="off">
       <TextField
-      id="standard-basic"
-      label="Title"
-      autoFocus
+        id="standard-basic"
+        label="Title"
+        autoFocus
+        value={title}
+        onChange={(event) => {
+          setTitle(event.target.value);
+          props.setTitle(event.target.value);
+        }}
       />
       <br />
       <TextField
-      id="standard-basic"
-      label="Description"
-      autoFocus
-      multiline
-      rowsMax={5}
+        id="standard-basic"
+        label="Description"
+        autoFocus
+        multiline
+        rowsMax={5}
+        value={description}
+        onChange={(event) => {
+          setDescription(event.target.value);
+          props.setDescription(event.target.value);
+        }}
       />
     </form>
   );
