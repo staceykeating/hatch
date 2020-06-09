@@ -5,7 +5,7 @@ import TripLoading from "./TripLoading";
 export default function Trip() {
   return (
     <>
-      <TripLoading />
+      <PackingList />
     </>
   );
 }
