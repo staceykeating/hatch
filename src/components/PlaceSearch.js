@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from "axios";
-import debounce from 'lodash/debounce'
 
 function PlaceSearch(props) {
   const [input, setInput] = useState('');
@@ -10,15 +9,14 @@ function PlaceSearch(props) {
   const [value, setValue] = useState([])
 
   useEffect(() => {
-    axios.get(`/api/places/${input}`)
-    .then(res => {
-      setOptions(res.data.predictions)
-    })
+    const delay = setTimeout(() => {
+      axios.get(`/api/places/${input}`)
+      .then(res => {
+        setOptions(res.data.predictions)
+      })
+    }, 600);
+    return () => clearTimeout(delay);
   },[input])
-
-  function setPlaces() {
-    props.setPlaces(value)
-  }
 
   return (
     <div>
@@ -32,16 +30,16 @@ function PlaceSearch(props) {
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
-          setPlaces();
+          props.setPlaces(newValue);
         }}
         renderInput={params => {
           return (
-          <TextField 
-            {...params} 
+          <TextField
+            {...params}
             onChange={event => setInput(event.target.value)}
-            label="Destination" 
+            label="Destination"
             variant="outlined" />
-        )
+          )
         }}
       />
     </div>
