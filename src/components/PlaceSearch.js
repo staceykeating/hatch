@@ -9,13 +9,15 @@ function PlaceSearch(props) {
   const [value, setValue] = useState([])
 
   useEffect(() => {
+    
     const delay = setTimeout(() => {
       axios.get(`/api/places/${input}`)
       .then(res => {
         setOptions(res.data.predictions)
       })
-    }, 600);
+    }, 200);
     return () => clearTimeout(delay);
+    
   },[input])
 
   return (

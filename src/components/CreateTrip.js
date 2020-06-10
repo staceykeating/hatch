@@ -18,22 +18,27 @@ function CreateTrip() {
   const [endDate, setEndDate] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+
   function submit() {
-    places.forEach((place) => {
-      axios.get(`/api/place_details/${place.place_id}`).then((res) => {
-        console.log(
-          `lat: ${res.data.result.geometry.location.lat} lng:${res.data.result.geometry.location.lng}`
-        ); //title, description, places, collaborators, statedate, enddate
-      });
-    });
+    axios({
+      method: 'POST',
+      url: '/api/trips',
+      data: {
+        title: title,
+        description: description,
+        start_date: startDate,
+        end_date: endDate,
+        destinations: places,
+        collaborators: collaborators
+      }
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
     setIsSubmitted(true);
-    console.log(
-      // "title desc:",
-      // title,
-      // description,
-      // collaborators,
-      startDate._d
-    );
   }
 
   return isSubmitted ? (
