@@ -9,6 +9,7 @@ import InputField from "./InputField";
 import UserSearch from "./UserSearch";
 import TripLoading from "./TripLoading";
 import Button from "@material-ui/core/Button";
+import classnames from 'classnames'
 
 function CreateTrip() {
   const [title, setTitle] = useState("");
@@ -40,13 +41,18 @@ function CreateTrip() {
     }
   }
 
+   const errorClass = classnames('error-message', {
+      'error-message--active': error,
+      'error-message--disabled': error === false
+    })
+
   return isSubmitted ? (
     <TripLoading />
   ) : (
     <>
       <Nav />
-
       <Card>
+        <span class={ errorClass }>* Missing mandatory fields</span>
         <form onSubmit={event => event.preventDefault()}>
           <InputField setTitle={setTitle} setDescription={setDescription} />
           <PlaceSearch setPlaces={setPlaces} />

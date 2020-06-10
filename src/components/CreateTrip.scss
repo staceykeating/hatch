@@ -47,3 +47,15 @@ body {
 #root .MuiInput-underline:after {
   border-bottom: 2px solid #63aba5;
 }
+
+.error-message {
+  color: red;
+
+  &--active {
+    visibility: visible;
+  }
+
+  &--disabled {
+   visibility: hidden;
+  }
+}
