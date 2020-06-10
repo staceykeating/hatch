@@ -12,7 +12,7 @@ export default function TripLoading(props) {
   }, 3000);
 
   return redirect ? (
-    <Redirect to={`/trip/${props.currentTripID}`}/>
+    <Redirect to={`/trip/${props.currentTripID}/id`}/>
     ) : (
     <>
       <Nav />

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -11,12 +11,8 @@ const center = {
   lng: -38.523,
 };
 
-function MyComponent(props) {
+function MyComponent() {
   const [map, setMap] = React.useState(null);
-
-  useEffect(() => {
-    console.log(props.destinations)
-  },[props.destinations])
 
   const points = [
     { lat: 49.2827, lng: -123.1207 }, // Vancouver
