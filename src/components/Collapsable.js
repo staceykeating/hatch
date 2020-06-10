@@ -24,18 +24,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function Collapsable() {
   const classes = useStyles();
-  const [state, setState] = useState([])
+  const [onDelete, setOnDelete] = useState(false)
 
-  const handleRemove = (i) => {
-    setState(state => ({
-      data: state.data.filter((content, title) => title !== i),
-    }))
-
+  const handleRemove = () => {
+    console.log("delete")
+    setOnDelete(null);
   };
+
 
   return (
     <div className={classes.root}>
@@ -62,7 +59,6 @@ export default function Collapsable() {
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
-
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
@@ -76,8 +72,8 @@ export default function Collapsable() {
         <ListItemText primary="Work" secondary="Jan 7, 2014" />
         <IconButton edge="end" aria-label="delete">
           <DeleteIcon
-          onClick={() => handleRemove()}
-          />
+           onClick={handleRemove}
+           />
         </IconButton>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>

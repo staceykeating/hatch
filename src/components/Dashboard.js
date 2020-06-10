@@ -7,14 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "./Dashboard.scss";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-
-// export default function Dashboard() {
-//   return (
-//   <div>
-//     <Nav />
-//     <h1>Dashboard</h1>
-//   </div>
-// )
+import EditIcon from "@material-ui/icons/Edit";
 
 const trips = [
   {
@@ -70,13 +63,16 @@ class Dashboard extends Component {
               return (
                 <div id="slider-box">
                   <div class="trip-info-box">
-                    <div class="photo">
-                      <div class="trip-info">
+                    <div class="trip-info">
+                      <div class="icon-row">
                         <img src="/hatch-icon-2.png" alt="trip" />
-                        <h2>{trip.name}</h2>
-                        <p>{trip.description}</p>
-                        <Button variant="outlined">Edit</Button>
+                        <EditIcon />
                       </div>
+                      <h2>{trip.name}</h2>
+                      <p>{trip.description}</p>
+                      <p>Paris</p>
+                      <p>Paris</p>
+                      <p>Paris</p>
                     </div>
                   </div>
                 </div>

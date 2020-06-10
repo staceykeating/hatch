@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import PackingListItem from "./PackingListItem";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,6 +9,13 @@ import "./PackingList.scss";
 
 export default function PackingList() {
   const [list, setList] = useState([]);
+
+  useEffect(() => {
+    axios.get(`/api/users`).then((res) => {
+      console.log(res.data.length);
+      setList(res.data);
+    });
+  }, []);
   const addPackingListItem = () => {
     const newPackingListItem = {
       id: Math.random().toString(),
@@ -26,7 +34,7 @@ export default function PackingList() {
           </Typography>
           <container>
             {list.map((item) => {
-              return <PackingListItem key={item.id} text={item.text} />;
+              return <PackingListItem key={item.id} text={item.name} />;
             })}
           </container>
         </CardContent>

@@ -6,10 +6,36 @@
   color: #63aba5;
 }
 
+#packing-list .MuiSvgIcon-root:hover {
+  padding-right: 0;
+  min-height: 0 auto;
+  margin-top: 4px;
+  margin-left: 11px;
+  color: #63aba5;
+}
+
+#packing-list .MuiCheckbox-colorSecondary.Mui-checked:hover {
+  background-color: inherit;
+  color: none;
+}
+
+#packing-list .MuiIconButton-colorSecondary:hover {
+  background-color: inherit;
+}
+
+#packing-list .MuiIconButton-root:hover {
+  background-color: inherit;
+}
+
 #root .MuiTypography-root {
   display: flex;
   flex-direction: row;
 }
+
+#root .MuiTypography-h5 {
+  margin-bottom: 30px;
+}
+
 #root h3 {
   margin: 0;
   margin-right: 10px;
