@@ -57,8 +57,8 @@ export default function ProfileButton() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={routeChange}>Dashboard</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={routeChange}>Dashboard</MenuItem>x
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </div>
           <div class="nav-login-button">
