@@ -3,11 +3,13 @@
   padding-right: 1em;
   .profile-icon {
     display: flex;
-    display: none;
     justify-content: flex-end;
     height: fit-content;
     color: white;
     vertical-align: middle;
+    .MuiIconButton-label {
+      height: 50px;
+    }
 
     h2 {
       vertical-align: middle;
@@ -18,8 +20,6 @@
 
 .home-login-button {
   display: flex;
+  display: none;
   justify-content: flex-end;
-}
-.MuiSvgIcon-root {
-  padding-right: 10px;
 }

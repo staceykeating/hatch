@@ -7,7 +7,7 @@ function Calendar(props) {
   const [endDate, setEndDate] = useState(new Date());
 
   return (
-    <div>
+    <div class="calendar">
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <DatePicker
           disableToolbar
