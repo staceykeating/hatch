@@ -5,6 +5,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./Dashboard.scss";
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
 
 // export default function Dashboard() {
 //   return (
@@ -50,36 +52,42 @@ class Dashboard extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // arrow: true,
+      nextArrow: false,
+      prevArrow: false,
       className: "Photos",
     };
     return (
-      <div className="Dash">
+      <>
         <Nav />
-        <h1>HATCHED IDEAS</h1>
+        <div id="dash">
+          <div class="dashboard-label">
+            <h2>Trip Dashboard</h2>
+            <Button variant="outlined">Create New Trip</Button>
+          </div>
 
-        <Slider {...settings}>
-          {trips.map((trip) => {
-            return (
-              <div class="photo">
-                <img width="50%" src={trip.url} alt="trip" />
-                <div class="trip-details">
-                  <p class="name">
-                    {trip.name}
-                    <span class="edit">edit</span>
-                  </p>
-                  <p class="decription">{trip.description}</p>
+          <Slider {...settings}>
+            {trips.map((trip) => {
+              return (
+                <div id="slider-box">
+                  <div class="trip-info-box">
+                    <div class="photo">
+                      <div class="trip-info">
+                        <img src="/hatch-icon-2.png" alt="trip" />
+                        <h2>{trip.name}</h2>
+                        <p>{trip.description}</p>
+                        <Button variant="outlined">Edit</Button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </Slider>
-        <div>
-          <Link to="/create-trip">
-            <button class="trip-button">HATCH A TRIP</button>
-          </Link>
+              );
+            })}
+          </Slider>
+          <div>
+            <Link to="/create-trip"></Link>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
