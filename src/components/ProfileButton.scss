@@ -1,4 +1,4 @@
-.home-page .right-menu {
+#root .nav-bar .right-menu {
   padding-top: 1em;
   padding-right: 1em;
   .profile-icon {
@@ -7,19 +7,29 @@
     height: fit-content;
     color: white;
     vertical-align: middle;
-    .MuiIconButton-label {
-      height: 50px;
-    }
+    height: 50px;
+  }
 
-    h2 {
-      vertical-align: middle;
-      font-family: "Roboto", sans-serif;
-    }
+  h2 {
+    vertical-align: middle;
+    font-family: "Roboto", sans-serif;
   }
 }
-
+#root .navbar .right-menu .profile-icon {
+  margin-right: 0;
+}
+#root .MuiIconButton-label {
+  height: 50px;
+}
 .home-login-button {
   display: flex;
   display: none;
   justify-content: flex-end;
+}
+
+.home-page .right-menu .profile-icon {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1em;
+  padding-right: 1em;
 }
