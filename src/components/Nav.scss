@@ -12,7 +12,6 @@
   padding-right: 2em;
   .profile-icon {
     display: flex;
-    display: none;
     justify-content: flex-end;
     height: fit-content;
     color: white;
@@ -27,6 +26,7 @@
 
 .nav-login-button .MuiButton-outlined {
   display: flex;
+  display: none;
   margin-top: 1vw;
   margin-right: 1vw;
   justify-content: flex-end;
