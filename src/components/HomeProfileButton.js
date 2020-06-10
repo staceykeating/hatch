@@ -32,6 +32,7 @@ export default function ProfileButton() {
               color="inherit"
             >
               <AccountCircle />
+              <h2>Joey</h2>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -48,10 +49,9 @@ export default function ProfileButton() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}>Dashboard</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
-            <h2>Joey</h2>
           </div>
           <div class="home-login-button">
             <Button a href="/login" variant="outlined">

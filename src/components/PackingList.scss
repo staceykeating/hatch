@@ -1,6 +1,18 @@
-#root .MuiSvgIcon-root {
+#packing-list .MuiSvgIcon-root {
   padding-right: 0;
   min-height: 0 auto;
+  margin-top: 4px;
+  margin-left: 11px;
+  color: #63aba5;
+}
+
+#root .MuiTypography-root {
+  display: flex;
+  flex-direction: row;
+}
+#root h3 {
+  margin: 0;
+  margin-right: 10px;
 }
 //want to get rid of hover background color  on this
 #root {
