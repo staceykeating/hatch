@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import { Redirect } from 'react-router-dom'
 import "./TripLoading.scss";
+import axios from 'axios';
 
-export default function TripLoading() {
+export default function TripLoading(props) {
   const [redirect, setRedirect] = useState(false)
 
   setTimeout(() => {
@@ -11,7 +12,7 @@ export default function TripLoading() {
   }, 3000);
 
   return redirect ? (
-    <Redirect to="/trip" />
+    <Redirect to={`/trip/${props.currentTripID}`}/>
     ) : (
     <>
       <Nav />

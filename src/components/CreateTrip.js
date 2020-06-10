@@ -20,6 +20,7 @@ function CreateTrip() {
   const [endDate, setEndDate] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [currentTripID, setCurrentTripID] = useState(0)
 
   function submit() {
     if (title && description && places) {
@@ -35,7 +36,12 @@ function CreateTrip() {
           collaborators: collaborators,
         }
       })
-      setIsSubmitted(true)
+      .then(res => {
+        setCurrentTripID(res.data.trip.id);
+      })
+      .then(() => {
+        setIsSubmitted(true);
+      })
     } else {
       setError(true)
     }
@@ -47,7 +53,7 @@ function CreateTrip() {
     })
 
   return isSubmitted ? (
-    <TripLoading />
+    <TripLoading currentTripID={currentTripID} />
   ) : (
     <>
       <Nav />

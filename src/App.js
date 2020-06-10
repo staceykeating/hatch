@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/create-trip" component={CreateTrip} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/trip" component={Trip} />
+        <Route path="/trip/:id" component={Trip} />
         <Route path="/user-search" component={UserSearch} />
         <Route path="/collapsable" component={Collapsable} />
         <Route path="/" component={Home} />
