@@ -8,6 +8,7 @@ import "./CreateTrip.scss";
 import InputField from "./InputField";
 import UserSearch from "./UserSearch";
 import TripLoading from "./TripLoading";
+import Button from "@material-ui/core/Button";
 
 function CreateTrip() {
   const [title, setTitle] = useState("");
@@ -18,26 +19,25 @@ function CreateTrip() {
   const [endDate, setEndDate] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-
   function submit() {
     axios({
-      method: 'POST',
-      url: '/api/trips',
+      method: "POST",
+      url: "/api/trips",
       data: {
         title: title,
         description: description,
         start_date: startDate,
         end_date: endDate,
         destinations: places,
-        collaborators: collaborators
-      }
+        collaborators: collaborators,
+      },
     })
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setIsSubmitted(true);
   }
 
@@ -53,9 +53,9 @@ function CreateTrip() {
           <PlaceSearch setPlaces={setPlaces} />
           <UserSearch setCollaborators={setCollaborators} />
           <Calendar setStartDate={setStartDate} setEndDate={setEndDate} />
-          <button type="submit" onClick={() => submit()}>
+          <Button variant="outlined" onClick={() => submit()}>
             Submit
-          </button>
+          </Button>
         </form>
       </Card>
     </>

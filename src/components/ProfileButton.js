@@ -57,7 +57,7 @@ export default function ProfileButton() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={routeChange}>Dashboard</MenuItem>x
+              <MenuItem onClick={routeChange}>Dashboard</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </div>
