@@ -6,7 +6,7 @@ export default function InputField(props) {
   const [description, setDescription] = useState("");
 
   return (
-    <form noValidate autoComplete="off">
+    <div>
       <TextField
         id="standard-basic"
         label="Title"
@@ -30,6 +30,6 @@ export default function InputField(props) {
           props.setDescription(event.target.value);
         }}
       />
-    </form>
+    </div>
   );
 }
