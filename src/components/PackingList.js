@@ -17,17 +17,20 @@ export default function PackingList() {
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          Packing List <AddCircleIcon onClick={addPackingListItem} />
-        </Typography>
-        <container>
-          {list.map((item) => {
-            return <PackingListItem key={item.id} text={item.text} />;
-          })}
-        </container>
-      </CardContent>
-    </Card>
+    <div id="packing-list">
+      <Card>
+        <CardContent>
+          <Typography variant="h5" component="h2">
+            Packing List
+            <AddCircleIcon onClick={addPackingListItem} />
+          </Typography>
+          <container>
+            {list.map((item) => {
+              return <PackingListItem key={item.id} text={item.text} />;
+            })}
+          </container>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

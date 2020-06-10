@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./ProfileButton.scss";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -9,10 +10,16 @@ import Button from "@material-ui/core/Button";
 export default function ProfileButton() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const history = useHistory();
+
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+  const routeChange = () => {
+    let path = `/dashboard`;
+    history.push(path);
   };
 
   const handleClose = () => {
@@ -32,8 +39,9 @@ export default function ProfileButton() {
               color="inherit"
             >
               <AccountCircle />
+              <h2>Joey</h2>
             </IconButton>
-            <h2>Joey</h2>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
@@ -49,8 +57,8 @@ export default function ProfileButton() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={routeChange}>Dashboard</MenuItem>x
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </div>
           <div class="nav-login-button">
