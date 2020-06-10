@@ -1,13 +1,29 @@
-
-
-body{
+body {
   background: offwhite;
-
 }
 
+.dashboard-label {
+  width: 100vw;
+  background-color: #2b2b2b;
+  color: #1f1f1f;
+  padding: 30px;
+  height: 50px;
+  margin-top: 0;
+  display: inline-flex;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+#root hr {
+  color: black;
+}
+.dash {
+  justify-content: center;
+}
 .slick-slider {
   position: relative;
   display: flex;
+  width: 100vw;
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: all;
@@ -15,6 +31,31 @@ body{
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+#root .slick-prev {
+  display: none !important;
+}
+#root .slick-next {
+  display: none !important;
+}
+
+#slider-box {
+  display: inline-flex;
+
+  .trip-info {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+  }
+}
+.trip-info-box {
+  color: white;
+  margin-bottom: 100px;
+  text-align: center;
+  justify-content: center;
+  padding: 40px;
+}
+
 // .slick-prev, .slick-next {
 //   position: sticky;
 //   top: 50%;
@@ -29,12 +70,8 @@ body{
 // }
 
 .slick-slide img {
-  margin-top: 12.5em;
-  margin-right: 3em;
-  margin-bottom: 2em;
-  margin-left: 3em;
-  padding-left: 5em;
-  padding-bottom: 1.5em;
+  width: 300px;
+  height: 300px;
 }
 
 // .slick-prev:before {
@@ -48,9 +85,10 @@ body{
 //   color: teal;
 //   font-size: 40px;
 // }
-
+.photo {
+  display: inline-flex;
+}
 .slick-dots {
-  position: absolute;
   width: 100%;
   text-align: center;
   -webkit-text-stroke: thick;
@@ -64,12 +102,11 @@ body{
   border: none;
   font-size: 2vw;
   letter-spacing: 0.3em;
-  position: absolute;
+
   top: 7.5em;
   background: white;
   left: 18em;
   cursor: pointer;
-
 }
 .trip-button:hover {
   font-weight: bolder;
@@ -79,26 +116,24 @@ body{
   border-style: solid;
   border-width: thin;
   border-color: 333333;
-  position: absolute;
+
   top: 23em;
   left: 52.5em;
   transform: translate(-13%, -50%);
 }
-.name{
+.name {
   font-size: 2vw;
   letter-spacing: 0.3em;
   text-align: center;
 }
-.description{
+.description {
   font-size: 1vw;
   text-align: center;
 }
-.edit{
-  position: absolute;
+.edit {
   letter-spacing: 0px;
   bottom: 3.7em;
   left: 9em;
-
 }
 
 h1 {
@@ -107,9 +142,7 @@ h1 {
   border: none;
   font-size: 4vw;
   letter-spacing: 0.1em;
-  position: absolute;
+
   top: 2em;
   left: 7.5em;
 }
-
-
