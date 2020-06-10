@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Nav from "./Nav";
 import Calendar from "./Calendar";
 import PlaceSearch from "./PlaceSearch";
@@ -18,27 +18,26 @@ function CreateTrip() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   function submit() {
-    axios({
-      method: "POST",
-      url: "/api/trips",
-      data: {
-        title: title,
-        description: description,
-        start_date: startDate,
-        end_date: endDate,
-        destinations: places,
-        collaborators: collaborators,
-      },
-    })
-      .then((res) => {
-        console.log(res);
+    if (title && description && places) {
+      axios({
+        method: "POST",
+        url: "/api/trips",
+        data: {
+          title: title,
+          description: description,
+          start_date: startDate,
+          end_date: endDate,
+          destinations: places,
+          collaborators: collaborators,
+        }
       })
-      .catch((err) => {
-        console.log(err);
-      });
-    setIsSubmitted(true);
+      setIsSubmitted(true)
+    } else {
+      setError(true)
+    }
   }
 
   return isSubmitted ? (
@@ -48,7 +47,7 @@ function CreateTrip() {
       <Nav />
 
       <Card>
-        <form onSubmit={(event) => event.preventDefault()}>
+        <form onSubmit={event => event.preventDefault()}>
           <InputField setTitle={setTitle} setDescription={setDescription} />
           <PlaceSearch setPlaces={setPlaces} />
           <UserSearch setCollaborators={setCollaborators} />

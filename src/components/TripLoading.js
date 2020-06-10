@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./Nav";
+import { Redirect } from 'react-router-dom'
 import "./TripLoading.scss";
 
 export default function TripLoading() {
-  return (
+  const [redirect, setRedirect] = useState(false)
+
+  setTimeout(() => {
+    setRedirect(true)
+  }, 3000);
+
+  return redirect ? (
+    <Redirect to="/trip" />
+    ) : (
     <>
       <Nav />
       <div class="center-image">

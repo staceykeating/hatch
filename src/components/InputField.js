@@ -9,7 +9,7 @@ export default function InputField(props) {
     <div>
       <TextField
         id="standard-basic"
-        label="Title"
+        label="*Title"
         autoFocus
         value={title}
         onChange={(event) => {
@@ -20,7 +20,7 @@ export default function InputField(props) {
       <br />
       <TextField
         id="standard-basic"
-        label="Description"
+        label="*Description"
         autoFocus
         multiline
         rowsMax={5}
