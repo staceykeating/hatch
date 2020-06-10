@@ -1,24 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import React, { useState, useEffect } from "react";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 
 function PlaceSearch(props) {
-  const [input, setInput] = useState('');
-  const [options, setOptions] = useState([])
-  const [value, setValue] = useState([])
+  const [input, setInput] = useState("");
+  const [options, setOptions] = useState([]);
+  const [value, setValue] = useState([]);
 
   useEffect(() => {
-    
     const delay = setTimeout(() => {
-      axios.get(`/api/places/${input}`)
-      .then(res => {
-        setOptions(res.data.predictions)
-      })
+      axios.get(`/api/places/${input}`).then((res) => {
+        setOptions(res.data.predictions);
+      });
     }, 200);
     return () => clearTimeout(delay);
-    
-  },[input])
+  }, [input]);
 
   return (
     <div>
@@ -34,18 +31,18 @@ function PlaceSearch(props) {
           setValue(newValue);
           props.setPlaces(newValue);
         }}
-        renderInput={params => {
+        renderInput={(params) => {
           return (
-          <TextField
-            {...params}
-            onChange={event => setInput(event.target.value)}
-            label="*Destination"
-            variant="outlined" />
-          )
+            <TextField
+              {...params}
+              onChange={(event) => setInput(event.target.value)}
+              label="*Destination"
+            />
+          );
         }}
       />
     </div>
-  )
+  );
 }
 
 export default PlaceSearch;

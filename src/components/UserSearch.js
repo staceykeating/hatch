@@ -33,7 +33,6 @@ export default function UserSearch(props) {
             {...params}
             id="outlined-basic"
             label="Add Collaborator"
-            variant="outlined"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
