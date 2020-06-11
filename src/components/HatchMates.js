@@ -18,19 +18,13 @@ export default function HatchMates(props) {
   const [collaborators, setCollaborators] = useState([]);
   const [search, setSearch] = useState(false);
   // const [tripId, setTrip] = useState('2');
-
-
+  
 
   const addCollaborator = () => {
     console.log("add")
     setSearch(true);
-    // const newCollaborator = {
-    //   colloborator: collaborators
-    //};
-    // setMates([...mates, newCollaborator]);
   };
-
-
+  
   const onSubmit = () => {
     setSearch(false)
     axios({
@@ -39,33 +33,60 @@ export default function HatchMates(props) {
       data: {
         // user_id: collaborators[0].user.id,
         collaborators: collaborators,
-        trip_id: props.tripId
+        trip_id: props.tripID
       }
     })
     .then((res) => {
-      console.log("stateoftheunion", res.data)
-      // setMates([res])
-      // console.log(collaborators)
-      //  props.setCollaborators([...props.state, collaborators])
-      // props.setCollaborators((addUser) => [addUser, ...collaborators])
-      // props.setCollaborators(())
+      setMates(res.data);
+    })
+  }
+
+  const onDelete = (id) => {
+    axios({
+      method: "DELETE",
+      url: `/api/collaborators/${id}`,
+      data: {
+        trip_id: props.tripID
+      }
+    })
+    .then((res) => {
+      setMates(res.data);
     })
   }
 
 
+  const searchBar = search ?
+  (<div>
+    <UserSearch setCollaborators={setCollaborators}/>
+    <Button variant="outlined" onClick={() => onSubmit()}>
+      Save Collaborator
+    </Button>
+    <Button variant="outlined" onClick={() => setSearch(false)}>
+      Cancel
+    </Button>
+  </div>) :
+  (<AddCircleIcon onClick={addCollaborator}/>)
 
-  const onDelete = () => {
-    // axios.delete("/api/collaborators")
-    // .then((res) => {
-    // console.log("data", res)
-    // })
-    // setMates([...mates, newMate])
-    // props.setCollaborators((updateUsers) => [...updateUsers])
- }
-const searchBar = search ?
-(<UserSearch setCollaborators={setCollaborators}/>) :
-(<AddCircleIcon onClick={addCollaborator}/>
-  )
+  console.log(mates)
+
+  const users = mates.length > 0
+    ? (mates.map(collaborator => {
+        return <ListItemText>
+          <img class="user-icon" src={HatchIcon2} />
+          {collaborator.name}
+          <DeleteIcon onClick={() => onDelete(collaborator.id)}/>
+          </ListItemText>
+      })) 
+    : (props.collaborators.map((collaborator) => {
+        console.log('PROPS');
+        return <ListItemText>
+          <img class="user-icon" src={HatchIcon2} />
+          {collaborator.name}
+          <DeleteIcon onClick={() => onDelete(collaborator.id)}/>
+          </ListItemText>
+      })
+    )
+
   return (
     <Card>
       <CardContent>
@@ -74,17 +95,8 @@ const searchBar = search ?
           </Typography>
           {searchBar}
         <div>
-          {props.collaborators.map((collaborator) => {
-            return <ListItemText>
-              <img class="user-icon" src={HatchIcon2} />
-              {collaborator.name}
-              <DeleteIcon onClick={onDelete}/>
-              </ListItemText>
-          })}
+          { users }
         </div>
-        <Button variant="outlined" onClick={() => onSubmit()}>
-          Save Collaborator
-        </Button>
       </CardContent>
     </Card>
   );
