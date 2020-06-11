@@ -31,15 +31,19 @@ export default function Trip(props) {
   return (
     <>
       <Nav />
-      {console.log('render')}
+      {console.log(state)}
       <div class="trip-page">
         <PackingList packingList={state.packingList} />
         <HatchMates
           collaborators={state.collaborators}
           state={state}
+<<<<<<< HEAD
           setCollaborators={setState}
           tripId={props.match.params.id}
           />
+=======
+          setCollaborators={setState} />
+>>>>>>> component/tabs
         <Map destinations={state.destinations} />
       </div>
     </>
