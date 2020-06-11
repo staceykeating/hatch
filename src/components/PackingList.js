@@ -7,15 +7,11 @@ import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import "./PackingList.scss";
 
-export default function PackingList() {
+export default function PackingList(props) {
   const [list, setList] = useState([]);
+  const [packingList, setPackingList] = useState([]);
+  console.log("Props", props.packingList);
 
-  useEffect(() => {
-    axios.get(`/api/users`).then((res) => {
-      console.log(res.data.length);
-      setList(res.data);
-    });
-  }, []);
   const addPackingListItem = () => {
     const newPackingListItem = {
       id: Math.random().toString(),
@@ -34,7 +30,19 @@ export default function PackingList() {
           </Typography>
           <container>
             {list.map((item) => {
-              return <PackingListItem key={item.id} text={item.name} />;
+              return <PackingListItem />;
+            })}
+          </container>
+          <container>
+            {props.packingList.map((item) => {
+              console.log(item.packing_item.description);
+              return (
+                <PackingListItem
+                  key={item.packing_item.id}
+                  text={item.packing_item.description}
+                  setPackingList={setPackingList}
+                />
+              );
             })}
           </container>
         </CardContent>
