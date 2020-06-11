@@ -11,11 +11,12 @@ export default function PackingList(props) {
   const [list, setList] = useState([]);
   const [packingList, setPackingList] = useState([]);
 
-  useEffect(() => {
-    console.log("Props", props.packingList);
-  }, [props]);
+  // useEffect(() => {
+  //   console.log("Props", props.packingList);
+  // }, [props]);
 
   const addPackingListItem = () => {
+    //should packing list items just be in packing list?
     const newPackingListItem = {
       id: Math.random().toString(),
       text: "text",
@@ -31,14 +32,9 @@ export default function PackingList(props) {
             Packing List
             <AddCircleIcon onClick={() => addPackingListItem()} />
           </Typography>
-          <container>
-            {list.map((item) => {
-              return <PackingListItem />;
-            })}
-          </container>
+
           <container>
             {props.packingList.map((item) => {
-              console.log(item.packing_item.description);
               return (
                 <PackingListItem
                   key={item.packing_item.id}
@@ -46,6 +42,9 @@ export default function PackingList(props) {
                   setPackingList={setPackingList}
                 />
               );
+            })}
+            {list.map((item) => {
+              return <PackingListItem />;
             })}
           </container>
         </CardContent>

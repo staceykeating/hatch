@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import WeatherItem from "./WeatherItem";
+import "./styles/weather-icons.css";
 
 export default class WeatherCard extends React.Component {
   constructor(props) {
@@ -27,8 +28,8 @@ export default class WeatherCard extends React.Component {
     return (
       <div>
         <h1> Weather</h1>
+        <i class="wi wi-night-sleet"></i>
         <div class="weather-box">
-          <i class="wi wi-night-sleet"></i>
           {this.state.forecast.slice(0, 5).map((item, index) => (
             <WeatherItem
               key={index}
