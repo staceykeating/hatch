@@ -28,7 +28,8 @@ export default function Trip(props) {
       <Nav />
       <div class="trip-page">
         <PackingList packingList={packingList} />
-        <HatchMates collaborators={collaborators} />
+        <HatchMates collaborators={collaborators}
+        setCollaborators={setCollaborators} />
         <Map destinations={destinations} />
       </div>
     </>
