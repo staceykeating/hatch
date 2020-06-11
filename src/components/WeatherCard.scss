@@ -1,4 +1,25 @@
-#root .weather-box {
-  display: flex;
+#root #weather-box {
   flex-direction: row;
+  display: inline-flex;
+  width: max-content;
+  /* vertical-align: middle; */
+  margin: auto;
+  margin-right: 20px;
+  .MuiPaper-root {
+    padding: 20px;
+  }
+  .MuiCard-root {
+    display: inline-flex;
+    padding: 20px;
+  }
+  h3 {
+    margin: auto;
+    margin-right: 10px;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+.weather-card {
+  text-align: center;
+  margin-right: 3px;
 }
