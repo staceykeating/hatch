@@ -11,18 +11,6 @@ export default function Trip(props) {
   const [collaborators, setCollaborators] = useState([]);
 
   useEffect(() => {
-<<<<<<< HEAD
-    axios.get(`/api/trips/${props.match.params.id}`)
-    .then(res => {
-      setPackingList(res.data.packing_items);
-      setDestinations(res.data.destinations);
-      setCollaborators(res.data.collaborators);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  },[props])
-=======
     axios
       .get(`/api/trips/${props.match.params.id}`)
       .then((res) => {
@@ -34,7 +22,6 @@ export default function Trip(props) {
         console.log(err);
       });
   }, []);
->>>>>>> stacey
 
   return (
     <>
