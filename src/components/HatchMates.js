@@ -6,6 +6,7 @@ import "./HatchMates.scss";
 import HatchIcon2 from "./images/hatch-icon-2.png";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from "@material-ui/core/Button";
 import UserSearch from './UserSearch';
 import axios from 'axios';
 
@@ -14,22 +15,27 @@ export default function HatchMates(props) {
   const [mates, setMates] = useState([]);
   const [newMate, setNewMate] = useState("");
   const [collaborators, setCollaborators] = useState([]);
+  const [tripId, setTrip] = useState('2');
 
   const addCollaborator = () => {
     console.log("add")
     const newCollaborator = {
-      id: Math.random().toString(),
       text: "text",
     };
     setMates([...mates, newCollaborator]);
   };
 
+
   const onSubmit = () => {
+    // console.log("collaborators",  collaborators[0].user.id )
+    // console.log("collaborators",  collaborators )
+
     axios({
       method: "POST",
       url: "/api/collaborators",
       data: {
-        collaborators: collaborators,
+        user_id: collaborators[0].user.id,
+        trip_id: tripId
       }
     })
     .then(res => {
@@ -59,6 +65,9 @@ export default function HatchMates(props) {
               {collaborator.name}</ListItemText>
           })}
         </div>
+        <Button variant="outlined" onClick={() => onSubmit()}>
+          Save Collaborator
+        </Button>
       </CardContent>
     </Card>
   );
