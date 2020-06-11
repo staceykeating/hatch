@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import WeatherItem from "./WeatherItem";
+import Card from "@material-ui/core/Card";
+import "./WeatherCard.scss";
+import "./owfont-regular.css";
 
 export default function WeatherCard(props) {
   const [forecast, setForecast] = useState([]);
@@ -20,16 +23,18 @@ export default function WeatherCard(props) {
 
   return (
     <div>
-      <h1> Weather</h1>
-      <div class="weather-box">
-        {forecast.slice(0, 5).map((item, index) => (
-          <WeatherItem
-            key={index}
-            temp={item.temp.day}
-            weatherName={item.weather[0].main}
-            icon={item.weather[0].icon}
-          />
-        ))}
+      <div id="weather-box">
+        <Card>
+          <h3> This week in Barcelona: </h3>
+          {forecast.slice(0, 5).map((item, index) => (
+            <WeatherItem
+              key={index}
+              temp={item.temp.day}
+              weatherName={item.weather[0].main}
+              icon={item.weather[0].id}
+            />
+          ))}
+        </Card>
       </div>
     </div>
   );
