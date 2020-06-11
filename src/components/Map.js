@@ -2,33 +2,31 @@ import React, {useState, useEffect, useCallback} from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import icon from './images/hatch-marker-icon.png'
 
+// default map container size
 const containerStyle = {
   width: "400px",
   height: "400px",
 };
-
+//default map coords
 const center = { lat: 49.2827, lng: -123.1207 };
 
 function Map(props) {
   const [destinations, setDestinations] = useState([]);
-  
-  console.log(props.destinations)
 
   useEffect(() => {
     setDestinations(props.destinations)
   }, [props]);
 
- 
-    const points = destinations.map(item => {
-      return (
-        { 
-          lat: Number(item.destination.lat), 
-          lng: Number(item.destination.lng) 
-        }
-      )
-    });
-  
-
+  // Set the points to be fit into map bounds
+  const points = destinations.map(item => {
+    return (
+      { 
+        lat: Number(item.destination.lat), 
+        lng: Number(item.destination.lng) 
+      }
+    )
+  });
+  // Callback on map load to set bounds
   const onLoad = useCallback(function callback(map) {
     console.log('loaded')
     const bounds = new window.google.maps.LatLngBounds();
@@ -37,7 +35,7 @@ function Map(props) {
     }
     map.fitBounds(bounds);
   }, [points]);
- 
+  // creates markers for all destinations to be rendered
   const markers = destinations.map(item => {
     return(
       <Marker

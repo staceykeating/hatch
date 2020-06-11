@@ -12,10 +12,6 @@ export default function Trip(props) {
     collaborators: []
   })
 
-  const [packingList, setPackingList] = useState([]);
-  const [destinations, setDestinations] = useState([]);
-  const [collaborators, setCollaborators] = useState([]);
-
   useEffect(() => {
     axios
       .get(`/api/trips/${props.match.params.id}`)
@@ -25,9 +21,6 @@ export default function Trip(props) {
           destinations: res.data.destinations,
           collaborators: res.data.collaborators
         })
-        setPackingList(res.data.packing_items);
-        setDestinations(res.data.destinations);
-        setCollaborators(res.data.collaborators);
       })
       .catch((err) => {
         console.log(err);
@@ -39,9 +32,9 @@ export default function Trip(props) {
       <Nav />
       {console.log('render')}
       <div class="trip-page">
-        {/* <PackingList packingList={packingList} />
-        <HatchMates collaborators={collaborators} /> */}
-        <Map destinations={destinations} />
+        <PackingList packingList={state.packingList} />
+        <HatchMates collaborators={state.collaborators} />
+        <Map destinations={state.destinations} />
       </div>
     </>
   );
