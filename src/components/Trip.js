@@ -15,12 +15,12 @@ export default function Trip(props) {
     .then(res => {
       setPackingList(res.data.packing_items);
       setDestinations(res.data.destinations);
-      setCollaborators(res.data.collaborators)
+      setCollaborators(res.data.collaborators);
     })
     .catch(err => {
       console.log(err);
     })
-  })
+  },[props])
 
   return (
     <>
