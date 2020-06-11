@@ -18,6 +18,8 @@ export default function HatchMates(props) {
   const [collaborators, setCollaborators] = useState([]);
   const [tripId, setTrip] = useState('2');
 
+
+
   const addCollaborator = () => {
     console.log("add")
     const newCollaborator = {
@@ -40,7 +42,19 @@ export default function HatchMates(props) {
       console.log("data", res)
     })
     setMates([...mates, newMate])
+    props.setCollaborators((addUser) => [...addUser, collaborators[0].user])
   }
+
+
+
+  const onDelete = () => {
+    // axios.delete("/api/collaborators")
+    // .then((res) => {
+    // console.log("data", res)
+    // })
+    // setMates([...mates, newMate])
+    // props.setCollaborators((updateUsers) => [...updateUsers])
+ }
 
   return (
     <Card>
@@ -62,7 +76,7 @@ export default function HatchMates(props) {
             return <ListItemText>
               <img class="user-icon" src={HatchIcon2} />
               {collaborator.name}
-              <DeleteIcon/>
+              <DeleteIcon onClick={onDelete}/>
               </ListItemText>
           })}
         </div>

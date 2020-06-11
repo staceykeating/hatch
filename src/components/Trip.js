@@ -32,9 +32,10 @@ export default function Trip(props) {
       <Nav />
       {console.log('render')}
       <div class="trip-page">
-        <PackingList packingList={state.packingList} />
-        <HatchMates collaborators={state.collaborators} />
-        <Map destinations={state.destinations} />
+        <PackingList packingList={packingList} />
+        <HatchMates collaborators={collaborators}
+        setCollaborators={setCollaborators} />
+        <Map destinations={destinations} />
       </div>
     </>
   );
