@@ -11,6 +11,7 @@ export default function PackingListItem(props) {
   let value = 0;
   let labelId = 0;
   const [checked, setChecked] = useState([0]);
+  const [text, setText] = useState();
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -24,16 +25,18 @@ export default function PackingListItem(props) {
   };
   function keyPressed(event) {
     if (event.key === "Enter") {
+      event.target.blur();
       axios({
         method: "POST",
         url: "/api/packing_items",
         data: {
-          description: "new item", ///what goes here
+          description: text,
           trip_id: "1", ///how do we get this
         },
       }).then((res) => {
         console.log("resdata", res.data);
       });
+    } else {
     } //setstate to whatever is typed and also update state on enter
   }
 
@@ -51,7 +54,13 @@ export default function PackingListItem(props) {
       </ListItemIcon>
 
       <ListItemText id={props.id} onKeyPress={keyPressed}>
-        <TextField type="text" value={props.text} onChange={(event) => {}} />
+        <TextField
+          type="text"
+          value={props.text}
+          onChange={(event) => {
+            setText(event.target.value);
+          }}
+        />
       </ListItemText>
     </ListItem>
   );
