@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -11,29 +11,50 @@ const center = {
   lng: -38.523,
 };
 
-function MyComponent() {
-  const [map, setMap] = React.useState(null);
+function MyComponent(props) {
 
-  const points = [
-    { lat: 49.2827, lng: -123.1207 }, // Vancouver
-    // {lat: 51.0447, lng: -114.0719 },
-    // {lat: 40.7128, lng: -74.0060 }
-  ];
+  const [map, setMap] = useState(null);
+  // const [points, setPoints] = useState([])
+  const [destinations, setDestinations] = useState([]);
+  
 
-  const onLoad = React.useCallback(function callback(map) {
+  useEffect(() => {
+    setDestinations(props.destinations)
+  }, [props]);
+
+  const points = destinations.map(item => {
+    return (
+      { 
+        lat: Number(item.destination.lat), 
+        lng: Number(item.destination.lng) 
+      }
+    )
+  });
+  
+  const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
     for (let i = 0; i < points.length; i++) {
       bounds.extend(points[i]);
     }
-
     map.fitBounds(bounds);
+    if (points.length > 0) {
+      console.log(points)
+      setMap(map);
+    }
+  }, [points]);
 
-    setMap(map);
-  }, []);
-
-  const onUnmount = React.useCallback(function callback(map) {
+  const onUnmount = useCallback(function callback(map) {
     setMap(null);
   }, []);
+
+ 
+  const markers = destinations.map(item => {
+    return(
+      <Marker
+        label={item.destination.name}
+        position={{ lat: Number(item.destination.lat), lng: Number(item.destination.lng) }}
+      />)
+  });
 
   return (
     <div>
@@ -51,18 +72,7 @@ function MyComponent() {
             maxZoom: 10,
           }}
         >
-          <Marker
-            label={"Vancouver"}
-            position={{ lat: 49.2827, lng: -123.1207 }}
-          />
-          <Marker
-            label={"Calgary"}
-            position={{ lat: 51.0447, lng: -114.0719 }}
-          />
-          <Marker
-            label={"New york"}
-            position={{ lat: 40.7128, lng: -74.006 }}
-          />
+          { markers }}
         </GoogleMap>
       </LoadScript>
     </div>
