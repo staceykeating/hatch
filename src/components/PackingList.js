@@ -10,7 +10,10 @@ import "./PackingList.scss";
 export default function PackingList(props) {
   const [list, setList] = useState([]);
   const [packingList, setPackingList] = useState([]);
-  console.log("Props", props.packingList);
+
+  useEffect(() => {
+    console.log("Props", props.packingList);
+  }, [props]);
 
   const addPackingListItem = () => {
     const newPackingListItem = {
@@ -26,7 +29,7 @@ export default function PackingList(props) {
         <CardContent>
           <Typography variant="h5" component="h2">
             Packing List
-            <AddCircleIcon onClick={addPackingListItem} />
+            <AddCircleIcon onClick={() => addPackingListItem()} />
           </Typography>
           <container>
             {list.map((item) => {
