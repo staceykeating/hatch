@@ -60,7 +60,7 @@ function Map(props) {
             maxZoom: 10,
           }}
         >
-          { markers }}
+          { markers }
         </GoogleMap>
   ) : null;
 
