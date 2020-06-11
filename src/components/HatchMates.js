@@ -16,7 +16,7 @@ export default function HatchMates(props) {
   const [mates, setMates] = useState([]);
   const [newMate, setNewMate] = useState("");
   const [collaborators, setCollaborators] = useState([]);
-  const [tripId, setTrip] = useState('2');
+  // const [tripId, setTrip] = useState('2');
 
 
 
@@ -35,14 +35,14 @@ export default function HatchMates(props) {
       url: "/api/collaborators",
       data: {
         user_id: collaborators[0].user.id,
-        trip_id: tripId
+        trip_id: props.tripId
       }
     })
     .then((res) => {
       console.log("data", res)
+      setMates([...mates, newMate])
+      props.setCollaborators((addUser) => [...addUser, collaborators[0].user])
     })
-    setMates([...mates, newMate])
-    props.setCollaborators((addUser) => [...addUser, collaborators[0].user])
   }
 
 

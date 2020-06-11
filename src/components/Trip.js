@@ -27,18 +27,22 @@ export default function Trip(props) {
       });
   }, [props]);
 
+
   return (
     <>
       <Nav />
       {console.log('render')}
       <div class="trip-page">
         <PackingList packingList={state.packingList} />
-        <HatchMates 
+        <HatchMates
           collaborators={state.collaborators}
           state={state}
-          setCollaborators={setState()} />
+          setCollaborators={setState}
+          tripId={props.match.params.id}
+          />
         <Map destinations={state.destinations} />
       </div>
     </>
+
   );
 }
