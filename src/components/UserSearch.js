@@ -3,6 +3,7 @@ import axios from "axios";
 import "./UserSearch.scss";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField } from "@material-ui/core";
+import TestImage from "./TestImage";
 
 export default function UserSearch(props) {
   const [users, setUsers] = useState([]);
@@ -21,11 +22,12 @@ export default function UserSearch(props) {
         multiple
         id="tags-standard"
         options={users}
-        getOptionLabel={(user) => user.user.name}
+        getOptionLabel={(user) => user.name}
         defaultValue={users}
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
+          console.log("NewValue", newValue)
           props.setCollaborators(newValue);
         }}
         renderInput={(params) => (
@@ -38,6 +40,7 @@ export default function UserSearch(props) {
           />
         )}
       />
+  <TestImage/>
     </section>
   );
 }

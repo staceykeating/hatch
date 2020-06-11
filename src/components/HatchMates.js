@@ -8,6 +8,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from "@material-ui/core/Button";
 import UserSearch from './UserSearch';
+import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
 
 
@@ -17,19 +18,18 @@ export default function HatchMates(props) {
   const [collaborators, setCollaborators] = useState([]);
   const [tripId, setTrip] = useState('2');
 
+
+
   const addCollaborator = () => {
     console.log("add")
     const newCollaborator = {
-      text: "text",
+      colloborator: collaborators
     };
     setMates([...mates, newCollaborator]);
   };
 
 
   const onSubmit = () => {
-    // console.log("collaborators",  collaborators[0].user.id )
-    // console.log("collaborators",  collaborators )
-
     axios({
       method: "POST",
       url: "/api/collaborators",
@@ -38,10 +38,23 @@ export default function HatchMates(props) {
         trip_id: tripId
       }
     })
-    .then(res => {
-      console.log(res.data);
+    .then((res) => {
+      console.log("data", res)
     })
+    setMates([...mates, newMate])
+    props.setCollaborators((addUser) => [...addUser, collaborators[0].user])
   }
+
+
+
+  const onDelete = () => {
+    // axios.delete("/api/collaborators")
+    // .then((res) => {
+    // console.log("data", res)
+    // })
+    // setMates([...mates, newMate])
+    // props.setCollaborators((updateUsers) => [...updateUsers])
+ }
 
   return (
     <Card>
@@ -62,7 +75,9 @@ export default function HatchMates(props) {
           {props.collaborators.map((collaborator) => {
             return <ListItemText>
               <img class="user-icon" src={HatchIcon2} />
-              {collaborator.name}</ListItemText>
+              {collaborator.name}
+              <DeleteIcon onClick={onDelete}/>
+              </ListItemText>
           })}
         </div>
         <Button variant="outlined" onClick={() => onSubmit()}>
