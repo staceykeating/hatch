@@ -28,6 +28,7 @@ export default class WeatherCard extends React.Component {
       <div>
         <h1> Weather</h1>
         <div class="weather-box">
+          <i class="wi wi-night-sleet"></i>
           {this.state.forecast.slice(0, 5).map((item, index) => (
             <WeatherItem
               key={index}

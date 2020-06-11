@@ -8,6 +8,7 @@ import "./Dashboard.scss";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import EditIcon from "@material-ui/icons/Edit";
+import WeatherCard from "./WeatherCard";
 
 const trips = [
   {
@@ -49,42 +50,43 @@ class Dashboard extends Component {
       prevArrow: false,
       className: "Photos",
     };
-    return (
-      <>
-        <Nav />
-        <div id="dash">
-          <div class="dashboard-label">
-            <h2>Trip Dashboard</h2>
-            <Button variant="outlined">Create New Trip</Button>
-          </div>
+    return <WeatherCard />;
+    // return (
+    //   <>
+    //     <Nav />
+    //     <div id="dash">
+    //       <div class="dashboard-label">
+    //         <h2>Trip Dashboard</h2>
+    //         <Button variant="outlined">Create New Trip</Button>
+    //       </div>
 
-          <Slider {...settings}>
-            {trips.map((trip) => {
-              return (
-                <div id="slider-box">
-                  <div class="trip-info-box">
-                    <div class="trip-info">
-                      <div class="icon-row">
-                        <img src="/hatch-icon-2.png" alt="trip" />
-                        <EditIcon />
-                      </div>
-                      <h2>{trip.name}</h2>
-                      <p>{trip.description}</p>
-                      <p>Paris</p>
-                      <p>Paris</p>
-                      <p>Paris</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </Slider>
-          <div>
-            <Link to="/create-trip"></Link>
-          </div>
-        </div>
-      </>
-    );
+    //       <Slider {...settings}>
+    //         {trips.map((trip) => {
+    //           return (
+    //             <div id="slider-box">
+    //               <div class="trip-info-box">
+    //                 <div class="trip-info">
+    //                   <div class="icon-row">
+    //                     <img src="/hatch-icon-2.png" alt="trip" />
+    //                     <EditIcon />
+    //                   </div>
+    //                   <h2>{trip.name}</h2>
+    //                   <p>{trip.description}</p>
+    //                   <p>Paris</p>
+    //                   <p>Paris</p>
+    //                   <p>Paris</p>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           );
+    //         })}
+    //       </Slider>
+    //       <div>
+    //         <Link to="/create-trip"></Link>
+    //       </div>
+    //     </div>
+    //   </>
+    // );
   }
 }
 export default Dashboard;
