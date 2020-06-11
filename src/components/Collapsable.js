@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -24,14 +24,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Collapsable() {
+export default function Collapsable(props) {
   const classes = useStyles();
-  const [onDelete, setOnDelete] = useState(false)
+  const [onDelete, setOnDelete] = useState(false);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState([]);
+  //props.compement_id - from parent scope later
 
-  const handleRemove = () => {
-    console.log("delete")
-    setOnDelete(null);
-  };
+  useEffect(() => {
+    axios.get(`/api/component_items/1`)
+    .then((res) => {
+      console.log(res.data);
+      console.log("hello")
+    });
+  }, []);
+
+  // const handleRemove = () => {
+  //   console.log("delete")
+  //   setOnDelete(null);
+  // };
 
 
   return (
@@ -39,31 +51,8 @@ export default function Collapsable() {
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          deleteIcon={<deleteIconSmall />	}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <ListItemAvatar>
-          <Avatar alt="user" class="user-icon" src="./hatch-icon-2.png"/>
-          {/* insert user icon for who created this */}
-          </ListItemAvatar>
-          <Typography className={classes.heading}> User Created Title
-          {/* insert user title */}
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Discription from user created text box
-            {/* insert user description */}
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
-          id="panel2a-header"
+          id="panel1a-header"
         >
         <ListItemAvatar>
           <Avatar alt="user" class="user-icon" src="./hatch-icon-2.png"/>
@@ -72,15 +61,16 @@ export default function Collapsable() {
         <ListItemText primary="Work" secondary="Jan 7, 2014" />
         <IconButton edge="end" aria-label="delete">
           <DeleteIcon
-           onClick={handleRemove}
+          //  onClick={handleRemove}
            />
         </IconButton>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
             Place Description
+            <br />
             Place Image
-            <img class="user-icon" src="./hatch-icon-4.png" />
+            <br />
             Place address
           </Typography>
         </ExpansionPanelDetails>
