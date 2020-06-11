@@ -37,13 +37,7 @@ export default function Trip(props) {
         <HatchMates
           collaborators={state.collaborators}
           state={state}
-<<<<<<< HEAD
-          setCollaborators={setState}
-          tripId={props.match.params.id}
-          />
-=======
           setCollaborators={setState} />
->>>>>>> component/tabs
         <Map destinations={state.destinations} />
       </div>
     </>
