@@ -16,32 +16,39 @@ export default function HatchMates(props) {
   const [mates, setMates] = useState([]);
   const [newMate, setNewMate] = useState("");
   const [collaborators, setCollaborators] = useState([]);
+  const [search, setSearch] = useState(false);
   // const [tripId, setTrip] = useState('2');
 
 
 
   const addCollaborator = () => {
     console.log("add")
-    const newCollaborator = {
-      colloborator: collaborators
-    };
-    setMates([...mates, newCollaborator]);
+    setSearch(true);
+    // const newCollaborator = {
+    //   colloborator: collaborators
+    //};
+    // setMates([...mates, newCollaborator]);
   };
 
 
   const onSubmit = () => {
+    setSearch(false)
     axios({
       method: "POST",
       url: "/api/collaborators",
       data: {
-        user_id: collaborators[0].user.id,
+        // user_id: collaborators[0].user.id,
+        collaborators: collaborators,
         trip_id: props.tripId
       }
     })
     .then((res) => {
-      console.log("data", res)
-      setMates([...mates, newMate])
-      props.setCollaborators((addUser) => [...addUser, collaborators[0].user])
+      console.log("stateoftheunion", res.data)
+      // setMates([res])
+      // console.log(collaborators)
+      //  props.setCollaborators([...props.state, collaborators])
+      // props.setCollaborators((addUser) => [addUser, ...collaborators])
+      // props.setCollaborators(())
     })
   }
 
@@ -55,22 +62,17 @@ export default function HatchMates(props) {
     // setMates([...mates, newMate])
     // props.setCollaborators((updateUsers) => [...updateUsers])
  }
-
+const searchBar = search ?
+(<UserSearch setCollaborators={setCollaborators}/>) :
+(<AddCircleIcon onClick={addCollaborator}/>
+  )
   return (
     <Card>
       <CardContent>
         <Typography variant="h5" component="h2">
           Hatch-Mates
-          <AddCircleIcon onClick={addCollaborator}/>
-        </Typography>
-        <container>
-          {mates.map((collab) => {
-            return <ListItemText>
-              <UserSearch
-              setCollaborators={setCollaborators}/>
-            </ListItemText>;
-          })}
-        </container>
+          </Typography>
+          {searchBar}
         <div>
           {props.collaborators.map((collaborator) => {
             return <ListItemText>

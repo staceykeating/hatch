@@ -36,7 +36,7 @@ export default function Trip(props) {
         <PackingList packingList={state.packingList} />
         <HatchMates
           collaborators={state.collaborators}
-          state={state}
+          // state={state}
           setCollaborators={setState}
           tripId={props.match.params.id}
           />
