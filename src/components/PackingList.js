@@ -12,7 +12,7 @@ export default function PackingList(props) {
   const [packingList, setPackingList] = useState([]);
 
   // useEffect(() => {
-  //   console.log("Props", props.packingList);
+  // console.log("Props", props);
   // }, [props]);
 
   const addPackingListItem = () => {
@@ -38,6 +38,7 @@ export default function PackingList(props) {
               return (
                 <PackingListItem
                   key={item.packing_item.id}
+                  id={item.packing_item.id}
                   text={item.packing_item.description}
                   setPackingList={setPackingList}
                 />

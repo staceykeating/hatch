@@ -33,15 +33,13 @@ export default function Trip(props) {
       <Nav />
       {console.log("render")}
       <div class="trip-page">
-        <WeatherCard />
-        <PackingList packingList={state.packingList} />
+        {/* <WeatherCard />
+        <PackingList packingList={state.packingList} /> */}
         <HatchMates
           collaborators={state.collaborators}
-          // state={state}
-          setCollaborators={setState}
-          tripId={props.match.params.id}
+          tripID={props.match.params.id}
         />
-        <Map destinations={state.destinations} />
+        {/* <Map destinations={state.destinations} /> */}
       </div>
     </>
   );

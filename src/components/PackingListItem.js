@@ -7,10 +7,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 
 export default function PackingListItem(props) {
-  console.log("props text", props.text);
   let value = 0;
-  let labelId = 0;
-  const [checked, setChecked] = useState([0]);
+  const [checked, setChecked] = useState([1]);
+  const [text, setText] = useState();
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -24,34 +23,42 @@ export default function PackingListItem(props) {
   };
   function keyPressed(event) {
     if (event.key === "Enter") {
+      event.target.blur();
       axios({
         method: "POST",
         url: "/api/packing_items",
         data: {
-          description: "new item", ///what goes here
+          description: text,
           trip_id: "1", ///how do we get this
         },
       }).then((res) => {
         console.log("resdata", res.data);
       });
+    } else {
     } //setstate to whatever is typed and also update state on enter
   }
 
   return (
-    <ListItem key={value} role={undefined} dense button>
+    <ListItem key={props.id} role={undefined} dense button>
       <ListItemIcon class="list-item-icons">
         <Checkbox
           edge="start"
           checked={checked.indexOf(value) !== -1}
-          tabIndex={-1}
+          tabIndex={props.id}
           disableRipple
-          inputProps={{ "aria-labelledby": labelId }}
+          inputProps={{ "aria-labelledby": props.id }}
           onClick={handleToggle(value)}
         />
       </ListItemIcon>
 
       <ListItemText id={props.id} onKeyPress={keyPressed}>
-        <TextField type="text" value={props.text} onChange={(event) => {}} />
+        <TextField
+          type="text"
+          value={props.text}
+          onChange={(event) => {
+            setText(event.target.value);
+          }}
+        />
       </ListItemText>
     </ListItem>
   );
