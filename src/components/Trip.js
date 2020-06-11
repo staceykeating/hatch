@@ -20,7 +20,7 @@ export default function Trip(props) {
     .catch(err => {
       console.log(err);
     })
-  })
+  },[])
 
   return (
     <>

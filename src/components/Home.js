@@ -1,6 +1,8 @@
 import React from "react";
 import HomeProfileButton from "./HomeProfileButton";
 import "./Home.scss";
+import mainLogo from "./images/hatch-main-logo-dark.png";
+
 
 export default function Home() {
   return (
@@ -9,7 +11,7 @@ export default function Home() {
         <HomeProfileButton />
         <img
           class="header-logo-main"
-          src="./hatch-main-logo-dark.png"
+          src={mainLogo}
           alt="Main Header"
         />
       </div>
