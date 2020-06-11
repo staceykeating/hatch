@@ -21,7 +21,7 @@ export default function UserSearch(props) {
         multiple
         id="tags-standard"
         options={users}
-        getOptionLabel={(user) => user.user.name}
+        getOptionLabel={(user) => user.name}
         defaultValue={users}
         value={value}
         onChange={(event, newValue) => {
