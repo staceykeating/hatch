@@ -7,10 +7,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 
 export default function PackingListItem(props) {
-  console.log("props text", props.text);
   let value = 0;
-  let labelId = 0;
-  const [checked, setChecked] = useState([0]);
+  const [checked, setChecked] = useState([1]);
   const [text, setText] = useState();
 
   const handleToggle = (value) => () => {
@@ -41,14 +39,14 @@ export default function PackingListItem(props) {
   }
 
   return (
-    <ListItem key={value} role={undefined} dense button>
+    <ListItem key={props.id} role={undefined} dense button>
       <ListItemIcon class="list-item-icons">
         <Checkbox
           edge="start"
           checked={checked.indexOf(value) !== -1}
-          tabIndex={-1}
+          tabIndex={props.id}
           disableRipple
-          inputProps={{ "aria-labelledby": labelId }}
+          inputProps={{ "aria-labelledby": props.id }}
           onClick={handleToggle(value)}
         />
       </ListItemIcon>
