@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import TripDates from "./TripDates";
 import TripPageTitle from "./TripPageTitle";
+import TripLoading from './TripLoading'
 
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +48,9 @@ export default function Trip(props) {
         });
       })
       .then(() => {
-        setLoaded(true)
+        setTimeout(() => {
+          setLoaded(true);
+        }, 2500);
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +58,7 @@ export default function Trip(props) {
   }, [props]);
 
   return !loaded 
-  ? (<div>sorry one sec</div>) 
+  ? (<TripLoading />)
   : (
     <>
       <Nav />

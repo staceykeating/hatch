@@ -7,9 +7,10 @@ import Card from "@material-ui/core/Card";
 import "./CreateTrip.scss";
 import InputField from "./InputField";
 import UserSearch from "./UserSearch";
-import TripLoading from "./TripLoading";
 import Button from "@material-ui/core/Button";
 import classnames from "classnames";
+import { Redirect } from 'react-router-dom'
+
 
 function CreateTrip() {
   const [title, setTitle] = useState("");
@@ -53,7 +54,7 @@ function CreateTrip() {
   });
 
   return isSubmitted ? (
-    <TripLoading currentTripID={currentTripID} />
+    <Redirect to={`/trip/${currentTripID}`}/>
   ) : (
     <>
       <Nav />
