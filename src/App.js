@@ -10,6 +10,7 @@ import UserSearch from "./components/UserSearch";
 import Collapsable from "./components/Collapsable";
 import Testpage from "./components/Testpage";
 import AddComponentButton from "./components/AddComponentButton";
+
 // import Trip form "./Trip.js";
 import ComponentCard from "./components/ComponentCard";
 
@@ -23,7 +24,7 @@ function App() {
         <Route path="/create-trip" component={CreateTrip} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/trip/:id" component={Trip} />
-        <Route path="/add-button" component={AddComponentButton} />
+        <Route path="/add-button" component={Testpage} />
         <Route path="/collapsable" component={ComponentCard} />
         <Route path="/" component={Home} />
       </Switch>
