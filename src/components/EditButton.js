@@ -7,6 +7,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import Textbox from './Textbox';
 import PlaceSearch from './PlaceSearch';
 import axios from 'axios';
+import { Button, Typography } from "@material-ui/core";
+
 
 
 export default function EditButton(props) {
@@ -37,14 +39,17 @@ export default function EditButton(props) {
   <div>
     <Textbox>
     </Textbox>
+    <CloseIcon
+    onClick={() => setMode("EDIT")}/>
   </div>)
 
   const search = (
   <div>
     <PlaceSearch>
     </PlaceSearch>
+    <CloseIcon
+    onClick={() => setMode("EDIT")}/>
   </div>)
-
 
 
   return (
@@ -53,19 +58,21 @@ export default function EditButton(props) {
       onClick={() => setMode("SHOW")}/>}
       {mode === "SHOW" && <TextFieldsIcon
       onClick={() => setMode("TEXT")}/>}
-      {mode === "TEXT" && text &&
-       <CloseIcon
-       onClick={() => setMode("EDIT")}/>}
+      {mode === "TEXT" && text}
       {mode === "SHOW" && <SearchIcon
       onClick={() => setMode("SEARCH")} />}
-      {mode === "SEARCH" && search &&
-       <CloseIcon
-       onClick={() => setMode("EDIT")}/>}
+      {mode === "SEARCH" && search}
       {mode === "SHOW" && <DeleteIcon
-      onClick={() => setMode("DELETE")}/>}
+      onClick={() => setMode("VERIFYDELETING")}/>}
       {mode === "DELETE" && onDelete()}
       {mode === "SHOW" && <CloseIcon
       onClick={() => setMode("EDIT")}/>}
+      {mode === "VERIFYDELETING" &&
+      <Typography>
+      Are you sure you want to delete?
+      <Button onClick={() => setMode("EDIT")}>No</Button>
+      <Button onClick={() => setMode("DELETE")}>Yes</Button>
+      </Typography>}
 
     </div>
   )
