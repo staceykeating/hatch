@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import "./HatchMates.scss";
 import HatchIcon2 from "./images/hatch-icon-2.png";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import ListItemText from "@material-ui/core/ListItemText";

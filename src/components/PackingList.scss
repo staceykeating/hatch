@@ -1,3 +1,54 @@
+#root {
+  width: 100vw;
+}
+#root #packing-list .MuiFormControl-root {
+  margin-bottom: 0;
+}
+
+#root .MuiTypography-root {
+  display: flex;
+  flex-direction: row;
+}
+
+#root .MuiTypography-h5 {
+  margin-bottom: 30px;
+}
+
+#root .MuiCard-root {
+  background-color: #2b2b2b;
+  color: white;
+  width: max-content;
+}
+
+#root .MuiCheckbox-colorSecondary.Mui-checked {
+  color: #63aba5;
+}
+
+#root .MuiIconButton-colorSecondary {
+  color: #63aba5;
+}
+
+#root .MuiInputBase-input {
+  color: white;
+}
+
+#root .MuiInput-underline:before {
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-bottom: none;
+}
+
+#root #map-box .MuiCard-root {
+  padding: 0;
+}
+
+#root .trip-page .MuiPaper-root {
+  padding: 0;
+}
+
+#root #hatch-mates .MuiCard-root {
+  margin-top: 40px;
+}
+
 #packing-list .MuiSvgIcon-root {
   padding-right: 0;
   min-height: 0 auto;
@@ -27,50 +78,11 @@
   background-color: inherit;
 }
 
-#root #packing-list .MuiFormControl-root {
-  margin-bottom: 0;
-}
-
-#root .MuiTypography-root {
-  display: flex;
-  flex-direction: row;
-}
-
-#root .MuiTypography-h5 {
-  margin-bottom: 30px;
-}
-
 #packing-list h3 {
   margin: 0;
   margin-right: 10px;
 }
 //want to get rid of hover background color  on this
-#root {
-  width: 40vw;
-}
-
-#root .MuiCard-root {
-  background-color: #2b2b2b;
-  color: white;
-  width: max-content;
-}
-
-#root .MuiCheckbox-colorSecondary.Mui-checked {
-  color: #63aba5;
-}
-
-#root .MuiIconButton-colorSecondary {
-  color: #63aba5;
-}
-
-#root .MuiInputBase-input {
-  color: white;
-}
-
-#root .MuiInput-underline:before {
-  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  border-bottom: none;
-}
 
 .list-item-icons .deleter {
   color: white;
@@ -78,10 +90,6 @@
 
 #map-box {
   width: 500px;
-}
-
-#root #map-box .MuiCard-root {
-  padding: 0;
 }
 
 .trip-row {
@@ -92,7 +100,7 @@
 .trip-page-column {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 95vw;
 }
 
 .trip-row h1 {
@@ -120,4 +128,14 @@
 .hatch-column {
   display: flex;
   flex-direction: column;
+}
+
+.user-icon {
+  width: 20px;
+  height: 23px;
+  border-radius: 6px;
+  object-fit: contain;
+  padding: 2px;
+  margin-left: 22px;
+  margin-right: 11px;
 }

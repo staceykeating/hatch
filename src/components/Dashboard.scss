@@ -10,7 +10,11 @@ body {
   margin-top: 0;
   display: inline-flex;
   justify-content: space-between;
-  margin-right: 50px;
+  width: -webkit-fill-available;
+  .MuiButton-root {
+    color: white;
+    border: 1px solid white;
+  }
 }
 
 #root hr {
@@ -50,9 +54,11 @@ body {
     height: 500px;
   }
   .MuiSvgIcon-root {
-    height: 50px;
+    height: 30px;
     width: 50px;
     color: #63aba5;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 }
 .trip-info-box {
@@ -70,7 +76,7 @@ body {
 
 .icon-row {
   display: inline-flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .slick-dots {
   width: 100%;

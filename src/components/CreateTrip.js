@@ -9,7 +9,7 @@ import InputField from "./InputField";
 import UserSearch from "./UserSearch";
 import TripLoading from "./TripLoading";
 import Button from "@material-ui/core/Button";
-import classnames from 'classnames'
+import classnames from "classnames";
 
 function CreateTrip() {
   const [title, setTitle] = useState("");
@@ -20,7 +20,7 @@ function CreateTrip() {
   const [endDate, setEndDate] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(false);
-  const [currentTripID, setCurrentTripID] = useState(0)
+  const [currentTripID, setCurrentTripID] = useState(0);
 
   function submit() {
     if (title && description && places) {
@@ -34,41 +34,43 @@ function CreateTrip() {
           end_date: endDate,
           destinations: places,
           collaborators: collaborators,
-        }
+        },
       })
-      .then(res => {
-        setCurrentTripID(res.data.trip.id);
-      })
-      .then(() => {
-        setIsSubmitted(true);
-      })
+        .then((res) => {
+          setCurrentTripID(res.data.trip.id);
+        })
+        .then(() => {
+          setIsSubmitted(true);
+        });
     } else {
-      setError(true)
+      setError(true);
     }
   }
 
-   const errorClass = classnames('error-message', {
-      'error-message--active': error,
-      'error-message--disabled': error === false
-    })
+  const errorClass = classnames("error-message", {
+    "error-message--active": error,
+    "error-message--disabled": error === false,
+  });
 
   return isSubmitted ? (
     <TripLoading currentTripID={currentTripID} />
   ) : (
     <>
       <Nav />
-      <Card>
-        <span class={ errorClass }>* Missing mandatory fields</span>
-        <form onSubmit={event => event.preventDefault()}>
-          <InputField setTitle={setTitle} setDescription={setDescription} />
-          <PlaceSearch setPlaces={setPlaces} />
-          <UserSearch setCollaborators={setCollaborators} />
-          <Calendar setStartDate={setStartDate} setEndDate={setEndDate} />
-          <Button variant="outlined" onClick={() => submit()}>
-            Submit
-          </Button>
-        </form>
-      </Card>
+      <div id="create-trip">
+        <Card>
+          <span class={errorClass}>* Missing mandatory fields</span>
+          <form onSubmit={(event) => event.preventDefault()}>
+            <InputField setTitle={setTitle} setDescription={setDescription} />
+            <PlaceSearch setPlaces={setPlaces} />
+            <UserSearch setCollaborators={setCollaborators} />
+            <Calendar setStartDate={setStartDate} setEndDate={setEndDate} />
+            <Button variant="outlined" onClick={() => submit()}>
+              Submit
+            </Button>
+          </form>
+        </Card>
+      </div>
     </>
   );
 }
