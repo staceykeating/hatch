@@ -12,7 +12,6 @@ export default function ProfileButton() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const open = Boolean(anchorEl);
-  const [auth, setAuth] = useState(false);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,12 +21,12 @@ export default function ProfileButton() {
     setAnchorEl(null);
   };
   function logout() {
-    Cookies.remove("name");
-    auth = false;
+    Cookies.remove("user");
     handleClose();
   }
+  const user = Cookies.get("user");
 
-  return auth ? (
+  return user ? (
     <div class="right-menu">
       <div class="profile-icon">
         <IconButton
