@@ -11,10 +11,9 @@ return(
  <>
  <Card>
    <CardContent>
-     <Collapsable>
      <EditButton>
-       
      </EditButton>
+     <Collapsable>
      </Collapsable>
    </CardContent>
  </Card>

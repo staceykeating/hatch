@@ -47,10 +47,8 @@ export default function EditButton() {
   const show = onEdit ?
   (<div>
     <SearchIcon onClick={() => showSearch()}>
-      {search}
     </SearchIcon>
     <TextFieldsIcon onClick={() => showText()}>
-      {text}
     </TextFieldsIcon>
     <DeleteIcon onClick={() => showDelete()}/>
   </div>)
@@ -58,12 +56,17 @@ export default function EditButton() {
 
 
 
-  return(
-    <div>
+  return (
+  <div>
+     {show}
+  </div>
+
+    ?(<div>
+      {text}
+    </div>)
+    :(<div>
       {show}
-      {/* {search}
-      {text} */}
-    </div>
+    </div>)
   )
 }
 
