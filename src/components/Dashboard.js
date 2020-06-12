@@ -6,9 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./Dashboard.scss";
 import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import EditIcon from "@material-ui/icons/Edit";
-
+import {Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
 const trips = [
   {
     name: "Girls Euro Trip",
@@ -37,6 +37,8 @@ const trips = [
 ];
 
 export default function Dashboard() {
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -48,7 +50,12 @@ export default function Dashboard() {
     prevArrow: false,
     className: "Photos",
   };
-  return (
+
+  const user = Cookies.get('user')
+
+  return !user 
+  ? (<Redirect to="/login" />)
+  : (
     <>
       <Nav />
       <div id="dash">

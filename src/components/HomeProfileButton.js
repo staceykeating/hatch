@@ -1,73 +1,41 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./ProfileButton.scss";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
+import ProfileButton from "./ProfileButton";
 
-export default function ProfileButton() {
-  const [auth, setAuth] = React.useState(true);
+export default function HomeProfileButton() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const history = useHistory();
+
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const routeChange = () => {
-    let path = `/dashboard`;
-    history.push(path);
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
+  function logout() {
+    Cookies.remove("user");
+    handleClose();
+  }
+  const user = Cookies.get("user");
 
-  return (
-    <>
-      {auth && (
-        <div class="right-menu">
-          <div class="profile-icon">
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <AccountCircle />
-              <h2>Joey</h2>
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>New Trip</MenuItem>
-              <MenuItem onClick={routeChange}>Dashboard</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
-            </Menu>
-          </div>
-          <div class="home-login-button">
-            <Button a href="/login" variant="outlined">
-              Login
-            </Button>
-          </div>
-        </div>
-      )}
-    </>
+  return user ? (
+    <ProfileButton />
+  ) : (
+    <div class="right-menu">
+      <div class="profile-icon">
+        <Button a href="/login" variant="outlined">
+          Login
+        </Button>
+      </div>
+    </div>
   );
 }

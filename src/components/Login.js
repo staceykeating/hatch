@@ -31,7 +31,8 @@ function Login() {
   useEffect(() => {
     axios.get('api/users')
     .then(res => {
-      setUsers(res.data);
+      const formattedUsers = res.data.map(user => user.user)
+      setUsers(formattedUsers);
     })
   }, [])
 
@@ -39,6 +40,7 @@ function Login() {
     if (email && password) {
       setErrors({...errors, emptyPassword: false, emptyEmail: false})
       let currentUser = users.filter(user => user.email === email)[0];
+      console.log("USER",currentUser)
       if (!currentUser || currentUser.password_digest !== password) {
         console.log('We cant find an account with that email');
         setInvalidCred(true)
@@ -63,7 +65,7 @@ function Login() {
   return auth ? (<Redirect to="/dashboard" /> ) : (
     <div>
       <Nav />
-      <div className="main">
+      <div id="main">
         <div className="login">
           <h1 className="login-title">Welcome to Hatch!</h1>
           <Error valid={ invalidCred }/>
