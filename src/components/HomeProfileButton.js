@@ -7,8 +7,9 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
+import ProfileButton from "./ProfileButton";
 
-export default function ProfileButton() {
+export default function HomeProfileButton() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const open = Boolean(anchorEl);
@@ -27,47 +28,7 @@ export default function ProfileButton() {
   const user = Cookies.get("user");
 
   return user ? (
-    <div class="right-menu">
-      <div class="profile-icon">
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleMenu}
-          color="inherit"
-        >
-          <AccountCircle />
-          <h2>Joey</h2>
-        </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          open={open}
-          onClose={handleClose}
-        >
-          <MenuItem>
-            {" "}
-            <Link to="/create-trip" onClick={handleClose}>
-              New Trip
-            </Link>
-          </MenuItem>
-
-          <Link to="/dashboard">
-            <MenuItem onClick={handleClose}>Dashboard</MenuItem>
-          </Link>
-          <MenuItem onClick={logout}>Logout</MenuItem>
-        </Menu>
-      </div>
-    </div>
+    <ProfileButton />
   ) : (
     <div class="right-menu">
       <div class="profile-icon">
