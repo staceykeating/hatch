@@ -12,7 +12,11 @@ export default function UserSearch(props) {
 
   useEffect(() => {
     axios.get(`/api/users`).then((res) => {
-      setUsers(res.data);
+      console.log("MILK",res.data)
+      const formattedUsers = res.data.map(user => {
+        return user.user
+      })
+      setUsers(formattedUsers);
     });
   }, []);
 
@@ -22,7 +26,7 @@ export default function UserSearch(props) {
         multiple
         id="tags-standard"
         options={users}
-        getOptionLabel={(user) => user.user.name}
+        getOptionLabel={(user) => user.name}
         defaultValue={users}
         value={value}
         onChange={(event, newValue) => {

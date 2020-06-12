@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 export default function PackingListItem(props) {
   let value = 0;
   const [checked, setChecked] = useState([1]);
-  const [text, setText] = useState();
+  const [text, setText] = useState(props.text ? props.text : '');
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -21,21 +21,67 @@ export default function PackingListItem(props) {
     }
     setChecked(newChecked);
   };
-  function keyPressed(event) {
-    if (event.key === "Enter") {
-      event.target.blur();
+
+  function deleteItem() {
+    props.setNewItem(false)
+    axios({
+      method: "DELETE",
+      url: `/api/packing_items/${props.id}`,
+      data: {
+        description: text,
+        trip_id: props.trip_id
+      },
+    }).then((res) => {
+      props.setPackingList(res.data)
+    });
+  }
+
+  function updateItem() {
+    props.setNewItem(false)
+    axios({
+      method: "PATCH",
+      url: `/api/packing_items/${props.id}`,
+      data: {
+        description: text,
+        trip_id: props.trip_id
+      },
+    })
+    .then((res) => {
+      props.setPackingList(res.data)
+    });
+  }
+
+  function createItem() {
+    props.setNewItem(false)
       axios({
         method: "POST",
         url: "/api/packing_items",
         data: {
           description: text,
-          trip_id: "1", ///how do we get this
+          trip_id: props.trip_id
         },
-      }).then((res) => {
-        console.log("resdata", res.data);
+      })
+      .then((res) => {
+        props.setPackingList(res.data)
       });
+  }
+
+  function onBlur() {
+    if (!props.text && !text) {
+      props.setNewItem(false)
+    } else if (!props.text) {
+      createItem()
+    } else if (!text){
+      deleteItem()
     } else {
-    } //setstate to whatever is typed and also update state on enter
+      updateItem()
+    }
+  }
+
+  function keyPressed(event) {
+    if (event.key === "Enter") {
+      event.target.blur();
+    }
   }
 
   return (
@@ -51,10 +97,10 @@ export default function PackingListItem(props) {
         />
       </ListItemIcon>
 
-      <ListItemText id={props.id} onKeyPress={keyPressed}>
+      <ListItemText id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
         <TextField
           type="text"
-          value={props.text}
+          value={text}
           onChange={(event) => {
             setText(event.target.value);
           }}
