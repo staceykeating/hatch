@@ -12,6 +12,8 @@ import Avatar from '@material-ui/core/Avatar';
 import axios from 'axios';
 import Textbox from './Textbox';
 import EditButton from './EditButton';
+// import ComponentCard from './ComponentCard';
+
 
 //eventually want to be able to map over this file and generate a new collapsabile everytime a new place is searched or a text bx is created and populate the title and description with either text or text and images and user who created it.
 
@@ -98,6 +100,7 @@ export default function Collapsable(props) {
       </ExpansionPanel>
       <Textbox></Textbox>
       <EditButton></EditButton>
+      {/* <ComponentCard></ComponentCard> */}
     </div>
   );
 }
