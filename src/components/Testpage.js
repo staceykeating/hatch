@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import TripTabs from './TripTabs'
-import Nav from './Nav'
-import DestinationTab from './DestinationTab'
-import useVisualMode from '../hooks/useVisualMode.js'
+import React, { useState, useEffect } from 'react';
+import TripTabs from './TripTabs';
+import Nav from './Nav';
+import DestinationTab from './DestinationTab';
+import useVisualMode from '../hooks/useVisualMode.js';
+import Cookies from 'js-cookie';
+
 
 export default function Testpage() {
 
@@ -32,6 +34,13 @@ export default function Testpage() {
       lng: -74.0060
     }}
   ]
+
+  useEffect(() => {
+    const user = Cookies.get('user');
+    console.log('USER', user)
+  });
+  
+
 
   propsDestinations.forEach(destination => {
     modes[destination.destination.name] = destination.destination;

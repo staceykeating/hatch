@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import GoogleLogin from "react-google-login";
-import bcrypt from 'bcryptjs';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import { Button, TextField } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert'
-import Nav from './Nav'
-import Error from './Error'
-import './Login.scss'
+import Nav from './Nav';
+import Error from './Error';
+import './Login.scss';
+import Cookies from 'js-cookie';
 
 
 function Login() {
@@ -44,6 +43,7 @@ function Login() {
         console.log('We cant find an account with that email');
         setInvalidCred(true)
       } else {
+        Cookies.set('user',currentUser)
         setAuth(true); // redirect to dashboard
       }
     } else {
