@@ -1,73 +1,92 @@
-
-#main {
-  background-color: #3b3b3b;
+#root {
+  overflow: -moz-hidden-unscrollable;
+}
+#root #login-main {
   width: 100vw;
+  height: 100%;
   display: flex;
   justify-content: center;
 
-
-  .login {
-    width: 500px;
-    height: 600px;
-    margin: 100px;
+  .MuiCard-root {
+    margin-top: 100px;
+    margin-bottom: 0;
+    width: 450px;
+    height: 550px;
     background-color: #333333;
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-shadow: 0px 0px 12px;
-
-    h1 {
-      position: inherit;
-    }
-
-    .login-title {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 400;
-      font-size: 2.5em;
-      color: white;
-      margin: 50px auto 20px;
-    }
-
-    .MuiInputBase-input {
-      color:black;
-    }
-
-    .MuiTextField-root {
-      border-radius: 50px;
-      margin: 10px auto;
-    }
-
-    .MuiOutlinedInput-root {
-      height: 60px;
-      width: 350px;
-      border-radius: 50px;
-      box-shadow: 0px 0px 5px;
-      background-color: white;
-    }
-
-    .MuiButton-containedPrimary {
-      width: 300px;
-    }
-
-    .login-submit {
-      width: 350px;
-      margin: 10px auto;
-      border-radius: 50px;
-      height: 60px;
-      font-size: 17px;
-    }
-
-    .login-or {
-      color: white;
-      margin-top: 37px;
-    }
-
-    .google-login {
-      width: 200px;
-      margin: 50px auto;
-      border-radius: 50px;
+    vertical-align: middle;
+    box-shadow: black 0px 0px 12px;
+    .form {
+      display: flex;
+      flex-direction: column;
     }
   }
+  .MuiFormHelperText-root.Mui-error {
+    color: #a14061;
+    font-size: 1em;
+  }
+
+  h1 {
+    position: inherit;
+  }
+
+  .login-title {
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
+    font-size: 2.5em;
+    color: white;
+    margin: 50px auto 20px;
+  }
+  .MuiFormLabel-root {
+    font-size: 1.5em;
+  }
+  .MuiInputBase-root {
+    color: black;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .MuiTextField-root {
+    border-radius: 50px;
+    margin: 10px auto;
+  }
+
+  .MuiOutlinedInput-root {
+    height: 60px;
+    width: 350px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px;
+  }
+
+  .MuiButton-containedPrimary {
+    width: 300px;
+  }
+
+  .login-submit {
+    width: 350px;
+    margin: 10px auto;
+    border-radius: 50px;
+    height: 60px;
+    font-size: 17px;
+  }
+
+  .login-or {
+    color: white;
+    margin-top: 37px;
+  }
+
+  .google-login {
+    width: 200px;
+    margin: 50px auto;
+    border-radius: 50px;
+  }
+}
+
+.login-logo {
+  width: 200px;
+  height: auto;
+  margin-top: 50px;
 }

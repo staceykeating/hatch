@@ -48,6 +48,11 @@ body {
   border-bottom: 2px solid #63aba5;
 }
 
+#root .MuiButton-containedPrimary {
+  color: #fff;
+  background-color: #63aba5;
+  border-radius: 50px;
+}
 .error-message {
   color: red;
 

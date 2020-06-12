@@ -9,9 +9,8 @@ import InputField from "./InputField";
 import UserSearch from "./UserSearch";
 import Button from "@material-ui/core/Button";
 import classnames from "classnames";
-import { Redirect } from 'react-router-dom'
-import Cookies from 'js-cookie'
-
+import { Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function CreateTrip() {
   const [title, setTitle] = useState("");
@@ -54,12 +53,12 @@ function CreateTrip() {
     "error-message--disabled": error === false,
   });
 
-  const user = Cookies.get('user')
+  const user = Cookies.get("user");
 
-  return !user
-  ? (<Redirect to="/login" />)
-  : (isSubmitted ? (
-    <Redirect to={`/trip/${currentTripID}`}/>
+  return !user ? (
+    <Redirect to="/login" />
+  ) : isSubmitted ? (
+    <Redirect to={`/trip/${currentTripID}`} />
   ) : (
     <>
       <Nav />
@@ -71,14 +70,18 @@ function CreateTrip() {
             <PlaceSearch setPlaces={setPlaces} />
             <UserSearch setCollaborators={setCollaborators} />
             <Calendar setStartDate={setStartDate} setEndDate={setEndDate} />
-            <Button variant="outlined" onClick={() => submit()}>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={() => submit()}
+            >
               Submit
             </Button>
           </form>
         </Card>
       </div>
     </>
-  ))
+  );
 }
 
 export default React.memo(CreateTrip);
