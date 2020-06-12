@@ -22,6 +22,7 @@ export default function PackingList(props) {
           key={item.packing_item.id}
           id={item.packing_item.id}
           text={item.packing_item.description}
+          checked={item.packing_item.checked}
           setPackingList={setPackingList}
           trip_id={props.tripID}
           setNewItem={setNewItem}
@@ -35,6 +36,7 @@ export default function PackingList(props) {
           key={item.packing_item.id}
           id={item.packing_item.id}
           text={item.packing_item.description}
+          checked={item.packing_item.checked}
           setPackingList={setPackingList}
           trip_id={props.tripID}
           setNewItem={setNewItem}
