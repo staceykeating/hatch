@@ -40,7 +40,7 @@
   margin-bottom: 30px;
 }
 
-#root h3 {
+#packing-list h3 {
   margin: 0;
   margin-right: 10px;
 }
@@ -52,7 +52,7 @@
 #root .MuiCard-root {
   background-color: #2b2b2b;
   color: white;
-  margin-bottom: 100px;
+  width: max-content;
 }
 
 #root .MuiCheckbox-colorSecondary.Mui-checked {
@@ -74,4 +74,32 @@
 
 .list-item-icons .deleter {
   color: white;
+}
+
+#map-box {
+  width: 500px;
+}
+
+.trip-row {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.trip-page-column {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+
+.trip-row h1 {
+  margin-left: 30px;
+}
+.trip-row h3 {
+  margin-left: 30px;
+}
+
+.trip-title-section {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
 }
