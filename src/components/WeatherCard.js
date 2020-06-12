@@ -18,7 +18,7 @@ export default function WeatherCard(props) {
         setForecast(data.daily);
       })
       .catch((err) => console.log("Error:", err));
-  }, []);
+  }, [props]);
 
   return (
     <div>
