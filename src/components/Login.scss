@@ -1,5 +1,5 @@
 
-.main {
+#main {
   background-color: #3b3b3b;
   width: 100vw;
   display: flex;
@@ -28,6 +28,10 @@
       font-size: 2.5em;
       color: white;
       margin: 50px auto 20px;
+    }
+
+    .MuiInputBase-input {
+      color:black;
     }
 
     .MuiTextField-root {

@@ -8,7 +8,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import TripDates from "./TripDates";
 import TripPageTitle from "./TripPageTitle";
-import TripLoading from './TripLoading'
+import TripLoading from './TripLoading';
+import Cookies from 'js-cookie';
+import { Redirect } from "react-router-dom";
+
+
 
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
@@ -57,35 +61,39 @@ export default function Trip(props) {
       });
   }, [props]);
 
-  return !loaded 
-  ? (<TripLoading />)
-  : (
-    <>
-      <Nav />
-      {console.log("render")}
-      <div class="trip-page-column">
-        <div class="trip-row">
-          <TripPageTitle title={state.title} description={state.description} />
-          <HatchMates
-            collaborators={state.collaborators}
-            tripID={props.match.params.id}
-          />
-        </div>
-        <div class="trip-row">
-          <TripDates startDate={state.startDate} endDate={state.endDate} />
-        </div>
-        <div class="trip-row">
-          <PackingList
-            packingList={state.packingList}
-            tripID={props.match.params.id}
-          />
-          <div id="map-box">
-            <Card>
-              <Map destinations={state.destinations} />
-            </Card>
+  const user = Cookies.get('user');
+
+  return !user 
+  ? (<Redirect to="/login" />)
+  : (!loaded 
+    ? (<TripLoading />)
+    : (
+      <>
+        <Nav />
+        {console.log("render")}
+        <div class="trip-page-column">
+          <div class="trip-row">
+            <TripPageTitle title={state.title} description={state.description} />
+            <HatchMates
+              collaborators={state.collaborators}
+              tripID={props.match.params.id}
+            />
+          </div>
+          <div class="trip-row">
+            <TripDates startDate={state.startDate} endDate={state.endDate} />
+          </div>
+          <div class="trip-row">
+            <PackingList
+              packingList={state.packingList}
+              tripID={props.match.params.id}
+            />
+            <div id="map-box">
+              <Card>
+                <Map destinations={state.destinations} />
+              </Card>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    ))
 }
