@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import PackingListItem from "./PackingListItem";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,21 +7,51 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import "./PackingList.scss";
 
 export default function PackingList(props) {
-  const [list, setList] = useState([]);
   const [packingList, setPackingList] = useState([]);
-
-  // useEffect(() => {
-  // console.log("Props", props);
-  // }, [props]);
+  const [newItem, setNewItem] = useState(false)
 
   const addPackingListItem = () => {
-    //should packing list items just be in packing list?
-    const newPackingListItem = {
-      id: Math.random().toString(),
-      text: "text",
-    };
-    setList([...list, newPackingListItem]);
+    setNewItem(true);
   };
+
+  const packingItems = packingList.length > 0 
+  ? (
+    packingList.map(item => {
+      return (
+        <PackingListItem
+          key={item.packing_item.id}
+          id={item.packing_item.id}
+          text={item.packing_item.description}
+          setPackingList={setPackingList}
+          trip_id={props.tripID}
+          setNewItem={setNewItem}
+        />)
+    })
+  ) 
+  : (
+    props.packingList.map((item) => {
+      return (
+        <PackingListItem
+          key={item.packing_item.id}
+          id={item.packing_item.id}
+          text={item.packing_item.description}
+          setPackingList={setPackingList}
+          trip_id={props.tripID}
+          setNewItem={setNewItem}
+        />)
+    })
+  );
+
+  const newInput = newItem 
+    ? (
+      <PackingListItem
+      trip_id={props.tripID} 
+      setPackingList={setPackingList}
+      setNewItem={setNewItem}
+      />
+    )
+    : null;
+
 
   return (
     <div id="packing-list">
@@ -34,20 +63,12 @@ export default function PackingList(props) {
           </Typography>
 
           <container>
-            {props.packingList.map((item) => {
-              return (
-                <PackingListItem
-                  key={item.packing_item.id}
-                  id={item.packing_item.id}
-                  text={item.packing_item.description}
-                  setPackingList={setPackingList}
-                />
-              );
-            })}
-            {list.map((item) => {
-              return <PackingListItem />;
-            })}
+            {/* Shows all packing list items */}
+            { packingItems }
+            {/* Shows new input field */}
+            { newInput }
           </container>
+
         </CardContent>
       </Card>
     </div>
