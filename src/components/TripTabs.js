@@ -1,39 +1,28 @@
-import React from 'react';
-import useVisualMode from '../hooks/useVisualMode'
+import React, {useState} from 'react';
 import TripTabsItem from './TripTabsItem'
 import './TripTabs.scss'
 
-export default function TripTabs() {
+export default function TripTabs(props) {
+  const [selected, setSelected] = useState('MAIN')
 
-  const { mode, transition } = useVisualMode;
-  
-
-  const propsDestinations = [
-    {destination: {
-      id: 1,
-      name: 'Paris',
-      lat: 48.8566,
-      lng: -2.3522
-    }},
-    {destination: {
-      id: 2,
-      name: 'Vancouver',
-      lat: 49.2827, 
-      lng: -123.1207 
-    }}
-  ]
-
-  const tabs = propsDestinations.map(destination => {
+  const tabs = props.destinations.map(destination => {
     return (
     <TripTabsItem
     name={destination.destination.name}
-    >
-    </TripTabsItem>)
+    transition={props.transition}
+    selected={selected}
+    setSelected={setSelected}
+    />)
   })
 
   return (
     <div class="tabs-container">
-      <TripTabsItem name="Main" />
+      <TripTabsItem 
+      name="MAIN"
+      transition={props.transition}
+      selected={selected}
+      setSelected={setSelected}
+      />
       { tabs }
     </div>
   )
