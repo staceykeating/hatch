@@ -1,0 +1,24 @@
+$hatchBlue: #63aba5;
+
+#component-box .MuiCard-root {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  overflow: scroll;
+  .MuiSvgIcon-root {
+    color: $hatchBlue;
+    font-size: 5em;
+    display: flex;
+    margin-bottom: auto;
+    vertical-align: middle;
+    justify-content: center;
+    margin-top: auto;
+  }
+}
+
+#component-box :hover {
+  box-shadow: black 0px 0px 12px;
+  .MuiSvgIcon-root {
+    box-shadow: none;
+  }
+}
