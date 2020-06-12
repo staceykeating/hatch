@@ -7,20 +7,31 @@ import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 
 export default function PackingListItem(props) {
-  let value = 0;
-  const [checked, setChecked] = useState([1]);
+  const [checked, setChecked] = useState(props.checked);
   const [text, setText] = useState(props.text ? props.text : '');
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-    if (currentIndex === -1) {
-      newChecked.push(value);
+  function toggleCheck() {
+    if (checked) {
+      setChecked(false);
+      updateCheck(false);
     } else {
-      newChecked.splice(currentIndex, 1);
+      setChecked(true);
+      updateCheck(true);
     }
-    setChecked(newChecked);
-  };
+
+  }
+
+  function updateCheck(status) {
+    axios({
+      method: "PATCH",
+      url: `/api/packing_items/${props.id}`,
+      data: {
+        description: text,
+        trip_id: props.trip_id,
+        checked: status
+      }
+    })
+  }
 
   function deleteItem() {
     props.setNewItem(false)
@@ -43,7 +54,8 @@ export default function PackingListItem(props) {
       url: `/api/packing_items/${props.id}`,
       data: {
         description: text,
-        trip_id: props.trip_id
+        trip_id: props.trip_id,
+        checked: checked
       },
     })
     .then((res) => {
@@ -58,7 +70,8 @@ export default function PackingListItem(props) {
         url: "/api/packing_items",
         data: {
           description: text,
-          trip_id: props.trip_id
+          trip_id: props.trip_id,
+          checked: checked
         },
       })
       .then((res) => {
@@ -89,11 +102,11 @@ export default function PackingListItem(props) {
       <ListItemIcon class="list-item-icons">
         <Checkbox
           edge="start"
-          checked={checked.indexOf(value) !== -1}
+          checked={checked}
           tabIndex={props.id}
           disableRipple
           inputProps={{ "aria-labelledby": props.id }}
-          onClick={handleToggle(value)}
+          onClick={() => toggleCheck()}
         />
       </ListItemIcon>
 
