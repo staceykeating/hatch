@@ -3,7 +3,7 @@ import axios from "axios";
 import "./UserSearch.scss";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField } from "@material-ui/core";
-import TestImage from "./TestImage";
+// import TestImage from "./TestImage";
 
 export default function UserSearch(props) {
   const [users, setUsers] = useState([]);
