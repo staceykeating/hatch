@@ -10,6 +10,7 @@ import UserSearch from "./UserSearch";
 import Button from "@material-ui/core/Button";
 import classnames from "classnames";
 import { Redirect } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 
 function CreateTrip() {
@@ -53,7 +54,11 @@ function CreateTrip() {
     "error-message--disabled": error === false,
   });
 
-  return isSubmitted ? (
+  const user = Cookies.get('user')
+
+  return !user
+  ? (<Redirect to="/login" />)
+  : (isSubmitted ? (
     <Redirect to={`/trip/${currentTripID}`}/>
   ) : (
     <>
@@ -73,7 +78,7 @@ function CreateTrip() {
         </Card>
       </div>
     </>
-  );
+  ))
 }
 
 export default React.memo(CreateTrip);
