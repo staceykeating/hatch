@@ -24,6 +24,12 @@ export default function Testpage() {
       name: 'Vancouver',
       lat: 49.2827, 
       lng: -123.1207
+    }},
+    {destination: {
+      id: 2,
+      name: 'New York',
+      lat: 40.7128, 
+      lng: -74.0060
     }}
   ]
 

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import WeatherCard from './WeatherCard'
 
 export default function Destination(props) {
   return (
-    <div>You are on the {props.destination.name} page</div>
+    <>
+      <WeatherCard destination={props.destination}/>
+      <div>You are on the {props.destination.name} page</div>
+    </>
   )
 }
