@@ -14,6 +14,9 @@ function Textbox() {
   const [isSaved, setIsSaved] = useState(false);
   const [savedData, setSavedData] = useState("")
 
+  ///component id later when created
+
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -24,9 +27,11 @@ function Textbox() {
 
   const onSave = () => {
     handleClose()
+    console.log("title", title)
+    console.log("descripto", description)
     axios({
       method: "POST",
-      url: `/api/component_item`,
+      url: `/api/component_items`,
       data: {
         title: title,
         description: description,
@@ -55,6 +60,8 @@ function Textbox() {
             label="Title"
             type="text"
             fullWidth
+            value={title}
+            onChange= {(event) => setTitle(event.target.value)}
           />
           <TextField
             id="description"
@@ -65,6 +72,8 @@ function Textbox() {
             label="Description"
             type="text"
             fullWidth
+            value={description}
+            onChange= {(event) => setDescription(event.target.value)}
           />
         </DialogContent>
         <DialogActions>

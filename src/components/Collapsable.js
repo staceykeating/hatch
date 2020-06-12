@@ -8,10 +8,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import axios from 'axios';
 import Textbox from './Textbox';
+import EditButton from './EditButton';
 
 //eventually want to be able to map over this file and generate a new collapsabile everytime a new place is searched or a text bx is created and populate the title and description with either text or text and images and user who created it.
 
@@ -42,7 +42,7 @@ export default function Collapsable(props) {
   //props.compement_id - from parent scope later
 
   useEffect(() => {
-    axios.get(`/api/component_items/2`)
+    axios.get(`/api/component_items/1`)
     .then((res) => {
       setResData(res.data)
       setDescription(res.data.description);
@@ -97,6 +97,7 @@ export default function Collapsable(props) {
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <Textbox></Textbox>
+      <EditButton></EditButton>
     </div>
   );
 }
