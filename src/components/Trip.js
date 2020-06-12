@@ -30,6 +30,7 @@ export default function Trip(props) {
     title: "",
     description: "",
   });
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     axios
@@ -45,12 +46,17 @@ export default function Trip(props) {
           description: res.data.trip.trip.description,
         });
       })
+      .then(() => {
+        setLoaded(true)
+      })
       .catch((err) => {
         console.log(err);
       });
   }, [props]);
 
-  return (
+  return !loaded 
+  ? (<div>sorry one sec</div>) 
+  : (
     <>
       <Nav />
       {console.log("render")}
