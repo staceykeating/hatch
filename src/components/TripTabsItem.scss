@@ -1,0 +1,19 @@
+.tab {
+  width: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background-color: Transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  
+  &-selected {
+    border-bottom: 2px solid white;
+  }
+  &-not_selected {
+    border-bottom: none;
+  }
+}

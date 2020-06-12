@@ -11,8 +11,7 @@ export default function WeatherCard(props) {
   useEffect(() => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&units=metric&exclude=current,minutely,hourly&appid=04544604356aadd9bdc56f0753d64718
-        `
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${props.destination.lat}&lon=${props.destination.lng}&units=metric&exclude=current,minutely,hourly&appid=04544604356aadd9bdc56f0753d64718`
       )
       .then((res) => {
         const data = res.data;
@@ -25,7 +24,7 @@ export default function WeatherCard(props) {
     <div>
       <div id="weather-box">
         <Card>
-          <h3> This week in Barcelona: </h3>
+          <h3> This week in {props.destination.name}: </h3>
           {forecast.slice(0, 5).map((item, index) => (
             <WeatherItem
               key={index}
