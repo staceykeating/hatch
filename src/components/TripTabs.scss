@@ -1,0 +1,19 @@
+.tabs-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: center;
+}
+
+button {
+  width: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background-color: Transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
