@@ -6,6 +6,8 @@ import HatchMates from "./HatchMates";
 import WeatherCard from "./WeatherCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import TripDates from "./TripDates";
+import TripPageTitle from "./TripPageTitle";
 
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
@@ -19,11 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Trip(props) {
-  const classes = useStyles();
   const [state, setState] = useState({
     packingList: [],
     destinations: [],
     collaborators: [],
+    startDate: "",
+    endDate: "",
+    title: "",
+    description: "",
   });
 
   useEffect(() => {
@@ -34,6 +39,10 @@ export default function Trip(props) {
           packingList: res.data.packing_items,
           destinations: res.data.destinations,
           collaborators: res.data.collaborators,
+          startDate: res.data.trip.trip.start_date,
+          endDate: res.data.trip.trip.end_date,
+          title: res.data.trip.trip.title,
+          description: res.data.trip.trip.description,
         });
       })
       .catch((err) => {
@@ -47,14 +56,14 @@ export default function Trip(props) {
       {console.log("render")}
       <div class="trip-page-column">
         <div class="trip-row">
-          <div class="trip-title-section">
-            <h1>Euro Trip</h1>
-            <h3>Jessica is getting another divorce!</h3>
-          </div>
+          <TripPageTitle title={state.title} description={state.description} />
           <HatchMates
             collaborators={state.collaborators}
             tripID={props.match.params.id}
           />
+        </div>
+        <div class="trip-row">
+          <TripDates startDate={state.startDate} endDate={state.endDate} />
         </div>
         <div class="trip-row">
           <PackingList

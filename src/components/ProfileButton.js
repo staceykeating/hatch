@@ -57,6 +57,7 @@ export default function ProfileButton() {
               open={open}
               onClose={handleClose}
             >
+              <MenuItem onClick={handleClose}>New Trip</MenuItem>
               <MenuItem onClick={routeChange}>Dashboard</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>

@@ -36,55 +36,52 @@ const trips = [
   },
 ];
 
-class Dashboard extends Component {
-  render() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      fade: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      nextArrow: false,
-      prevArrow: false,
-      className: "Photos",
-    };
-    return (
-      <>
-        <Nav />
-        <div id="dash">
-          <div class="dashboard-label">
-            <h2>Trip Dashboard</h2>
-            <Button variant="outlined">Create New Trip</Button>
-          </div>
+export default function Dashboard() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    fade: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: false,
+    prevArrow: false,
+    className: "Photos",
+  };
+  return (
+    <>
+      <Nav />
+      <div id="dash">
+        <div class="dashboard-label">
+          <h2>Trip Dashboard</h2>
+          <Button variant="outlined">Create New Trip</Button>
+        </div>
 
-          <Slider {...settings}>
-            {trips.map((trip) => {
-              return (
-                <div id="slider-box">
-                  <div class="trip-info-box">
-                    <div class="trip-info">
-                      <div class="icon-row">
-                        <img src="/hatch-icon-2.png" alt="trip" />
-                        <EditIcon />
-                      </div>
+        <Slider {...settings}>
+          {trips.map((trip) => {
+            return (
+              <div id="slider-box">
+                <div class="trip-info-box">
+                  <div class="trip-info">
+                    <div class="icon-row">
                       <h2>{trip.name}</h2>
-                      <p>{trip.description}</p>
-                      <p>Paris</p>
-                      <p>Paris</p>
-                      <p>Paris</p>
+                      <EditIcon />
                     </div>
+                    <p>{trip.description}</p>
+                    <p>Paris</p>
+                    <p>Paris</p>
+                    <p>Paris</p>
                   </div>
                 </div>
-              );
-            })}
-          </Slider>
-          <div>
-            <Link to="/create-trip"></Link>
-          </div>
+              </div>
+            );
+          })}
+        </Slider>
+
+        <div>
+          <Link to="/create-trip"></Link>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }
-export default Dashboard;

@@ -56,6 +56,11 @@ body {
   }
 
   &--disabled {
-   visibility: hidden;
+    visibility: hidden;
   }
+}
+
+#create-trip .MuiCard-root {
+  margin: auto;
+  margin-top: 100px;
 }
