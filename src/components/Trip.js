@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Trip(props) {
-  const classes = useStyles();
   const [state, setState] = useState({
     packingList: [],
     destinations: [],
