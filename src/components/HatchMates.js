@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Card from "@material-ui/core/Card";
-import Typography from "@material-ui/core/Typography";
 import HatchIcon2 from "./images/hatch-icon-2.png";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import ListItemText from "@material-ui/core/ListItemText";
-import Button from "@material-ui/core/Button";
 import UserSearch from "./UserSearch";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -13,7 +11,6 @@ import "./HatchMates.scss";
 
 export default function HatchMates(props) {
   const [mates, setMates] = useState([]);
-  const [newMate, setNewMate] = useState("");
   const [collaborators, setCollaborators] = useState([]);
   const [search, setSearch] = useState(false);
   // const [tripId, setTrip] = useState('2');
@@ -77,7 +74,7 @@ export default function HatchMates(props) {
           return (
             <ListItemText>
               <DeleteIcon onClick={() => onDelete(collaborator.id)} />
-              <img class="user-icon" src={HatchIcon2} />
+              <img class="user-icon" src={HatchIcon2} alt="profile-icon" />
               {collaborator.name}
             </ListItemText>
           );
@@ -86,8 +83,11 @@ export default function HatchMates(props) {
           console.log("PROPS:", collaborator);
           return (
             <ListItemText>
-              <DeleteIcon onClick={() => onDelete(collaborator.id)} />
-              <img class="user-icon" src={HatchIcon2} />
+              <DeleteIcon
+                onClick={() => onDelete(collaborator.id)}
+                alt="profile-icon"
+              />
+              <img class="user-icon" src={HatchIcon2} alt="profile-icon" />
               {collaborator.name}
             </ListItemText>
           );
