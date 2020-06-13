@@ -1,43 +1,17 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./Dashboard.scss";
-import Button from "@material-ui/core/Button";
-import EditIcon from "@material-ui/icons/Edit";
-import {Redirect} from 'react-router-dom'
-import Cookies from 'js-cookie'
-const trips = [
-  {
-    name: "Girls Euro Trip",
-    url:
-      "https://images.pexels.com/photos/59519/pexels-photo-59519.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    description: `Jessica's newly single, girls trip!`,
-  },
-  {
-    name: "Fun In the Sun",
-    url:
-      "https://images.pexels.com/photos/68704/pexels-photo-68704.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    description: `Nothing but getting our tan on!`,
-  },
-  {
-    name: "Hit The Road Jack",
-    url:
-      "https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    description: `Road trip through all of the national parks!`,
-  },
-  {
-    name: "Concrete Jungle",
-    url:
-      "https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    description: `Weekend away in New York, shoppping, eating and sightseeing!`,
-  },
-];
+import DashboardItem from './DashboardItem';
+import {Redirect} from 'react-router-dom';
+import Cookies from 'js-cookie';
+
+import axios from 'axios';
 
 export default function Dashboard() {
-
+  const [trips, setTrips] = useState([])
 
   const settings = {
     dots: true,
@@ -51,43 +25,42 @@ export default function Dashboard() {
     className: "Photos",
   };
 
-  const user = Cookies.get('user')
+  let user = Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null;
 
-  return !user 
+  useEffect(() => {
+      axios
+      .get(`/api/users/${user.id}`)
+      .then(res => {
+        setTrips(res.data);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  },[])
+
+  const formattedTrips = trips.length > 0 
+    ? (trips.map(trip => 
+      <DashboardItem 
+        trip={trip.trip.trip} 
+        destinations={trip.destinations}
+        setTrips={setTrips}
+      />))
+    : null;
+
+  return !user
   ? (<Redirect to="/login" />)
   : (
     <>
       <Nav />
       <div id="dash">
         <div class="dashboard-label">
-          <h2>Trip Dashboard</h2>
-          <Button variant="outlined">Create New Trip</Button>
         </div>
 
         <Slider {...settings}>
-          {trips.map((trip) => {
-            return (
-              <div id="slider-box">
-                <div class="trip-info-box">
-                  <div class="trip-info">
-                    <div class="icon-row">
-                      <h2>{trip.name}</h2>
-                      <EditIcon />
-                    </div>
-                    <p>{trip.description}</p>
-                    <p>Paris</p>
-                    <p>Paris</p>
-                    <p>Paris</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {formattedTrips}
+          <DashboardItem add={true}/>
         </Slider>
 
-        <div>
-          <Link to="/create-trip"></Link>
-        </div>
       </div>
     </>
   );
