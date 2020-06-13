@@ -13,6 +13,7 @@ export default function WeatherCard(props) {
       .get(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${props.destination.lat}&lon=${props.destination.lng}&units=metric&exclude=current,minutely,hourly&appid=04544604356aadd9bdc56f0753d64718`
       )
+
       .then((res) => {
         const data = res.data;
         setForecast(data.daily);
