@@ -4,7 +4,7 @@ $hatchBlue: #63aba5;
   width: 250px;
   height: 250px;
   display: flex;
-  overflow: scroll;
+  overflow-y: auto;
   .MuiSvgIcon-root {
     color: $hatchBlue;
     font-size: 5em;
@@ -20,7 +20,7 @@ $hatchBlue: #63aba5;
   width: 250px;
   height: 250px;
   display: flex;
-  overflow: scroll;
+  overflow-y: auto;
 }
 // #component-box .MuiCard-root :hover {
 //   box-shadow: black 0px 0px 12px;
