@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import Trip from "./Trip";
 import HatchMates from './HatchMates'
 
-// export default function Testpage(props) {
+export default function Testpage(props) {
 //   const [modes] = useState({ MAIN: "MAIN" });
 
   // const { mode, transition } = useVisualMode();
@@ -30,4 +30,4 @@ import HatchMates from './HatchMates'
 //       {mode !== "MAIN" && <DestinationTab destination={modes[mode]} />}
 //     </>
 //   );
-// }
+}
