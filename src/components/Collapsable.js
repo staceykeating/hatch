@@ -12,7 +12,6 @@ import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
 import iconLogo from "./images/hatch-icon.png";
 
-//eventually want to be able to map over this file and generate a new collapsabile everytime a new place is searched or a text bx is created and populate the title and description with either text or text and images and user who created it.
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,12 +36,14 @@ export default function Collapsable(props) {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState([]);
   const [address, setAddress] = useState("");
+  const [isDeleted, setIsDeleted] = useState(false);
 
   //props.compement_id - from parent scope later
 
   useEffect(() => {
-    axios.get(`/api/component_items/1`).then((res) => {
-      setResData(res.data);
+    axios.get(`/api/component_items/1`)
+    .then((res) => {
+      // setResData(res.data);
       setDescription(res.data.description);
       setAddress(res.data.address);
       setImage(res.data.image_url);
@@ -50,48 +51,56 @@ export default function Collapsable(props) {
     });
   }, []);
 
-  const onDelete = (id) => {
+  const onDelete = () => {
+    setIsDeleted(true)
     axios({
       method: "DELETE",
-      url: `/api/component_items/2`,
+      url: `/api/component_items/1`,
       data: {
-        trip_id: props.tripID,
+        component_id: 1,
       },
     }).then((res) => {
-      setResData(res.data);
-      setDescription(res.data.description);
-      setAddress(res.data.address);
-      setImage(res.data.image_url);
-      setTitle(res.data.title);
+      setResData(res.data)
+      console.log("sentBack", res.data)
     });
   };
 
+const info = !isDeleted ? (
+  <ExpansionPanel>
+  <ExpansionPanelSummary
+    expandIcon={<ExpandMoreIcon />}
+    aria-controls="panel2a-content"
+    id="panel1a-header"
+  >
+    <ListItemText primary={title} />
+    <IconButton edge="end" aria-label="delete">
+    <DeleteIcon
+    onClick={() => onDelete()}/>
+  </IconButton>
+  </ExpansionPanelSummary>
+  <ExpansionPanelDetails>
+    <Typography>
+      Description: {description}
+      <br />
+      Address: {address}
+      <br />
+      <Avatar variant="rounded" className={classes.rounded}>
+        <img class="place" src={iconLogo} alt="Add a Photo" />
+      </Avatar>
+    </Typography>
+  </ExpansionPanelDetails>
+</ExpansionPanel>
+
+) : (
+  
+  <div></div>
+)
+
+
+
   return (
     <div className={classes.root}>
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel1a-header"
-        >
-          <ListItemText primary={title} />
-          {/* <IconButton edge="end" aria-label="delete">
-          <DeleteIcon
-          onClick={(component_item) => onDelete(component_item.id)}/>
-        </IconButton> */}
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Description: {description}
-            <br />
-            Address: {address}
-            <br />
-            <Avatar variant="rounded" className={classes.rounded}>
-              <img class="place" src={iconLogo} alt="Add a Photo" />
-            </Avatar>
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+      {info}
     </div>
   );
 }
