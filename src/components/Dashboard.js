@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./Dashboard.scss";
-import Button from "@material-ui/core/Button";
 import DashboardItem from './DashboardItem';
 import {Redirect} from 'react-router-dom';
 import Cookies from 'js-cookie';
