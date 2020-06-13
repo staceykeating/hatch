@@ -19,7 +19,6 @@
   background-color: #2b2b2b;
   color: white;
   width: max-content;
-  overflow: scroll;
 }
 
 #root .MuiCheckbox-colorSecondary.Mui-checked {
@@ -58,6 +57,7 @@
 #root #packing-list .MuiCard-root {
   height: 320px;
   width: 400px;
+  overflow: scroll;
 }
 #packing-list .MuiSvgIcon-root {
   padding-right: 0;

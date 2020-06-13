@@ -20,7 +20,7 @@ export default function Destination(props) {
       <WeatherCard destination={props.destination} />
       <div>You are on the {props.destination.name} page</div>
       <div class="page-components">
-        <ComponentCard />
+        <ComponentCard destination={props.destination.id} />
         {newInput}
         <button onClick={() => addComponentBox()}>
           <AddComponentButton />
