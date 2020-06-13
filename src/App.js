@@ -3,7 +3,6 @@ import "./App.css";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
-// import TripForm from "./TripForm";
 import Trip from "./components/Trip.js";
 import CreateTrip from "./components/CreateTrip";
 import UserSearch from "./components/UserSearch";
@@ -11,7 +10,6 @@ import Collapsable from "./components/Collapsable";
 import Testpage from "./components/Testpage";
 import AddComponentButton from "./components/AddComponentButton";
 
-// import Trip form "./Trip.js";
 import ComponentCard from "./components/ComponentCard";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
