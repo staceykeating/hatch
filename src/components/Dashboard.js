@@ -28,6 +28,7 @@ export default function Dashboard() {
   let user = Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null;
 
   useEffect(() => {
+    if (user) {
       axios
       .get(`/api/users/${user.id}`)
       .then(res => {
@@ -36,6 +37,7 @@ export default function Dashboard() {
       .catch(err => {
         console.log(err)
       })
+    }
   },[])
 
   const formattedTrips = trips.length > 0 

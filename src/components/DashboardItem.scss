@@ -55,6 +55,16 @@
       border: 1px solid white;
       margin: 0px 10px;
     }
+    .MuiButton-label {
+      width: 100%;
+      margin: 0;
+      height: 100%;
+    }
+    a:-webkit-any-link {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+    }
   }
 
   h2 {
