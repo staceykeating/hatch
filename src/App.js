@@ -22,7 +22,7 @@ function App() {
         <Route path="/create-trip" component={CreateTrip} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/trip/:id" component={Trip} />
-        <Route path="/add-button" component={Testpage} />
+        {/* <Route path="/add-button" component={Testpage} /> */}
         <Route path="/collapsable" component={Collapsable} />
         <Route path="/" component={Home} />
       </Switch>
