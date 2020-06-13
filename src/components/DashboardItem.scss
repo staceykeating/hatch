@@ -1,0 +1,89 @@
+
+#box-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+#slider-box {
+  height: 350px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+
+  .icon-row {
+    display:flex;
+    flex-direction: row;
+
+    a:-webkit-any-link {
+      display: flex;
+      align-items: center;
+    }
+
+    .MuiSvgIcon-root {
+      font-size: 3rem;
+      color: #63aba5;
+      cursor: pointer;
+    }
+
+    h2 {
+      font-family: "Manrope", sans-serif;
+      font-weight: 500;
+      font-size: 4.5em;
+      margin: 20px 30px;
+    }
+
+    .description {
+      font-family: "Manrope", sans-serif;
+      font-weight: 300;
+      font-size: 1.5em;
+      margin-top: 0px;
+      margin-bottom: 3em;
+    }
+
+  }
+  .button-container {
+    margin-top: 3em;
+    .MuiButton-outlined {
+      cursor: pointer;
+      width: 9em;
+      height: 3em;
+      color: white;
+      border: 1px solid white;
+      margin: 0px 10px;
+    }
+  }
+
+  h2 {
+    font-family: "Manrope", sans-serif;
+      font-weight: 500;
+      font-size: 2em;
+      margin: 20px 30px;
+  }
+  // Add Button
+  a:-webkit-any-link {
+    display: flex;
+    align-items: center;
+  }
+  .MuiSvgIcon-root {
+    font-size: 4rem;
+    color: #63aba5;
+    cursor: pointer;
+  }
+
+  #destination-container {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px;
+    overflow: visible;
+
+    .destination {
+      font-size: 2em;
+    }
+  }
+
+}
