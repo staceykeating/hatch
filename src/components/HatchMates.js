@@ -23,6 +23,7 @@ export default function HatchMates(props) {
 
   const onSubmit = () => {
     setSearch(false);
+    console.log("PREPOST",collaborators)
     axios({
       method: "POST",
       url: "/api/collaborators",
@@ -32,8 +33,13 @@ export default function HatchMates(props) {
         trip_id: props.tripID,
       },
     }).then((res) => {
+      console.log("POST",res.data)
       setMates(res.data);
-    });
+    })
+    .catch(() => {
+      console.log("ERROR from post");
+      
+    })
   };
 
   const onDelete = (id) => {
@@ -44,6 +50,7 @@ export default function HatchMates(props) {
         trip_id: props.tripID,
       },
     }).then((res) => {
+      console.log("DELETE",res.data)
       setMates(res.data);
     });
   };
@@ -62,11 +69,10 @@ export default function HatchMates(props) {
     <AddCircleIcon onClick={addCollaborator} />
   );
 
-  console.log(mates);
-
   const users =
     mates.length > 0
       ? mates.map((collaborator) => {
+          console.log("MATES:", collaborator);
           return (
             <ListItemText>
               <img class="user-icon" src={HatchIcon2} />
@@ -76,7 +82,7 @@ export default function HatchMates(props) {
           );
         })
       : props.collaborators.map((collaborator) => {
-          console.log("PROPS");
+          console.log("PROPS:", collaborator);
           return (
             <ListItemText>
               <img class="user-icon" src={HatchIcon2} />
