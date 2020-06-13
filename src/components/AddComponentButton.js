@@ -5,7 +5,7 @@ import "./ComponentBox.scss";
 
 export default function AddComponentButton() {
   return (
-    <div id="component-box">
+    <div id="component-add-box">
       <Card>
         <AddCircleOutlinedIcon />
       </Card>

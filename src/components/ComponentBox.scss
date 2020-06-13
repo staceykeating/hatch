@@ -1,6 +1,6 @@
 $hatchBlue: #63aba5;
 
-#component-box .MuiCard-root {
+#component-add-box .MuiCard-root {
   width: 250px;
   height: 250px;
   display: flex;
@@ -16,9 +16,39 @@ $hatchBlue: #63aba5;
   }
 }
 
-#component-box :hover {
+#component-box .MuiCard-root {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  overflow: scroll;
+}
+// #component-box .MuiCard-root :hover {
+//   box-shadow: black 0px 0px 12px;
+// }
+
+#component-add-box :hover {
   box-shadow: black 0px 0px 12px;
   .MuiSvgIcon-root {
     box-shadow: none;
   }
+}
+
+.page-components button {
+  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  background: none;
+  border: none;
+}
+
+.page-components button:focus {
+  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  background: none;
+  border: none;
+
+  outline: none;
 }

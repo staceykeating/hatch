@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import WeatherCard from "./WeatherCard";
 import AddComponentButton from "./AddComponentButton";
 import ComponentCard from "./ComponentCard";
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
+
 import "./DestinationTab.scss";
 
 export default function Destination(props) {
   const [newItem, setNewItem] = useState(false);
-
+  console.log("new item", newItem);
   const addComponentBox = () => {
+    console.log("adding");
     setNewItem(true);
   };
 
@@ -19,7 +22,9 @@ export default function Destination(props) {
       <div class="page-components">
         <ComponentCard />
         {newInput}
-        <AddComponentButton onClick={addComponentBox} />
+        <button onClick={() => addComponentBox()}>
+          <AddComponentButton />
+        </button>
       </div>
     </>
   );

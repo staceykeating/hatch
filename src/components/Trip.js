@@ -43,6 +43,8 @@ export default function Trip(props) {
           endDate: res.data.trip.trip.end_date,
           title: res.data.trip.trip.title,
           description: res.data.trip.trip.description,
+          components: res.data.components[0].components,
+          componentItems: res.data.components[0].component_items,
         });
       })
       .then(() => {
