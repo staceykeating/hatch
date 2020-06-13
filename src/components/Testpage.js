@@ -9,26 +9,20 @@ import HatchMates from "./HatchMates";
 
 export default function Testpage(props) {
   //   const [modes] = useState({ MAIN: "MAIN" });
-
   // const { mode, transition } = useVisualMode();
-
   // console.log("Current Mode:", mode);
-
   // useEffect(() => {
   //   const user = Cookies.get("user");
   //   console.log("USER", user);
   // });
-
   //   destinations.forEach((destination) => {
   //     modes[destination.destination.name] = destination.destination;
   //   });
-
-  return (
-    <>
-      {/* // <TripTabs destinations={destinations} transition={transition} />
-      // {mode === "MAIN" && <></>}
-      // {mode !== "MAIN" && <DestinationTab destination={modes[mode]} />}
-      //{" "} */}
-    </>
-  );
+  //   return (
+  //     <>
+  //      <TripTabs destinations={destinations} transition={transition} />
+  //       {mode === "MAIN" && <></>}
+  //       {mode !== "MAIN" && <DestinationTab destination={modes[mode]} />}
+  //     </>
+  //   );
 }

@@ -50,7 +50,7 @@
 #root #packing-list .MuiCard-root {
   height: 320px;
   width: 400px;
-  overflow: scroll;
+  overflow-y: auto;
 }
 #packing-list .MuiSvgIcon-root {
   padding-right: 0;
