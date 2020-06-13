@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import icon from "./images/hatch-marker-icon.png";
-import { withTheme } from "@material-ui/core";
 const styles = require("./NightModeStyles.json");
 // default map container size
 const containerStyle = {
