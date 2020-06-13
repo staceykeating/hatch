@@ -10,6 +10,7 @@ import TextField from "@material-ui/core/TextField";
 export default function ComponentCard(props) {
   const [text, setText] = useState(props.text ? props.text : "");
   const [newItem, setNewItem] = useState(true);
+  const [components, setComponents] = useState([])
 
   function updateTitle() {
     setNewItem(false);
@@ -78,15 +79,30 @@ export default function ComponentCard(props) {
     </Typography>
   );
 
-  return (
-    <div id="component-box">
-      <Card>
+  const content = components.length > 0
+      ? components.map((component) =>{
+        return (
+          <Card>
+            <CardContent>
+              {title}
+              <EditButton></EditButton>
+              <Collapsable></Collapsable>
+            </CardContent>
+          </Card>
+        )
+      })
+      :
+      (<Card>
         <CardContent>
           {title}
           <EditButton></EditButton>
-          {/* <Collapsable></Collapsable> */}
         </CardContent>
-      </Card>
+      </Card>)
+
+      
+  return (
+    <div id="component-box">
+      {content}
     </div>
   );
 }

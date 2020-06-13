@@ -6,7 +6,7 @@
 // import Cookies from "js-cookie";
 // import Trip from "./Trip";
 
-// export default function Testpage() {
+// export default function Testpage(props) {
 //   const [modes] = useState({ MAIN: "MAIN" });
 
 //   const { mode, transition } = useVisualMode();
@@ -18,13 +18,13 @@
 //     console.log("USER", user);
 //   });
 
-//   propsDestinations.forEach((destination) => {
+//   destinations.forEach((destination) => {
 //     modes[destination.destination.name] = destination.destination;
 //   });
 
 //   return (
 //     <>
-//       <TripTabs destinations={propsDestinations} transition={transition} />
+//      <TripTabs destinations={destinations} transition={transition} />
 //       {mode === "MAIN" && <></>}
 //       {mode !== "MAIN" && <DestinationTab destination={modes[mode]} />}
 //     </>
