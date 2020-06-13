@@ -23,8 +23,8 @@ function Map(props) {
   // Set the points to be fit into map bounds
   const points = destinations.map((item) => {
     return {
-      lat: Number(item.destination.lat),
-      lng: Number(item.destination.lng),
+      lat: Number(item.destination.destination.lat),
+      lng: Number(item.destination.destination.lng),
     };
   });
   // Callback on map load to set bounds
@@ -51,8 +51,8 @@ function Map(props) {
         // }}
         icon={icon}
         position={{
-          lat: Number(item.destination.lat),
-          lng: Number(item.destination.lng),
+          lat: Number(item.destination.destination.lat),
+          lng: Number(item.destination.destination.lng),
         }}
       />
     );

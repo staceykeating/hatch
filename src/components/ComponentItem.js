@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Collapsable(props) {
+export default function ComponentItem(props) {
   const classes = useStyles();
   const [resData, setResData] = useState("");
   const [title, setTitle] = useState("");

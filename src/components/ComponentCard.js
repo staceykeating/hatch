@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Collapsable from "./Collapsable";
+import ComponentItem from "./ComponentItem";
 import EditButton from "./EditButton";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 
 export default function ComponentCard(props) {
-  const [text, setText] = useState(props.text ? props.text : "");
+  const [text, setText] = useState(props.component ? props.component.component.component.title : "");
   const [newItem, setNewItem] = useState(true);
-  const [components, setComponents] = useState([])
-
+  const [component, setComponent] = useState(props.component)
+  
   function updateTitle() {
     setNewItem(false);
     axios({
@@ -79,30 +79,36 @@ export default function ComponentCard(props) {
     </Typography>
   );
 
-  const content = components.length > 0
-      ? components.map((component) =>{
-        return (
-          <Card>
-            <CardContent>
-              {title}
-              <EditButton></EditButton>
-              <Collapsable></Collapsable>
-            </CardContent>
-          </Card>
-        )
-      })
-      :
-      (<Card>
-        <CardContent>
-          {title}
-          <EditButton></EditButton>
-        </CardContent>
-      </Card>)
+  // const content = components.length > 0
+  //     ? components.map((component) =>{
+  //       return (
+  //         <Card>
+  //           <CardContent>
+  //             {title}
+  //             <EditButton></EditButton>
+  //             <ComponentItem</ComponentItem
+  //           </CardContent>
+  //         </Card>
+  //       )
+  //     })
+  //     :
+  //     (<Card>
+  //       <CardContent>
+  //         {title}
+  //         <EditButton></EditButton>
+  //       </CardContent>
+  //     </Card>)
 
       
   return (
     <div id="component-box">
-      {content}
+      <Card>
+        <CardContent>
+          {title}
+          <EditButton></EditButton>
+          <ComponentItem />
+        </CardContent>
+      </Card>
     </div>
   );
 }
