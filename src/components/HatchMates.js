@@ -13,27 +13,22 @@ export default function HatchMates(props) {
   const [mates, setMates] = useState([]);
   const [collaborators, setCollaborators] = useState([]);
   const [search, setSearch] = useState(false);
-  // const [tripId, setTrip] = useState('2');
 
   const addCollaborator = () => {
-    console.log("add");
     setSearch(true);
   };
 
   const onSubmit = () => {
     setSearch(false);
-    console.log("PREPOST", collaborators);
     axios({
       method: "POST",
       url: "/api/collaborators",
       data: {
-        // user_id: collaborators[0].user.id,
         collaborators: collaborators,
         trip_id: props.tripID,
       },
     })
       .then((res) => {
-        console.log("POST", res.data);
         setMates(res.data);
       })
       .catch(() => {
@@ -49,7 +44,6 @@ export default function HatchMates(props) {
         trip_id: props.tripID,
       },
     }).then((res) => {
-      console.log("DELETE", res.data);
       setMates(res.data);
     });
   };
@@ -70,7 +64,6 @@ export default function HatchMates(props) {
   const users =
     mates.length > 0
       ? mates.map((collaborator) => {
-          console.log("MATES:", collaborator);
           return (
             <ListItemText>
               <DeleteIcon onClick={() => onDelete(collaborator.id)} />
@@ -80,7 +73,6 @@ export default function HatchMates(props) {
           );
         })
       : props.collaborators.map((collaborator) => {
-          console.log("PROPS:", collaborator);
           return (
             <ListItemText>
               <DeleteIcon

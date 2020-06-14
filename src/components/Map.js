@@ -29,7 +29,6 @@ function Map(props) {
   // Callback on map load to set bounds
   const onLoad = useCallback(
     function callback(map) {
-      console.log("loaded");
       const bounds = new window.google.maps.LatLngBounds();
       for (let i = 0; i < points.length; i++) {
         bounds.extend(points[i]);
@@ -42,12 +41,6 @@ function Map(props) {
   const markers = destinations.map((item) => {
     return (
       <Marker
-        // label={{
-        //   fontSize: "18px",
-        //   fontWeigh: "800",
-        //   color: "white",
-        //   text: item.destination.name,
-        // }}
         icon={icon}
         position={{
           lat: Number(item.destination.destination.lat),

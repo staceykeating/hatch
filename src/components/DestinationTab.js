@@ -10,11 +10,6 @@ export default function Destination(props) {
   const [components, setComponents] = useState(props.components)
   const [newItem, setNewItem] = useState(false);
 
-  useEffect(() => {
-    console.log("DEST", props.destination)
-     console.log("COMP", props.components)
-  },[props])
-
   const addComponentBox = () => {
     console.log("adding");
     setNewItem(true);
@@ -24,11 +19,12 @@ export default function Destination(props) {
   return (
     <>
       <WeatherCard destination={props.destination.destination} />
-      <div>You are on the {props.destination.name} page</div>
+      <div>You are on the {props.destination.destination.name} page</div>
       <div class="page-components">
-        {components.map(component => 
-          <ComponentCard component={component} setComponents={setComponents} />
-        )}
+        {console.log("PROP", components)}
+        {components.map(component => {
+          return <ComponentCard component={component} setComponents={setComponents} destination_id={props.destination.destination.id}/>
+        })}
 
         {newInput}
         <button onClick={() => addComponentBox()}>

@@ -31,76 +31,46 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ComponentItem(props) {
   const classes = useStyles();
-  const [resData, setResData] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState([]);
-  const [address, setAddress] = useState("");
-  const [isDeleted, setIsDeleted] = useState(false);
-
-  //props.compement_id - from parent scope later
-
-  useEffect(() => {
-    axios.get(`/api/component_items/1`)
-    .then((res) => {
-      // setResData(res.data);
-      setDescription(res.data.description);
-      setAddress(res.data.address);
-      setImage(res.data.image_url);
-      setTitle(res.data.title);
-    });
-  }, []);
 
   const onDelete = () => {
-    setIsDeleted(true)
     axios({
       method: "DELETE",
-      url: `/api/component_items/1`,
+      url: `/api/component_items/${props.component_item.id}`,
       data: {
-        component_id: 1,
+        component_id: props.component_id,
       },
-    }).then((res) => {
-      setResData(res.data)
-      console.log("sentBack", res.data)
+    }).then(res => {
+      console.log('ITEMS', res.data)
+      props.setComponentItems(res.data)
     });
   };
 
-const info = !isDeleted ? (
-  <ExpansionPanel>
-  <ExpansionPanelSummary
-    expandIcon={<ExpandMoreIcon />}
-    aria-controls="panel2a-content"
-    id="panel1a-header"
-  >
-    <ListItemText primary={title} />
-    <IconButton edge="end" aria-label="delete">
-    <DeleteIcon
-    onClick={() => onDelete()}/>
-  </IconButton>
-  </ExpansionPanelSummary>
-  <ExpansionPanelDetails>
-    <Typography>
-      Description: {description}
-      <br />
-      Address: {address}
-      <br />
-      <Avatar variant="rounded" className={classes.rounded}>
-        <img class="place" src={iconLogo} alt="Add a Photo" />
-      </Avatar>
-    </Typography>
-  </ExpansionPanelDetails>
-</ExpansionPanel>
-
-) : (
-  
-  <div></div>
-)
-
-
-
   return (
     <div className={classes.root}>
-      {info}
+      <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel1a-header"
+        >
+          <ListItemText primary={props.component_item.title} />
+          <IconButton edge="end" aria-label="delete">
+          <DeleteIcon
+          onClick={() => onDelete()}/>
+        </IconButton>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Description: {props.component_item.description}
+            <br />
+            Address: {props.component_item.address}
+            <br />
+            <Avatar variant="rounded" className={classes.rounded}>
+              <img class="place" src={props.component_item.image_url} alt="attraction"/>
+            </Avatar>
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
     </div>
   );
 }

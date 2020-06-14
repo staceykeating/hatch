@@ -10,13 +10,17 @@ import TextField from "@material-ui/core/TextField";
 export default function ComponentCard(props) {
   const [text, setText] = useState(props.component ? props.component.component.component.title : "");
   const [newItem, setNewItem] = useState(true);
-  const [component, setComponent] = useState(props.component)
+  const [componentItems, setComponentItems] = useState(props.component.component_items)
+
+  useEffect(() => {
+    console.log("CARD",props.component)
+  },[props])
   
   function updateTitle() {
     setNewItem(false);
     axios({
       method: "PATCH",
-      url: `/api/components/1`,
+      url: `/api/components/${props.component.component.component.id}`,
       data: {
         title: text,
         destination_id: 1,
@@ -78,35 +82,24 @@ export default function ComponentCard(props) {
       />
     </Typography>
   );
-
-  // const content = components.length > 0
-  //     ? components.map((component) =>{
-  //       return (
-  //         <Card>
-  //           <CardContent>
-  //             {title}
-  //             <EditButton></EditButton>
-  //             <ComponentItem</ComponentItem
-  //           </CardContent>
-  //         </Card>
-  //       )
-  //     })
-  //     :
-  //     (<Card>
-  //       <CardContent>
-  //         {title}
-  //         <EditButton></EditButton>
-  //       </CardContent>
-  //     </Card>)
-
       
   return (
     <div id="component-box">
       <Card>
         <CardContent>
           {title}
-          <EditButton></EditButton>
-          <ComponentItem />
+          <EditButton 
+            component_id={props.component.component.component.id}
+            destination_id={props.destination_id}
+            setComponents={props.setComponents}
+          />
+          {componentItems.map(component_item => {
+            return <ComponentItem 
+              component_item={component_item.component_item} 
+              component_id={props.component.component.component.id}
+              setComponentItems={setComponentItems}/>
+          })
+          }
         </CardContent>
       </Card>
     </div>

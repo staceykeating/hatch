@@ -35,7 +35,6 @@ export default function Trip(props) {
     axios
       .get(`/api/trips/${props.match.params.id}`)
       .then((res) => {
-        console.log(res.data)
         setState({
           packingList: res.data.packing_items,
           destinations: res.data.destinations,
@@ -100,7 +99,13 @@ export default function Trip(props) {
           </div>
         </>
       )}
-      {mode !== "MAIN" && <DestinationTab destination={modes[mode].destination} components={modes[mode].components} />}
+      {Object.keys(modes).map(dest => {
+        if (mode === dest && mode !== 'MAIN') {
+          console.log("mode:",modes[dest])
+          return <DestinationTab destination={modes[dest].destination} components={modes[dest].components} />
+        }
+        return null;
+      })}
     </>
   );
 }
