@@ -6,6 +6,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 
+import useAppData from "../hooks/useAppData.js";
+
+
 export default function PackingListItem(props) {
   const [checked, setChecked] = useState(props.checked);
   const [text, setText] = useState(props.text ? props.text : '');
@@ -18,8 +21,9 @@ export default function PackingListItem(props) {
       setChecked(true);
       updateCheck(true);
     }
-
   }
+    
+  const { state,  getData } = useAppData();
 
   function updateCheck(status) {
     axios({
@@ -42,8 +46,10 @@ export default function PackingListItem(props) {
         description: text,
         trip_id: props.trip_id
       },
-    }).then((res) => {
-      props.setPackingList(res.data)
+    }).then(() => {
+      getData()
+      // props.setPackingList(res.data)
+      // setState({...state, packingList: res.data})
     });
   }
 
@@ -80,6 +86,9 @@ export default function PackingListItem(props) {
   }
 
   function onBlur() {
+    console.log('props', props.text)
+    console.log('text', text)
+
     if (!props.text && !text) {
       props.setNewItem(false)
     } else if (!props.text) {

@@ -22,33 +22,9 @@ export default function Trip(props) {
 
   const { mode, transition } = useVisualMode();
 
-  const { state, setState } = useAppData();
+  const { state, loaded, getData } = useAppData(props.match.params.id);
 
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get(`/api/trips/${props.match.params.id}`)
-      .then((res) => {
-        setState({
-          packingList: res.data.packing_items,
-          destinations: res.data.destinations,
-          collaborators: res.data.collaborators,
-          startDate: res.data.trip.trip.start_date,
-          endDate: res.data.trip.trip.end_date,
-          title: res.data.trip.trip.title,
-          description: res.data.trip.trip.description
-        });
-      })
-      .then(() => {
-        setTimeout(() => {
-          setLoaded(true);
-        }, 2500);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [props]);
+  
 
   const user = Cookies.get("user");
 
@@ -73,6 +49,7 @@ export default function Trip(props) {
                 description={state.description}
               />
               <HatchMates
+                getData={getData}
                 collaborators={state.collaborators}
                 tripID={props.match.params.id}
               />
@@ -82,6 +59,7 @@ export default function Trip(props) {
             </div>
             <div class="trip-row">
               <PackingList
+                getData={getData}
                 packingList={state.packingList}
                 tripID={props.match.params.id}
               />
@@ -96,7 +74,7 @@ export default function Trip(props) {
       )}
       {Object.keys(modes).map(dest => {
         if (mode === dest && mode !== 'MAIN') {
-          return <DestinationTab destination={modes[dest].destination} components={modes[dest].components} />
+          return <DestinationTab getData={getData} destination={modes[dest].destination} components={modes[dest].components} />
         }
         return null;
       })}
