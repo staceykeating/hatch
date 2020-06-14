@@ -29,7 +29,7 @@ export default function HatchMates(props) {
       },
     })
       .then((res) => {
-        setMates(res.data);
+        props.getData()
       })
       .catch(() => {
         console.log("ERROR from post");
@@ -44,7 +44,7 @@ export default function HatchMates(props) {
         trip_id: props.tripID,
       },
     }).then((res) => {
-      setMates(res.data);
+      props.getData()
     });
   };
 
@@ -61,36 +61,25 @@ export default function HatchMates(props) {
     </div>
   );
 
-  const users =
-    mates.length > 0
-      ? mates.map((collaborator) => {
-          return (
-            <ListItemText>
-              <DeleteIcon onClick={() => onDelete(collaborator.id)} />
-              <img class="user-icon" src={HatchIcon2} alt="profile-icon" />
-              {collaborator.name}
-            </ListItemText>
-          );
-        })
-      : props.collaborators.map((collaborator) => {
-          return (
-            <ListItemText>
-              <DeleteIcon
-                onClick={() => onDelete(collaborator.id)}
-                alt="profile-icon"
-              />
-              <img class="user-icon" src={HatchIcon2} alt="profile-icon" />
-              {collaborator.name}
-            </ListItemText>
-          );
-        });
-
   return (
     <div id="hatch-mates">
       <Card>
         {searchBar}
 
-        <div class="hatch-people">{users}</div>
+        <div class="hatch-people">
+          {props.collaborators.map((collaborator) => {
+            return (
+              <ListItemText>
+                <DeleteIcon
+                  onClick={() => onDelete(collaborator.id)}
+                  alt="profile-icon"
+                />
+                <img class="user-icon" src={HatchIcon2} alt="profile-icon" />
+                {collaborator.name}
+              </ListItemText>
+            );
+          })}
+          </div>
       </Card>
     </div>
   );

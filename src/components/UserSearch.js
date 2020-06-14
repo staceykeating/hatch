@@ -10,7 +10,8 @@ export default function UserSearch(props) {
   const [value, setValue] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/users`).then((res) => {
+    axios.get(`/api/users`)
+    .then((res) => {
       const formattedUsers = res.data.map((user) => {
         return user.user;
       });

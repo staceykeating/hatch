@@ -59,7 +59,7 @@ export default function PackingListItem(props) {
         checked: checked,
       },
     }).then((res) => {
-      props.setPackingList(res.data);
+      props.getData();
     });
   }
 
@@ -74,7 +74,7 @@ export default function PackingListItem(props) {
         checked: checked,
       },
     }).then((res) => {
-      props.setPackingList(res.data);
+      props.getData();
     });
   }
 

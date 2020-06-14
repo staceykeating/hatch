@@ -52,6 +52,7 @@
     .hatch-people {
       flex-direction: column;
       width: 200px;
+      overflow-y: auto;
     }
     .hatch-column {
       display: flex;
