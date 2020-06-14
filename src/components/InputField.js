@@ -10,6 +10,8 @@ export default function InputField(props) {
       <TextField
         id="standard-basic"
         label="*Title"
+        multiline
+        rowsMax={2}
         value={title}
         onChange={(event) => {
           setTitle(event.target.value);
