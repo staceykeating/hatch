@@ -37,13 +37,19 @@ export default function Trip(props) {
   ) : (
     <>
       <Nav />
-      <TripTabs destinations={state.destinations} transition={transition} />
+      <TripTabs
+        title={state.title}
+        destinations={state.destinations}
+        transition={transition}
+      />
       {mode === "MAIN" && (
         <>
           <div class="trip-page-column">
             <div class="trip-title-row">
               <TripPageTitle
                 title={state.title}
+                startDate={state.startDate}
+                endDate={state.endDate}
                 description={state.description}
               />
               <HatchMates
@@ -52,9 +58,7 @@ export default function Trip(props) {
                 tripID={props.match.params.id}
               />
             </div>
-            <div class="trip-date">
-              <TripDates startDate={state.startDate} endDate={state.endDate} />
-            </div>
+            <div class="trip-date"></div>
             <div class="trip-row">
               <PackingList
                 getData={getData}
@@ -71,7 +75,7 @@ export default function Trip(props) {
         </>
       )}
       {Object.keys(modes).map((dest) => {
-        if (mode === dest && mode !== state.title) {
+        if (mode === dest && mode !== "MAIN") {
           return (
             <DestinationTab
               getData={getData}
