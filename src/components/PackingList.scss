@@ -19,6 +19,7 @@
   background-color: #2b2b2b;
   color: white;
   width: max-content;
+  margin-bottom: 0;
 }
 
 #root .MuiCheckbox-colorSecondary.Mui-checked {
@@ -41,6 +42,7 @@
 #root #map-box .MuiCard-root {
   padding: 0;
   width: 600px;
+  margin-bottom: 0;
 }
 
 #root .trip-page .MuiPaper-root {
@@ -51,6 +53,7 @@
   height: 320px;
   width: 400px;
   overflow-y: auto;
+  margin-bottom: 0;
 }
 #packing-list .MuiSvgIcon-root {
   padding-right: 0;
@@ -93,6 +96,7 @@
   justify-content: space-between;
   margin-left: 100px;
   margin-right: 100px;
+  margin-top: 20px;
 }
 .trip-title-row {
   display: inline-flex;
