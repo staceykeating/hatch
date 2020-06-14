@@ -15,20 +15,15 @@ import Cookies from "js-cookie";
 import DestinationTab from "./DestinationTab";
 import { Redirect } from "react-router-dom";
 import TestPage from "./Testpage";
+import useAppData from "../hooks/useAppData.js";
 
 export default function Trip(props) {
   const [modes] = useState({ MAIN: "MAIN" });
 
   const { mode, transition } = useVisualMode();
-  const [state, setState] = useState({
-    packingList: [],
-    destinations: [],
-    collaborators: [],
-    startDate: "",
-    endDate: "",
-    title: "",
-    description: "",
-  });
+
+  const { state, setState } = useAppData();
+
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

@@ -13,7 +13,7 @@ export default function ComponentCard(props) {
   const [componentItems, setComponentItems] = useState(props.component.component_items)
 
   useEffect(() => {
-    console.log("CARD",props.component)
+    // console.log("CARD",props.component)
   },[props])
   
   function updateTitle() {
@@ -62,6 +62,8 @@ export default function ComponentCard(props) {
 
   const title = text ? (
     <Typography id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
+      {console.log('TRUE')}
+      
       <TextField
         type="text"
         value={text}
@@ -72,6 +74,7 @@ export default function ComponentCard(props) {
     </Typography>
   ) : (
     <Typography id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
+      {console.log("EMPTY")}
       <TextField
         type="text"
         label="*Add Title"

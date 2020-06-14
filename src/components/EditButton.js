@@ -29,10 +29,11 @@ export default function EditButton(props) {
       })
       .then((res) => {
         props.setComponents(res.data)
-        console.log("DELETE:",res.data)
+        setMode("EDIT")
+        console.log("DELETE:",res.data);
       })
-      .catch((res) =>{
-        console.log("THIS IS CATCH", res)
+      .catch((err) => {
+        console.log(err);
       })
   };
 
