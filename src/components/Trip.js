@@ -101,7 +101,6 @@ export default function Trip(props) {
       )}
       {Object.keys(modes).map(dest => {
         if (mode === dest && mode !== 'MAIN') {
-          console.log("mode:",modes[dest])
           return <DestinationTab destination={modes[dest].destination} components={modes[dest].components} />
         }
         return null;

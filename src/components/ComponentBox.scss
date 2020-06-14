@@ -16,11 +16,19 @@ $hatchBlue: #63aba5;
   }
 }
 
-#component-box .MuiCard-root {
-  width: 250px;
-  height: 250px;
-  display: flex;
-  overflow-y: auto;
+#component-box {
+  .MuiCard-root {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    overflow-y: auto;
+  }
+  .MuiExpansionPanel-root {
+    background-color: #2b2b2b;
+    color: white;
+    border: none;
+    box-shadow: none;
+  }
 }
 // #component-box .MuiCard-root :hover {
 //   box-shadow: black 0px 0px 12px;
