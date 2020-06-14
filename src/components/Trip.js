@@ -42,7 +42,7 @@ export default function Trip(props) {
           startDate: res.data.trip.trip.start_date,
           endDate: res.data.trip.trip.end_date,
           title: res.data.trip.trip.title,
-          description: res.data.trip.trip.description
+          description: res.data.trip.trip.description,
         });
       })
       .then(() => {
@@ -99,9 +99,14 @@ export default function Trip(props) {
           </div>
         </>
       )}
-      {Object.keys(modes).map(dest => {
-        if (mode === dest && mode !== 'MAIN') {
-          return <DestinationTab destination={modes[dest].destination} components={modes[dest].components} />
+      {Object.keys(modes).map((dest) => {
+        if (mode === dest && mode !== "MAIN") {
+          return (
+            <DestinationTab
+              destination={modes[dest].destination}
+              components={modes[dest].components}
+            />
+          );
         }
         return null;
       })}

@@ -39,7 +39,6 @@ function Login() {
     if (email && password) {
       setErrors({ ...errors, emptyPassword: false, emptyEmail: false });
       let currentUser = users.filter((user) => user.email === email)[0];
-      console.log("USER", currentUser);
       if (!currentUser || currentUser.password_digest !== password) {
         console.log("We cant find an account with that email");
         setInvalidCred(true);
