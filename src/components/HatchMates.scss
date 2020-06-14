@@ -1,11 +1,14 @@
 #root {
-  #hatch-search {
+  #hatch-mates #hatch-search {
     display: flex;
     flex-direction: row;
     height: min-content;
-  }
-  .MuiSvgIcon-root {
-    color: white;
+    .list-item-icons .deleter {
+      color: white;
+    }
+    .MuiSvgIcon-root {
+      color: white;
+    }
   }
   .MuiChip-root {
     color: white;
@@ -20,16 +23,16 @@
       height: 120px;
       justify-content: space-around;
     }
-  }
-  .MuiSvgIcon-root {
-    margin-top: auto;
-    margin-bottom: auto;
-    color: #63aba5;
-  }
-  .MuiAutocomplete-root {
-    width: 200px;
-    .MuiIconButton-label .MuiSvgIcon-root {
-      display: none;
+    .MuiAutocomplete-root {
+      width: 200px;
+      .MuiIconButton-label .MuiSvgIcon-root {
+        display: none;
+      }
+    }
+    .MuiSvgIcon-root {
+      margin-top: auto;
+      margin-bottom: auto;
+      color: #63aba5;
     }
     .MuiFormLabel-root {
       display: none;
@@ -65,8 +68,4 @@
       }
     }
   }
-}
-
-.list-item-icons .deleter {
-  color: white;
 }
