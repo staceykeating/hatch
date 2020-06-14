@@ -71,7 +71,7 @@ export default function Trip(props) {
         </>
       )}
       {Object.keys(modes).map((dest) => {
-        if (mode === dest && mode !== "MAIN") {
+        if (mode === dest && mode !== state.title) {
           return (
             <DestinationTab
               getData={getData}
