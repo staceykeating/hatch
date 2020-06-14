@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProfileButton.scss";
 import IconButton from "@material-ui/core/IconButton";
@@ -9,6 +9,9 @@ import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 
 export default function ProfileButton() {
+  let user = JSON.parse(Cookies.get("user")).name.split(" ")[0];
+  let [name, setName] = useState(user);
+  console.log("profile user", user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   let history = useHistory();
 
@@ -43,7 +46,7 @@ export default function ProfileButton() {
             color="inherit"
           >
             <AccountCircle />
-            <h2>Joey</h2>
+            <h2>{name}</h2>
           </IconButton>
 
           <Menu

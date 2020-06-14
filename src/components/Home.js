@@ -3,17 +3,12 @@ import HomeProfileButton from "./HomeProfileButton";
 import "./Home.scss";
 import mainLogo from "./images/hatch-main-logo-dark.png";
 
-
 export default function Home() {
   return (
     <>
-      <div class="home-page">
+      <div id="home-page">
         <HomeProfileButton />
-        <img
-          class="header-logo-main"
-          src={mainLogo}
-          alt="Main Header"
-        />
+        <img class="header-logo-main" src={mainLogo} alt="Main Header" />
       </div>
       <div class="learn-section">
         <div class="icon-with-text">

@@ -1,29 +1,30 @@
-import React, {useState} from 'react';
-import TripTabsItem from './TripTabsItem'
-import './TripTabs.scss'
+import React, { useState } from "react";
+import TripTabsItem from "./TripTabsItem";
+import "./TripTabs.scss";
 
 export default function TripTabs(props) {
-  const [selected, setSelected] = useState('MAIN')
+  const [selected, setSelected] = useState("MAIN");
 
-  const tabs = props.destinations.map(destination => {
+  const tabs = props.destinations.map((destination) => {
     return (
-    <TripTabsItem
-    name={destination.destination.destination.name}
-    transition={props.transition}
-    selected={selected}
-    setSelected={setSelected}
-    />)
-  })
+      <TripTabsItem
+        name={destination.destination.destination.name}
+        transition={props.transition}
+        selected={selected}
+        setSelected={setSelected}
+      />
+    );
+  });
 
   return (
-    <div class="tabs-container">
-      <TripTabsItem 
-      name="MAIN"
-      transition={props.transition}
-      selected={selected}
-      setSelected={setSelected}
+    <div id="tabs-container">
+      <TripTabsItem
+        name="MAIN"
+        transition={props.transition}
+        selected={selected}
+        setSelected={setSelected}
       />
-      { tabs }
+      {tabs}
     </div>
-  )
-};
+  );
+}
