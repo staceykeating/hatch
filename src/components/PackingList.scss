@@ -47,13 +47,6 @@
   padding: 0;
 }
 
-#root #hatch-mates .MuiCard-root {
-  margin-top: 40px;
-  padding: 0;
-  width: 600px;
-  height: 160px;
-}
-
 #root #packing-list .MuiCard-root {
   height: 320px;
   width: 400px;
@@ -94,10 +87,6 @@
 }
 //want to get rid of hover background color  on this
 
-.list-item-icons .deleter {
-  color: white;
-}
-
 .trip-row {
   display: inline-flex;
   flex-direction: row;
@@ -137,20 +126,6 @@
   flex-direction: column;
   padding: 40px;
   width: 400px;
-}
-
-#hatch-mates .MuiCard-root {
-  display: flex;
-  flex-direction: row;
-}
-
-.hatch-people {
-  flex-direction: column;
-}
-
-.hatch-column {
-  display: flex;
-  flex-direction: column;
 }
 
 .user-icon {

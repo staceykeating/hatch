@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import icon from "./images/hatch-marker-icon.png";
-import { withTheme } from "@material-ui/core";
 const styles = require("./NightModeStyles.json");
 // default map container size
 const containerStyle = {
@@ -23,14 +22,13 @@ function Map(props) {
   // Set the points to be fit into map bounds
   const points = destinations.map((item) => {
     return {
-      lat: Number(item.destination.lat),
-      lng: Number(item.destination.lng),
+      lat: Number(item.destination.destination.lat),
+      lng: Number(item.destination.destination.lng),
     };
   });
   // Callback on map load to set bounds
   const onLoad = useCallback(
     function callback(map) {
-      console.log("loaded");
       const bounds = new window.google.maps.LatLngBounds();
       for (let i = 0; i < points.length; i++) {
         bounds.extend(points[i]);
@@ -43,16 +41,10 @@ function Map(props) {
   const markers = destinations.map((item) => {
     return (
       <Marker
-        // label={{
-        //   fontSize: "18px",
-        //   fontWeigh: "800",
-        //   color: "white",
-        //   text: item.destination.name,
-        // }}
         icon={icon}
         position={{
-          lat: Number(item.destination.lat),
-          lng: Number(item.destination.lng),
+          lat: Number(item.destination.destination.lat),
+          lng: Number(item.destination.destination.lng),
         }}
       />
     );

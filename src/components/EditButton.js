@@ -22,56 +22,49 @@ export default function EditButton(props) {
   const onDelete = () => {
       axios({
         method: "DELETE",
-        url: `/api/components/1`,
+        url: `/api/components/${props.component_id}`,
         data: {
-          destination_id : 1
+          destination_id : props.destination_id
         },
-      }).then((res) => {
-        console.log("THIS IS THEN",res.data)
-        //after add props.setData
-    })
-    .catch((res) =>{
-      console.log("THIS IS CATCH", res)
-    })
+      })
+      .then((res) => {
+        props.setComponents(res.data)
+        console.log("DELETE:",res.data)
+      })
+      .catch((res) =>{
+        console.log("THIS IS CATCH", res)
+      })
   };
 
   const text = (
   <div>
     <Textbox>
     </Textbox>
-    <CloseIcon
-    onClick={() => setMode("EDIT")}/>
+    <CloseIcon onClick={() => setMode("EDIT")}/>
   </div>)
 
   const search = (
   <div>
     <PlaceSearch>
     </PlaceSearch>
-    <CloseIcon
-    onClick={() => setMode("EDIT")}/>
+    <CloseIcon onClick={() => setMode("EDIT")}/>
   </div>)
 
 
   return (
     <div>
-      {mode === "EDIT" && <CreateTwoToneIcon
-      onClick={() => setMode("SHOW")}/>}
-      {mode === "SHOW" && <TextFieldsIcon
-      onClick={() => setMode("TEXT")}/>}
+      {mode === "EDIT" && <CreateTwoToneIcon onClick={() => setMode("SHOW")}/>}
+      {mode === "SHOW" && <TextFieldsIcon onClick={() => setMode("TEXT")}/>}
       {mode === "TEXT" && text}
-      {mode === "SHOW" && <SearchIcon
-      onClick={() => setMode("SEARCH")} />}
+      {mode === "SHOW" && <SearchIcon onClick={() => setMode("SEARCH")} />}
       {mode === "SEARCH" && search}
-      {mode === "SHOW" && <DeleteIcon
-      onClick={() => setMode("VERIFYDELETING")}/>}
-      {mode === "DELETE" && onDelete()}
-      {mode === "SHOW" && <CloseIcon
-      onClick={() => setMode("EDIT")}/>}
+      {mode === "SHOW" && <DeleteIcon onClick={() => setMode("VERIFYDELETING")}/>}
+      {mode === "SHOW" && <CloseIcon onClick={() => setMode("EDIT")}/>}
       {mode === "VERIFYDELETING" &&
       <Typography>
       Are you sure you want to delete?
       <Button onClick={() => setMode("EDIT")}>No</Button>
-      <Button onClick={() => setMode("DELETE")}>Yes</Button>
+      <Button onClick={() => onDelete()}>Yes</Button>
       </Typography>}
 
     </div>

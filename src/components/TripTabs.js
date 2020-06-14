@@ -8,7 +8,7 @@ export default function TripTabs(props) {
   const tabs = props.destinations.map(destination => {
     return (
     <TripTabsItem
-    name={destination.destination.name}
+    name={destination.destination.destination.name}
     transition={props.transition}
     selected={selected}
     setSelected={setSelected}

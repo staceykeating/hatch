@@ -5,13 +5,7 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Trip from "./components/Trip.js";
 import CreateTrip from "./components/CreateTrip";
-import UserSearch from "./components/UserSearch";
-import Collapsable from "./components/Collapsable";
 import Testpage from "./components/Testpage";
-import AddComponentButton from "./components/AddComponentButton";
-
-import ComponentCard from "./components/ComponentCard";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -22,8 +16,6 @@ function App() {
         <Route path="/create-trip" component={CreateTrip} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/trip/:id" component={Trip} />
-        {/* <Route path="/add-button" component={Testpage} /> */}
-        <Route path="/collapsable" component={Collapsable} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>

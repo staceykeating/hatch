@@ -1,0 +1,71 @@
+#root {
+  #hatch-search {
+    display: flex;
+    flex-direction: row;
+    height: min-content;
+  }
+  .MuiSvgIcon-root {
+    color: white;
+  }
+  .MuiChip-root {
+    color: white;
+    background-color: #2b2b2b;
+  }
+  #hatch-mates {
+    .MuiCard-root {
+      margin-top: 40px;
+      padding: 20px;
+      width: 560px;
+      height: 120px;
+      justify-content: space-around;
+    }
+  }
+  .MuiSvgIcon-root {
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #63aba5;
+  }
+  .MuiAutocomplete-root {
+    width: 200px;
+    .MuiIconButton-label .MuiSvgIcon-root {
+      display: none;
+    }
+    .MuiFormLabel-root {
+      display: none;
+    }
+    .user-icon {
+      margin-left: 0;
+    }
+    .MuiInput-underline:before {
+      transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+      border-bottom: 2px solid #63aba5;
+    }
+    .MuiCard-root {
+      display: flex;
+      flex-direction: row;
+    }
+    .hatch-people {
+      flex-direction: column;
+      width: 200px;
+    }
+    .hatch-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    #hatch-row {
+      display: flex;
+      flex-direction: row;
+      height: min-content;
+      width: 250px;
+      h2 {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.list-item-icons .deleter {
+  color: white;
+}

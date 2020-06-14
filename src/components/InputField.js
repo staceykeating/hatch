@@ -10,7 +10,6 @@ export default function InputField(props) {
       <TextField
         id="standard-basic"
         label="*Title"
-        autoFocus
         value={title}
         onChange={(event) => {
           setTitle(event.target.value);
@@ -21,7 +20,6 @@ export default function InputField(props) {
       <TextField
         id="standard-basic"
         label="*Description"
-        autoFocus
         multiline
         rowsMax={5}
         value={description}

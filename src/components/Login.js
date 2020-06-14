@@ -3,7 +3,6 @@ import GoogleLogin from "react-google-login";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Button, TextField } from "@material-ui/core";
-import Nav from "./Nav";
 import Error from "./Error";
 import "./Login.scss";
 import Card from "@material-ui/core/Card";

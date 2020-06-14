@@ -11,7 +11,6 @@ export default function UserSearch(props) {
 
   useEffect(() => {
     axios.get(`/api/users`).then((res) => {
-      console.log("MILK", res.data);
       const formattedUsers = res.data.map((user) => {
         return user.user;
       });
@@ -30,14 +29,13 @@ export default function UserSearch(props) {
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
-          console.log("NewValue", newValue);
           props.setCollaborators(newValue);
         }}
         renderInput={(params) => (
           <TextField
             {...params}
             id="outlined-basic"
-            label="Add Collaborator"
+            label="Collaborator Name"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />

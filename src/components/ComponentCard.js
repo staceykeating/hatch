@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Collapsable from "./Collapsable";
+import ComponentItem from "./ComponentItem";
 import EditButton from "./EditButton";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 
 export default function ComponentCard(props) {
-  const [text, setText] = useState(props.text ? props.text : "");
+  const [text, setText] = useState(props.component ? props.component.component.component.title : "");
   const [newItem, setNewItem] = useState(true);
-  const [components, setComponents] = useState([])
+  const [componentItems, setComponentItems] = useState(props.component.component_items)
 
+  useEffect(() => {
+    console.log("CARD",props.component)
+  },[props])
+  
   function updateTitle() {
     setNewItem(false);
     axios({
       method: "PATCH",
-      url: `/api/components/1`,
+      url: `/api/components/${props.component.component.component.id}`,
       data: {
         title: text,
         destination_id: 1,
@@ -78,31 +82,26 @@ export default function ComponentCard(props) {
       />
     </Typography>
   );
-
-  const content = components.length > 0
-      ? components.map((component) =>{
-        return (
-          <Card>
-            <CardContent>
-              {title}
-              <EditButton></EditButton>
-              <Collapsable></Collapsable>
-            </CardContent>
-          </Card>
-        )
-      })
-      :
-      (<Card>
-        <CardContent>
-          {title}
-          <EditButton></EditButton>
-        </CardContent>
-      </Card>)
-
       
   return (
     <div id="component-box">
-      {content}
+      <Card>
+        <CardContent>
+          {title}
+          <EditButton 
+            component_id={props.component.component.component.id}
+            destination_id={props.destination_id}
+            setComponents={props.setComponents}
+          />
+          {componentItems.map(component_item => {
+            return <ComponentItem 
+              component_item={component_item.component_item} 
+              component_id={props.component.component.component.id}
+              setComponentItems={setComponentItems}/>
+          })
+          }
+        </CardContent>
+      </Card>
     </div>
   );
 }

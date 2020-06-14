@@ -42,9 +42,7 @@ export default function Trip(props) {
           startDate: res.data.trip.trip.start_date,
           endDate: res.data.trip.trip.end_date,
           title: res.data.trip.trip.title,
-          description: res.data.trip.trip.description,
-          components: res.data.components[0].components,
-          componentItems: res.data.components[0].component_items,
+          description: res.data.trip.trip.description
         });
       })
       .then(() => {
@@ -60,7 +58,7 @@ export default function Trip(props) {
   const user = Cookies.get("user");
 
   state.destinations.forEach((destination) => {
-    modes[destination.destination.name] = destination.destination;
+    modes[destination.destination.destination.name] = destination;
   });
 
   return !user ? (
@@ -101,7 +99,13 @@ export default function Trip(props) {
           </div>
         </>
       )}
-      {mode !== "MAIN" && <DestinationTab destination={modes[mode]} />}
+      {Object.keys(modes).map(dest => {
+        if (mode === dest && mode !== 'MAIN') {
+          console.log("mode:",modes[dest])
+          return <DestinationTab destination={modes[dest].destination} components={modes[dest].components} />
+        }
+        return null;
+      })}
     </>
   );
 }
