@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import MomentUtils from "@date-io/moment";
-import Typography from "@material-ui/core/Typography";
-
+// import Typography from "@material-ui/core/Typography";
+import moment from "moment";
 
 export default function TripDates(props) {
 
