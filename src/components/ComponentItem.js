@@ -45,6 +45,25 @@ export default function ComponentItem(props) {
     });
   };
 
+  const text = props.component_item.image_url
+    ?(<Typography>
+      Description: {props.component_item.description}
+      <br />
+      Address: {props.component_item.address}
+      <br />
+      <Avatar variant="rounded" className={classes.rounded}>
+        <img class="place" src={props.component_item.image_url} alt="attraction"/>
+      </Avatar>
+    </Typography>
+    ) :
+    (<Typography>
+      Description: {props.component_item.description}
+      <br />
+      Address: {props.component_item.address}
+      <br />
+    </Typography>)
+
+
   return (
     <div className={classes.root}>
       <ExpansionPanel>
@@ -55,20 +74,11 @@ export default function ComponentItem(props) {
         >
           <ListItemText primary={props.component_item.title} />
           <IconButton edge="end" aria-label="delete">
-          <DeleteIcon
-          onClick={() => onDelete()}/>
+          <DeleteIcon onClick={() => onDelete()}/>
         </IconButton>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            Description: {props.component_item.description}
-            <br />
-            Address: {props.component_item.address}
-            <br />
-            <Avatar variant="rounded" className={classes.rounded}>
-              <img class="place" src={props.component_item.image_url} alt="attraction"/>
-            </Avatar>
-          </Typography>
+          {text}
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
