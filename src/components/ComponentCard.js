@@ -12,10 +12,6 @@ export default function ComponentCard(props) {
   const [newItem, setNewItem] = useState(true);
   const [componentItems, setComponentItems] = useState(props.component.component_items)
 
-  useEffect(() => {
-    console.log("CARD",props.component)
-  },[props])
-  
   function updateTitle() {
     setNewItem(false);
     axios({

@@ -21,8 +21,8 @@ export default function Destination(props) {
       <WeatherCard destination={props.destination.destination} />
       <div>You are on the {props.destination.destination.name} page</div>
       <div class="page-components">
-        {console.log("PROP", components)}
         {components.map(component => {
+          console.log('CARDS:', component);
           return <ComponentCard component={component} setComponents={setComponents} destination_id={props.destination.destination.id}/>
         })}
 
