@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import useAppData from "../hooks/useAppData.js";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -11,7 +12,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
 import iconLogo from "./images/hatch-icon.png";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ComponentItem(props) {
+  const { state, getData } = useAppData();
+
   const classes = useStyles();
 
   const onDelete = () => {
@@ -39,30 +41,34 @@ export default function ComponentItem(props) {
       data: {
         component_id: props.component_id,
       },
-    }).then(res => {
-      console.log('ITEMS', res.data)
-      props.setComponentItems(res.data)
+    }).then((res) => {
+      console.log("ITEMS", res.data);
+      props.setComponentItems(res.data);
     });
   };
 
-  const text = props.component_item.image_url
-    ?(<Typography>
+  const text = props.component_item.image_url ? (
+    <Typography>
       Description: {props.component_item.description}
       <br />
       Address: {props.component_item.address}
       <br />
       <Avatar variant="rounded" className={classes.rounded}>
-        <img class="place" src={props.component_item.image_url} alt="attraction"/>
+        <img
+          class="place"
+          src={props.component_item.image_url}
+          alt="attraction"
+        />
       </Avatar>
     </Typography>
-    ) :
-    (<Typography>
+  ) : (
+    <Typography>
       Description: {props.component_item.description}
       <br />
       Address: {props.component_item.address}
       <br />
-    </Typography>)
-
+    </Typography>
+  );
 
   return (
     <div className={classes.root}>
@@ -74,12 +80,10 @@ export default function ComponentItem(props) {
         >
           <ListItemText primary={props.component_item.title} />
           <IconButton edge="end" aria-label="delete">
-          <DeleteIcon onClick={() => onDelete()}/>
-        </IconButton>
+            <DeleteIcon onClick={() => onDelete()} />
+          </IconButton>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          {text}
-        </ExpansionPanelDetails>
+        <ExpansionPanelDetails>{text}</ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
   );

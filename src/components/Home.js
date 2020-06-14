@@ -16,7 +16,7 @@ export default function Home() {
           <img class="globe" src="./globe.png" alt="world" />
         </div>
         <div class="icon-with-text">
-          <h5>Then do Another Thing</h5>
+          <h5>Then do Another Thing</h5>git
           <img class="globe" src="./globe.png" alt="world" />
         </div>
         <div class="icon-with-text">

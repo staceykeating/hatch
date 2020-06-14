@@ -6,12 +6,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 
-import useAppData from "../hooks/useAppData.js";
-
-
 export default function PackingListItem(props) {
   const [checked, setChecked] = useState(props.checked);
-  const [text, setText] = useState(props.text ? props.text : '');
+  const [text, setText] = useState(props.text ? props.text : "");
 
   function toggleCheck() {
     if (checked) {
@@ -22,8 +19,6 @@ export default function PackingListItem(props) {
       updateCheck(true);
     }
   }
-    
-  const { state,  getData } = useAppData();
 
   function updateCheck(status) {
     axios({
@@ -32,71 +27,69 @@ export default function PackingListItem(props) {
       data: {
         description: text,
         trip_id: props.trip_id,
-        checked: status
-      }
-    })
+        checked: status,
+      },
+    });
   }
 
   function deleteItem() {
-    props.setNewItem(false)
+    props.setNewItem(false);
     axios({
       method: "DELETE",
       url: `/api/packing_items/${props.id}`,
       data: {
         description: text,
-        trip_id: props.trip_id
+        trip_id: props.trip_id,
       },
     }).then(() => {
-      getData()
+      props.getData();
       // props.setPackingList(res.data)
       // setState({...state, packingList: res.data})
     });
   }
 
   function updateItem() {
-    props.setNewItem(false)
+    props.setNewItem(false);
     axios({
       method: "PATCH",
       url: `/api/packing_items/${props.id}`,
       data: {
         description: text,
         trip_id: props.trip_id,
-        checked: checked
+        checked: checked,
       },
-    })
-    .then((res) => {
-      props.setPackingList(res.data)
+    }).then((res) => {
+      props.setPackingList(res.data);
     });
   }
 
   function createItem() {
-    props.setNewItem(false)
-      axios({
-        method: "POST",
-        url: "/api/packing_items",
-        data: {
-          description: text,
-          trip_id: props.trip_id,
-          checked: checked
-        },
-      })
-      .then((res) => {
-        props.setPackingList(res.data)
-      });
+    props.setNewItem(false);
+    axios({
+      method: "POST",
+      url: "/api/packing_items",
+      data: {
+        description: text,
+        trip_id: props.trip_id,
+        checked: checked,
+      },
+    }).then((res) => {
+      props.setPackingList(res.data);
+    });
   }
 
   function onBlur() {
-    console.log('props', props.text)
-    console.log('text', text)
+    console.log("props", props.text);
+    console.log("text", text);
 
     if (!props.text && !text) {
-      props.setNewItem(false)
+      props.setNewItem(false);
     } else if (!props.text) {
-      createItem()
-    } else if (!text){
-      deleteItem()
+      createItem();
+    } else if (!text) {
+      deleteItem();
     } else {
-      updateItem()
+      updateItem();
     }
   }
 
@@ -119,7 +112,11 @@ export default function PackingListItem(props) {
         />
       </ListItemIcon>
 
-      <ListItemText id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
+      <ListItemText
+        id={props.id}
+        onKeyPress={keyPressed}
+        onBlur={() => onBlur()}
+      >
         <TextField
           type="text"
           value={text}
