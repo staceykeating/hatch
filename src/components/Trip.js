@@ -92,11 +92,6 @@ export default function Trip(props) {
           </div>
         </>
       )}
-<<<<<<< HEAD
-      {Object.keys(modes).map(dest => {
-        if (mode === dest && mode !== 'MAIN') {
-          return <DestinationTab getData={getData} destination={modes[dest].destination} components={modes[dest].components} />
-=======
       {Object.keys(modes).map((dest) => {
         if (mode === dest && mode !== "MAIN") {
           return (
@@ -105,7 +100,6 @@ export default function Trip(props) {
               components={modes[dest].components}
             />
           );
->>>>>>> stacey-test
         }
         return null;
       })}
