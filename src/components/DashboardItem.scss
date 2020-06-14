@@ -1,9 +1,7 @@
-
 #box-container {
   width: 100%;
   display: flex;
   justify-content: center;
-
 }
 
 #slider-box {
@@ -15,7 +13,7 @@
   display: flex;
 
   .icon-row {
-    display:flex;
+    display: flex;
     flex-direction: row;
 
     a:-webkit-any-link {
@@ -43,7 +41,6 @@
       margin-top: 0px;
       margin-bottom: 3em;
     }
-
   }
   .button-container {
     margin-top: 3em;
@@ -69,9 +66,9 @@
 
   h2 {
     font-family: "Manrope", sans-serif;
-      font-weight: 500;
-      font-size: 2em;
-      margin: 20px 30px;
+    font-weight: 500;
+    font-size: 2em;
+    margin: 20px 30px;
   }
   // Add Button
   a:-webkit-any-link {
@@ -85,7 +82,7 @@
   }
 
   #destination-container {
-    width: 60%;
+    width: max-content;
     display: flex;
     justify-content: space-evenly;
     margin: 30px;
@@ -93,7 +90,8 @@
 
     .destination {
       font-size: 2em;
+      padding-right: 15px;
+      padding-left: 15px;
     }
   }
-
 }
