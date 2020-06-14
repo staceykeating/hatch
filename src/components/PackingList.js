@@ -12,45 +12,9 @@ export default function PackingList(props) {
   const [packingList, setPackingList] = useState([]);
   const [newItem, setNewItem] = useState(false);
 
-  const {state, setState} = useAppData();
-
   const addPackingListItem = () => {
     setNewItem(true);
   };
-
-  useEffect(() => {
-    console.log('packing',state.packingList)
-  },[])
-
-  const packingItems =
-    packingList.length > 0
-      ? packingList.map((item) => {
-          return (
-            <PackingListItem
-              key={item.packing_item.id}
-              id={item.packing_item.id}
-              text={item.packing_item.description}
-              checked={item.packing_item.checked}
-              setPackingList={setPackingList}
-              trip_id={props.tripID}
-              setNewItem={setNewItem}
-            />
-          );
-        })
-      : props.packingList.map((item) => {
-          return (
-            <PackingListItem
-              key={item.packing_item.id}
-              id={item.packing_item.id}
-              text={item.packing_item.description}
-              checked={item.packing_item.checked}
-              setPackingList={setPackingList}
-              getData={props.getData}
-              trip_id={props.tripID}
-              setNewItem={setNewItem}
-            />
-          );
-        });
 
   const newInput = newItem ? (
     <PackingListItem
