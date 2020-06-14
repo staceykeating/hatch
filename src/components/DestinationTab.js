@@ -3,36 +3,41 @@ import WeatherCard from "./WeatherCard";
 import AddComponentButton from "./AddComponentButton";
 import ComponentCard from "./ComponentCard";
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
+import axios from 'axios'
 
 import "./DestinationTab.scss";
 
 export default function Destination(props) {
-  const [components, setComponents] = useState(props.components);
-  const [newItem, setNewItem] = useState(false);
 
   const addComponentBox = () => {
-    console.log("adding");
-    setNewItem(true);
+    axios({
+      method: 'POST',
+      url: '/api/components',
+      data: {
+        destination_id: props.destination.destination.id
+      }
+    })
+    .then(() => {
+      props.getData()
+    })
   };
 
-  const newInput = newItem ? <ComponentCard /> : null;
+  // const newInput = newItem ? <ComponentCard getData={props.getData}/> : null;
   return (
     <>
       <WeatherCard destination={props.destination.destination} />
       <div>You are on the {props.destination.destination.name} page</div>
       <div class="page-components">
-        {components.map((component) => {
+        {props.components.map((component) => {
           console.log("CARDS:", component);
           return (
             <ComponentCard
               component={component}
-              setComponents={setComponents}
+              getData={props.getData}
               destination_id={props.destination.destination.id}
             />
           );
         })}
-
-        {newInput}
         <button onClick={() => addComponentBox()}>
           <AddComponentButton />
         </button>

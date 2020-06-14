@@ -6,7 +6,7 @@ import TextFieldsIcon from "@material-ui/icons/TextFields";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloseIcon from "@material-ui/icons/Close";
 import Textbox from "./Textbox";
-import PlaceSearch from "./PlaceSearch";
+
 import axios from "axios";
 import { Button, Typography } from "@material-ui/core";
 
@@ -26,8 +26,7 @@ export default function EditButton(props) {
       },
     })
       .then((res) => {
-        props.setComponents(res.data);
-        setMode("EDIT");
+        props.getData()
         console.log("DELETE:", res.data);
       })
       .catch((err) => {
@@ -37,29 +36,29 @@ export default function EditButton(props) {
 
   const text = (
     <div>
-      <Textbox></Textbox>
-      <CloseIcon onClick={() => setMode("EDIT")} />
+      <Textbox mode={mode} getData={props.getData} component_id={props.component_id}></Textbox>
     </div>
   );
 
   const search = (
     <div>
-      <PlaceSearch></PlaceSearch>
-      <CloseIcon onClick={() => setMode("EDIT")} />
+      <Textbox mode={mode} getData={props.getData} component_id={props.component_id}></Textbox>
     </div>
   );
 
   return (
     <div>
       {mode === "EDIT" && <CreateTwoToneIcon onClick={() => setMode("SHOW")} />}
-      {mode === "SHOW" && <TextFieldsIcon onClick={() => setMode("TEXT")} />}
-      {mode === "TEXT" && text}
-      {mode === "SHOW" && <SearchIcon onClick={() => setMode("SEARCH")} />}
-      {mode === "SEARCH" && search}
-      {mode === "SHOW" && (
-        <DeleteIcon onClick={() => setMode("VERIFYDELETING")} />
+      {(mode === "SHOW" || mode === "TEXT" || mode === "SEARCH") && (
+        <>
+          <TextFieldsIcon onClick={() => setMode("TEXT")} />
+          <SearchIcon onClick={() => setMode("SEARCH")} />
+          <DeleteIcon onClick={() => setMode("VERIFYDELETING")} />
+          <CloseIcon onClick={() => setMode("EDIT")} />
+        </>
       )}
-      {mode === "SHOW" && <CloseIcon onClick={() => setMode("EDIT")} />}
+      {mode === "TEXT" && text}
+      {mode === "SEARCH" && search}
       {mode === "VERIFYDELETING" && (
         <Typography>
           Are you sure you want to delete?

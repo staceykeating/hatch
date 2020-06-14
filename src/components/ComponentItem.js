@@ -42,8 +42,7 @@ export default function ComponentItem(props) {
         component_id: props.component_id,
       },
     }).then((res) => {
-      console.log("ITEMS", res.data);
-      props.setComponentItems(res.data);
+      props.getData()
     });
   };
 

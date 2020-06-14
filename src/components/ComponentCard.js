@@ -9,21 +9,11 @@ import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 
 export default function ComponentCard(props) {
-  const { state, getData } = useAppData();
   const [text, setText] = useState(
     props.component ? props.component.component.component.title : ""
   );
-  const [newItem, setNewItem] = useState(true);
-  const [componentItems, setComponentItems] = useState(
-    props.component.component_items ? props.component.component_items : {}
-  );
 
-  useEffect(() => {
-    // console.log("CARD",props.component)
-  }, [props]);
-
-  function updateTitle() {
-    setNewItem(false);
+  function onBlur() {
     axios({
       method: "PATCH",
       url: `/api/components/${props.component.component.component.id}`,
@@ -32,32 +22,9 @@ export default function ComponentCard(props) {
         destination_id: 1,
       },
     }).then((res) => {
+      props.getData();
       console.log("UPDATE TITLE", res.data);
     });
-  }
-
-  function createTitle() {
-    setNewItem(false);
-    axios({
-      method: "POST",
-      url: "/api/components",
-      data: {
-        title: text,
-        destination_id: 1,
-      },
-    }).then((res) => {
-      console.log("NEWTITLE", res.data);
-    });
-  }
-
-  function onBlur() {
-    if (!props.text && !text) {
-      setNewItem(false);
-    } else if (!props.text) {
-      createTitle();
-    } else {
-      updateTitle();
-    }
   }
 
   function keyPressed(event) {
@@ -66,48 +33,33 @@ export default function ComponentCard(props) {
     }
   }
 
-  const title = text ? (
-    <Typography id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
-      {console.log("TRUE")}
-
-      <TextField
-        type="text"
-        value={text}
-        onChange={(event) => {
-          setText(event.target.value);
-        }}
-      />
-    </Typography>
-  ) : (
-    <Typography id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
-      {console.log("EMPTY")}
-      <TextField
-        type="text"
-        label="*Add Title"
-        value={text}
-        onChange={(event) => {
-          setText(event.target.value);
-        }}
-      />
-    </Typography>
-  );
-
   return (
     <div id="component-box">
       <Card>
         <CardContent>
-          {title}
-          <EditButton
-            component_id={props.component.component.component.id}
-            destination_id={props.destination_id}
-            setComponents={props.setComponents}
-          />
-          {componentItems.map((component_item) => {
+          <Typography id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
+            {console.log("EMPTY")}
+            <TextField
+              type="text"
+              label={props.component.component.component.title ? null : "*Add Title"} 
+              value={text} 
+              onChange={(event) => {
+                setText(event.target.value);
+              }}
+            />
+            <EditButton
+              component_id={props.component.component.component.id}
+              destination_id={props.destination_id}
+              getData={props.getData}
+            />
+          </Typography>
+    
+          {props.component.component_items.map((component_item) => {
             return (
               <ComponentItem
                 component_item={component_item.component_item}
                 component_id={props.component.component.component.id}
-                setComponentItems={setComponentItems}
+                getData={props.getData}
               />
             );
           })}
