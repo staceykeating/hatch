@@ -6,15 +6,15 @@ export default function TripDates(props) {
   const [startDate, setStartDate] = useState(props.startDate)
   const [endDate, setEndDate] = useState(props.endDate)
 
-  const tripDate = startDate
+  // const tripDate = Moment(startDate, "MM/DD/YYYY");
 
 
   return (
     <div>
       <h2>
 
-        {props.startDate} - {props.endDate}
-        
+      <Moment format="D MMM YYYY"> 
+        </Moment>
 
       </h2>
     </div>
