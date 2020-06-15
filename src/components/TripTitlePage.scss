@@ -1,10 +1,14 @@
-
 #title {
   letter-spacing: 0.2em;
-  font-family: "Manrope", sans-serif;
-  margin-block-start: 2.0em;
-  font-size: 1.3em;
-  margin-top: 3.0em;
+  letter-spacing: 0.2em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  margin-block-start: 2em;
+  font-size: 2.3em;
+  margin-top: 0;
+  h1 {
+    margin-top: 5px;
+  }
 }
 #description {
   font-weight: lighter;
@@ -16,4 +20,11 @@
   font-weight: lighter;
   font-family: "Manrope", sans-serif;
   font-size: 1.2em;
+  vertical-align: top;
+  .MuiSvgIcon-root {
+    transform: rotate(90deg);
+  }
+  time {
+    vertical-align: top;
+  }
 }

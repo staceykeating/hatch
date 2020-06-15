@@ -1,5 +1,5 @@
 $darkGrey: #1f1f1f;
-$mediumGrey: #2b2b2b;
+$mediumGrey: #262626;
 $lightGrey: #1f1f1f;
 $hatchBlue: #63aba5;
 $hatchError: #a14061;
@@ -17,14 +17,13 @@ $hatchError: #a14061;
       margin-top: 100px;
       margin-bottom: 0;
       width: 450px;
-      height: 550px;
+      height: 620px;
       background-color: $mediumGrey;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       vertical-align: middle;
-      box-shadow: black 0px 0px 12px;
       .form {
         display: flex;
         flex-direction: column;

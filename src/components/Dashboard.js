@@ -11,7 +11,6 @@ import beachPic from "./images/2019-03-01 07.55.49 3.jpg";
 
 import axios from "axios";
 
-
 // const images = [
 //   {
 //     url: 'https://images.pexels.com/photos/59519/pexels-photo-59519.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -28,9 +27,6 @@ import axios from "axios";
 //     url: 'https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
 //   },
 // ]
-
-
-
 
 export default function Dashboard() {
   const [trips, setTrips] = useState([]);
@@ -62,18 +58,19 @@ export default function Dashboard() {
     }
   }, []);
 
-  const formattedTrips = trips.length > 0
-    ? (trips.map(trip =>
-      <>
-        {/* <img width = "30%" src={images[0].url}/> */}
-      <DashboardItem
-        trip={trip.trip.trip}
-        destinations={trip.destinations}
-        setTrips={setTrips}
-       />
-        </>
+  const formattedTrips =
+    trips.length > 0
+      ? trips.map((trip) => (
+          <>
+            {/* <img width = "30%" src={images[0].url}/> */}
+            <DashboardItem
+              trip={trip.trip.trip}
+              destinations={trip.destinations}
+              setTrips={setTrips}
+            />
+          </>
         ))
-    : null;
+      : null;
 
   return !user ? (
     <Redirect to="/login" />
@@ -85,7 +82,6 @@ export default function Dashboard() {
 
         <Slider {...settings}>
           {formattedTrips}
-          <img src={beachPic} />
           <DashboardItem add={true} />
         </Slider>
       </div>

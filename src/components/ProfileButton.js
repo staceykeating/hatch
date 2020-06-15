@@ -36,7 +36,7 @@ export default function ProfileButton() {
   return (
     <div class="right-menu">
       {
-        <div class="profile-icon">
+        <div id="profile-icon">
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"

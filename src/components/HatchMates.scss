@@ -1,3 +1,4 @@
+$mediumGrey: #262626;
 #root {
   #hatch-mates #hatch-search {
     display: flex;
@@ -12,14 +13,14 @@
   }
   .MuiChip-root {
     color: white;
-    background-color: #2b2b2b;
+    background-color: $mediumGrey;
   }
   #hatch-mates {
     display: flex;
     .MuiCard-root {
-      margin-top: 40px;
+      margin-top: 25px;
       padding: 20px;
-      width: 560px;
+      width: 760px;
       height: 120px;
       justify-content: space-around;
     }
@@ -53,6 +54,9 @@
       flex-direction: column;
       width: 200px;
       overflow-y: auto;
+      .MuiTypography-body1 {
+        font-size: 1.3rem;
+      }
     }
     .hatch-column {
       display: flex;
@@ -66,6 +70,7 @@
       width: 250px;
       h2 {
         margin-right: 10px;
+        font-size: 2em;
       }
     }
   }

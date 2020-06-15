@@ -4,7 +4,7 @@ import icon from "./images/hatch-marker-icon.png";
 const styles = require("./NightModeStyles.json");
 // default map container size
 const containerStyle = {
-  width: "600px",
+  width: "800px",
   height: "400px",
   borderRadius: "10px",
 };

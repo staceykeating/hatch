@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import classnames from "classnames";
 import { Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
+import hatchLogo from "./images/hatch-icon-2.png";
 
 function CreateTrip() {
   const [title, setTitle] = useState("");
@@ -64,6 +65,7 @@ function CreateTrip() {
       <Nav />
       <div id="create-trip">
         <Card>
+          <img src={hatchLogo} />
           <span class={errorClass}>* Missing mandatory fields</span>
           <form onSubmit={(event) => event.preventDefault()}>
             <InputField setTitle={setTitle} setDescription={setDescription} />
