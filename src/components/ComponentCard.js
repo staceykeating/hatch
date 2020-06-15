@@ -22,7 +22,6 @@ export default function ComponentCard(props) {
       },
     }).then((res) => {
       props.getData();
-      console.log("UPDATE TITLE", res.data);
     });
   }
 

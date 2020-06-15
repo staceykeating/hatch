@@ -35,6 +35,7 @@ export default function EditButton(props) {
         mode={mode}
         getData={props.getData}
         component_id={props.component_id}
+        setMode={setMode}
       ></Textbox>
     </div>
   );
@@ -45,6 +46,7 @@ export default function EditButton(props) {
         mode={mode}
         getData={props.getData}
         component_id={props.component_id}
+        setMode={setMode}
       ></Textbox>
     </div>
   );

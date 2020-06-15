@@ -5,31 +5,44 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import PlaceSearch from "./PlaceSearch";
+import PointsOfInterest from "./PointsOfInterest";
 import axios from 'axios';
 
 function Textbox(props) {
   const [open, setOpen] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [place, setPlace] = useState([])
+
+  // t.string   "title"
+  //   t.string   "description"
+  //   t.string   "image_url"
+  //   t.string   "address"
+  //   t.integer  "component_id"
+  //   t.datetime "created_at",   null: false
+  //   t.datetime "updated_at",
 
   const handleClose = () => {
     setOpen(false);
+    props.setMode("SHOW")
   };
 
   const onSave = () => {
+    console.log(place)
     axios({
       method: "POST",
       url: `/api/component_items`,
       data: {
-        title: title,
+        title: place ? place.description : title,
         description: description,
-        component_id: props.component_id
+        component_id: props.component_id,
+        place_id: place.place_id
       }
     })
     .then(res => {
       props.getData()
       handleClose()
+      props.setMode("EDIT")
     })
   };
 
@@ -60,7 +73,22 @@ function Textbox(props) {
       />
     </>
   )
-  : (<PlaceSearch />)
+  : (
+  <>
+    <PointsOfInterest setPlace={setPlace}/>
+    <TextField
+        id="description"
+        autoFocus
+        margin="dense"
+        multiline
+        rowsMax={10}
+        label="Description"
+        type="text"
+        fullWidth
+        value={description}
+        onChange= {(event) => setDescription(event.target.value)}
+      />
+  </>)
 
   return (
     <div>

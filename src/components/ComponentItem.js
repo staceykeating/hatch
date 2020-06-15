@@ -52,7 +52,7 @@ export default function ComponentItem(props) {
       <Avatar variant="rounded" className={classes.rounded}>
         <img
           class="place"
-          src={props.component_item.image_url}
+          src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=${props.component_item.image_url}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
           alt="attraction"
         />
       </Avatar>
