@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export default function useVisualMode() {
-  const [mode, setState] = useState('MAIN');
+export default function useVisualMode(title) {
+  const [mode, setState] = useState(title);
 
 
   function transition(mode) {
