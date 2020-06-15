@@ -38,7 +38,6 @@ export default function ComponentCard(props) {
       <Card>
         <CardContent>
           <Typography id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
-            {console.log("EMPTY")}
             <TextField
               type="text"
               label={props.component.component.component.title ? null : "*Add Title"} 
@@ -47,16 +46,17 @@ export default function ComponentCard(props) {
                 setText(event.target.value);
               }}
             />
-            <EditButton
+            
+          </Typography>
+          <EditButton
               component_id={props.component.component.component.id}
               destination_id={props.destination_id}
               getData={props.getData}
             />
-          </Typography>
-    
           {props.component.component_items.map((component_item) => {
             return (
               <ComponentItem
+                key={props.component.component.component.id}
                 component_item={component_item.component_item}
                 component_id={props.component.component.component.id}
                 getData={props.getData}

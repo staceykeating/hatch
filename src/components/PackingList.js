@@ -34,7 +34,7 @@ export default function PackingList(props) {
             <AddCircleIcon onClick={() => addPackingListItem()} />
           </Typography>
 
-          <container>
+          <div>
             {/* Shows all packing list items */}
             {props.packingList.map((item) => {
               return (
@@ -52,7 +52,7 @@ export default function PackingList(props) {
             })}
             {/* Shows new input field */}
             {newInput}
-          </container>
+          </div>
         </CardContent>
       </Card>
     </div>

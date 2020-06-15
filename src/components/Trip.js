@@ -14,15 +14,13 @@ import TripTabs from "./TripTabs";
 import Cookies from "js-cookie";
 import DestinationTab from "./DestinationTab";
 import { Redirect } from "react-router-dom";
-import TestPage from "./Testpage";
 import useAppData from "../hooks/useAppData.js";
 
 export default function Trip(props) {
+  const { state, loaded, getData } = useAppData(props.match.params.id);
   const [modes] = useState({ MAIN: "MAIN" });
 
   const { mode, transition } = useVisualMode();
-
-  const { state, loaded, getData } = useAppData(props.match.params.id);
 
   const user = Cookies.get("user");
 
@@ -44,6 +42,7 @@ export default function Trip(props) {
       />
       {mode === "MAIN" && (
         <>
+        {console.log("MAIN", state)}
           <div class="trip-page-column">
             <div class="trip-title-row">
               <TripPageTitle
@@ -78,6 +77,7 @@ export default function Trip(props) {
         if (mode === dest && mode !== "MAIN") {
           return (
             <DestinationTab
+              key={dest}
               getData={getData}
               destination={modes[dest].destination}
               components={modes[dest].components}

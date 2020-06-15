@@ -9,9 +9,9 @@ export default function TripLoading() {
 
   return(
     <>
-      <div class="center-image">
+      <div className="center-image">
         <h2> Please wait a moment while we load your trip.</h2>
-        <img class="loading" src={spinner} alt="loading" />
+        <img className="loading" src={spinner} alt="loading" />
       </div>
     </>
   );

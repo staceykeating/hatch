@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 
 export default function useAppData(trip_id) {
+
   const [state, setState] = useState({
     packingList: [],
     destinations: [],
