@@ -22,16 +22,14 @@ export default function Destination(props) {
     })
   };
 
-  // const newInput = newItem ? <ComponentCard getData={props.getData}/> : null;
   return (
     <>
       <WeatherCard destination={props.destination.destination} />
-      <div>You are on the {props.destination.destination.name} page</div>
       <div class="page-components">
         {props.components.map((component) => {
-          console.log("CARDS:", component);
           return (
             <ComponentCard
+              key={component.component.component.id}
               component={component}
               getData={props.getData}
               destination_id={props.destination.destination.id}

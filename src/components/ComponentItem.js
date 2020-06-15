@@ -78,8 +78,8 @@ export default function ComponentItem(props) {
           id="panel1a-header"
         >
           <ListItemText primary={props.component_item.title} />
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon onClick={() => onDelete()} />
+          <IconButton edge="end" aria-label="delete" onClick={() => onDelete()}>
+            <DeleteIcon />
           </IconButton>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>{text}</ExpansionPanelDetails>

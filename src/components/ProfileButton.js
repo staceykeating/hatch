@@ -11,7 +11,6 @@ import { useHistory } from "react-router-dom";
 export default function ProfileButton() {
   let user = JSON.parse(Cookies.get("user")).name.split(" ")[0];
   let [name, setName] = useState(user);
-  console.log("profile user", user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   let history = useHistory();
 

@@ -41,6 +41,7 @@ function Map(props) {
   const markers = destinations.map((item) => {
     return (
       <Marker
+        key={item.destination.destination.id}
         icon={icon}
         position={{
           lat: Number(item.destination.destination.lat),

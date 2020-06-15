@@ -69,7 +69,9 @@ export default function HatchMates(props) {
         <div class="hatch-people">
           {props.collaborators.map((collaborator) => {
             return (
-              <ListItemText>
+              <ListItemText
+                key={collaborator.id}
+              >
                 <DeleteIcon
                   onClick={() => onDelete(collaborator.id)}
                   alt="profile-icon"

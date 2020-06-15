@@ -10,6 +10,7 @@ export default function TripTabsItem(props) {
 
   return (
     <>
+    {console.log()}
       <button
         class={buttonClass}
         onClick={() => {
