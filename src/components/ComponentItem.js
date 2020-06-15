@@ -60,9 +60,6 @@ export default function ComponentItem(props) {
   ) : (
     <Typography>
       Description: {props.component_item.description}
-      <br />
-      Address: {props.component_item.address}
-      <br />
     </Typography>
   );
 
