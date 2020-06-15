@@ -37,22 +37,28 @@ export default function ComponentCard(props) {
     <div id="component-box">
       <Card>
         <CardContent>
-          <Typography id={props.id} onKeyPress={keyPressed} onBlur={() => onBlur()}>
+          <Typography
+            id={props.id}
+            onKeyPress={keyPressed}
+            onBlur={() => onBlur()}
+          >
             <TextField
               type="text"
-              label={props.component.component.component.title ? null : "*Add Title"} 
-              value={text} 
+              label={
+                props.component.component.component.title ? null : "*Add Title"
+              }
+              value={text}
               onChange={(event) => {
                 setText(event.target.value);
               }}
             />
-            
-          </Typography>
-          <EditButton
+
+            <EditButton
               component_id={props.component.component.component.id}
               destination_id={props.destination_id}
               getData={props.getData}
             />
+          </Typography>
           {props.component.component_items.map((component_item) => {
             return (
               <ComponentItem
