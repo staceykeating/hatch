@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ComponentItem(props) {
-
   const classes = useStyles();
 
   const onDelete = () => {
@@ -39,16 +38,12 @@ export default function ComponentItem(props) {
         component_id: props.component_id,
       },
     }).then((res) => {
-      props.getData()
+      props.getData();
     });
   };
 
   const text = props.component_item.image_url ? (
     <Typography>
-      Description: {props.component_item.description}
-      <br />
-      Address: {props.component_item.address}
-      <br />
       <Avatar variant="rounded" className={classes.rounded}>
         <img
           class="place"
@@ -56,11 +51,14 @@ export default function ComponentItem(props) {
           alt="attraction"
         />
       </Avatar>
+      <div class="text-area">
+        {props.component_item.description}
+
+        <b>{props.component_item.address}</b>
+      </div>
     </Typography>
   ) : (
-    <Typography>
-      Description: {props.component_item.description}
-    </Typography>
+    <Typography>{props.component_item.description}</Typography>
   );
 
   return (
