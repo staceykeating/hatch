@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Trip from "./components/Trip.js";
 import CreateTrip from "./components/CreateTrip";
-import Testpage from "./components/Testpage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
         <Route path="/create-trip" component={CreateTrip} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/trip/:id" component={Trip} />
-        <Route path="/add-button" component={Testpage} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>

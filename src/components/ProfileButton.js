@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./ProfileButton.scss";
 import IconButton from "@material-ui/core/IconButton";
@@ -9,8 +9,8 @@ import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 
 export default function ProfileButton() {
-  let user = JSON.parse(Cookies.get("user")).name.split(" ")[0];
-  let [name, setName] = useState(user);
+  const name = JSON.parse(Cookies.get("user")).name.split(" ")[0];
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   let history = useHistory();
 

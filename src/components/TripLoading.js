@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "./Nav";
 import "./TripLoading.scss";
 import spinner from './images/earth-light.svg'
 

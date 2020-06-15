@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useAppData from "../hooks/useAppData.js";
 import CreateTwoToneIcon from "@material-ui/icons/CreateTwoTone";
 import SearchIcon from "@material-ui/icons/Search";
 import TextFieldsIcon from "@material-ui/icons/TextFields";
@@ -11,10 +10,6 @@ import axios from "axios";
 import { Button, Typography } from "@material-ui/core";
 
 export default function EditButton(props) {
-  // const [onEdit, setOnEdit] = useState(false);
-  // const [onDelete, setOnDelete] = useState(false);
-  // const [onSearch, setOnSearch] = useState(false);
-  // const [onText, setOnText] = useState(false);
   const [mode, setMode] = useState("EDIT");
 
   const onDelete = () => {

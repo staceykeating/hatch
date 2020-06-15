@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import useAppData from "../hooks/useAppData.js";
+import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";

@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useVisualMode from "../hooks/useVisualMode.js";
-import axios from "axios";
 import Nav from "./Nav";
 import Map from "./Map";
 import PackingList from "./PackingList";
 import HatchMates from "./HatchMates";
-import WeatherCard from "./WeatherCard";
 import Card from "@material-ui/core/Card";
-import TripDates from "./TripDates";
 import TripPageTitle from "./TripPageTitle";
 import TripLoading from "./TripLoading";
 import TripTabs from "./TripTabs";
@@ -40,7 +37,6 @@ export default function Trip(props) {
         destinations={state.destinations}
         transition={transition}
       />
-      {console.log(mode)}
       {mode === "MAIN" && (
         <>
           <div class="trip-page-column">

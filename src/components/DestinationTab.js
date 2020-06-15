@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import WeatherCard from "./WeatherCard";
 import AddComponentButton from "./AddComponentButton";
 import ComponentCard from "./ComponentCard";
-import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import axios from 'axios'
 
 import "./DestinationTab.scss";

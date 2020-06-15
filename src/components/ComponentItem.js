@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import useAppData from "../hooks/useAppData.js";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -11,7 +10,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
-import iconLogo from "./images/hatch-icon.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ComponentItem(props) {
-  const { state, getData } = useAppData();
 
   const classes = useStyles();
 

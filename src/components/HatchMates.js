@@ -10,7 +10,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import "./HatchMates.scss";
 
 export default function HatchMates(props) {
-  const [mates, setMates] = useState([]);
   const [collaborators, setCollaborators] = useState([]);
   const [search, setSearch] = useState(false);
 
@@ -28,11 +27,11 @@ export default function HatchMates(props) {
         trip_id: props.tripID,
       },
     })
-      .then((res) => {
-        props.getData()
+      .then(() => {
+        props.getData();
       })
-      .catch(() => {
-        console.log("ERROR from post");
+      .catch(err => {
+        console.log(err);
       });
   };
 
@@ -43,8 +42,11 @@ export default function HatchMates(props) {
       data: {
         trip_id: props.tripID,
       },
-    }).then((res) => {
-      props.getData()
+    }).then(() => {
+      props.getData();
+    })
+    .catch(err => {
+      console.log(err);
     });
   };
 
