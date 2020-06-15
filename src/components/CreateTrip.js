@@ -24,7 +24,15 @@ function CreateTrip() {
   const [error, setError] = useState(false);
   const [currentTripID, setCurrentTripID] = useState(0);
 
+  const user = JSON.parse(Cookies.get("user"));
+
   function submit() {
+    
+    const exists = collaborators.filter(collaborator => collaborator.user_id === user.id)
+    if (!exists) {
+      collaborators.push(user);
+    }
+
     if (title && description && places) {
       axios({
         method: "POST",
@@ -53,8 +61,6 @@ function CreateTrip() {
     "error-message--active": error,
     "error-message--disabled": error === false,
   });
-
-  const user = Cookies.get("user");
 
   return !user ? (
     <Redirect to="/login" />
