@@ -4,8 +4,8 @@ import "./TripTabsItem.scss";
 
 export default function TripTabsItem(props) {
   const buttonClass = classnames("tab", {
-    "tab-selected": props.selected === props.name,
-    "tab-not_selected": props.selected !== props.name,
+    "tab-selected": props.selected === props.id,
+    "tab-not_selected": props.selected !== props.id,
   });
 
   return (
@@ -14,8 +14,12 @@ export default function TripTabsItem(props) {
       <button
         class={buttonClass}
         onClick={() => {
-          props.transition(props.name);
-          props.setSelected(props.name);
+          if (props.id === "MAIN") {
+            props.transition("MAIN");
+          } else {
+            props.transition(props.name);
+          }
+          props.setSelected(props.id)
         }}
       >
         {props.name}
