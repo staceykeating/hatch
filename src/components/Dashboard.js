@@ -7,26 +7,7 @@ import "./Dashboard.scss";
 import DashboardItem from "./DashboardItem";
 import { Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
-import beachPic from "./images/2019-03-01 07.55.49 3.jpg";
-
 import axios from "axios";
-
-// const images = [
-//   {
-//     url: 'https://images.pexels.com/photos/59519/pexels-photo-59519.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-//   },
-//   {
-//     name: 'Fun In the Sun',
-//     url: 'https://images.pexels.com/photos/68704/pexels-photo-68704.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-//     description: `Nothing but getting our tan on!`
-//   },
-//   {
-//     url: 'https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-//   },
-//   {
-//     url: 'https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-//   },
-// ]
 
 export default function Dashboard() {
   const [trips, setTrips] = useState([]);

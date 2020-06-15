@@ -84,8 +84,10 @@ body #root {
   display: flex;
 
   img {
-    width: 100px;
+    width: 86px;
     margin: auto;
+    margin-bottom: 0;
+    margin-top: initial;
   }
   .MuiButton-containedPrimary {
     color: #fff;
@@ -93,7 +95,11 @@ body #root {
     width: 300px;
     height: 50px;
   }
-  .MuiAutocomplete-root .MuiFormLabel-root {
+  .MuiAutocomplete-root {
+    max-height: 78px;
+    overflow-y: scroll;
+  }
+  .MuiFormLabel-root {
     display: flex;
     color: white;
   }

@@ -1,3 +1,9 @@
+$darkGrey: #1f1f1f;
+$mediumGrey: #262626;
+$lightGrey: #1f1f1f;
+$hatchBlue: #63aba5;
+$hatchError: #a14061;
+
 #home-page {
   display: flex;
   flex-direction: column;
@@ -24,11 +30,18 @@
 #root #home-page .right-menu {
   display: flex;
   justify-content: flex-end;
+  height: 100px;
 }
 
 #root #home-page .right-menu .MuiButtonBase-root {
-  margin-top: 1vw;
-  margin-right: 1vw;
+  margin-top: 2vw;
+  margin-right: 2vw;
+  .MuiButton-outlined {
+    border: $mediumGrey;
+    padding: 5px 15px;
+    width: 100px;
+    height: 50px;
+  }
 }
 .globe {
   width: 20vw;
