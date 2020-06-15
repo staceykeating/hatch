@@ -8,6 +8,7 @@ import UserSearch from "./UserSearch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckIcon from '@material-ui/icons/Check';
+import Cookies from "js-cookie";
 
 
 import "./HatchMates.scss";
@@ -66,25 +67,31 @@ export default function HatchMates(props) {
     </div>
   );
 
+  const user = JSON.parse(Cookies.get('user'))
+
   return (
     <div id="hatch-mates">
       <Card>
         {searchBar}
-
+        {console.log(user)}
         <div class="hatch-people">
           {props.collaborators.map((collaborator) => {
-            return (
-              <ListItemText
-                key={collaborator.id}
-              >
-                <DeleteIcon
-                  onClick={() => onDelete(collaborator.id)}
-                  alt="profile-icon"
-                />
-                <img class="user-icon" src={HatchIcon2} alt="profile-icon" />
-                {collaborator.name}
-              </ListItemText>
-            );
+            if (collaborator.user_id === user.id) {
+              return null;
+            } else {
+              return (
+                <ListItemText
+                  key={collaborator.id}
+                >
+                  <DeleteIcon
+                    onClick={() => onDelete(collaborator.id)}
+                    alt="profile-icon"
+                  />
+                  <img class="user-icon" src={HatchIcon2} alt="profile-icon" />
+                  {collaborator.name}
+                </ListItemText>
+              );
+            }
           })}
           </div>
       </Card>

@@ -29,6 +29,9 @@ export default function PackingListItem(props) {
         trip_id: props.trip_id,
         checked: status,
       },
+    })
+    .then(() => {
+      props.getData()
     });
   }
 

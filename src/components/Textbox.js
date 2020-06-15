@@ -33,7 +33,7 @@ function Textbox(props) {
       method: "POST",
       url: `/api/component_items`,
       data: {
-        title: place ? place.description : title,
+        title: place.length > 0 ? place.description : title,
         description: description,
         component_id: props.component_id,
         place_id: place.place_id
