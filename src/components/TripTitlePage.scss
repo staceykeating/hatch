@@ -19,10 +19,12 @@
 #date {
   font-weight: lighter;
   font-family: "Manrope", sans-serif;
-  font-size: 1.2em;
+  font-size: 1.4em;
+  letter-spacing: 0.2em;
   vertical-align: top;
   .MuiSvgIcon-root {
     transform: rotate(90deg);
+    vertical-align: middle;
   }
   time {
     vertical-align: top;
