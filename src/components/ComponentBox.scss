@@ -1,10 +1,18 @@
 $hatchBlue: #63aba5;
 
-#component-add-box .MuiCard-root {
-  width: 250px;
-  height: 250px;
-  display: flex;
-  overflow-y: auto;
+#root #component-add-box {
+  .MuiCard-root {
+    width: 320px;
+    height: 320px;
+    display: flex;
+    overflow-y: auto;
+    .MuiCardContent-root {
+      padding: 0;
+      width: inherit;
+      height: inherit;
+    }
+  }
+
   .MuiSvgIcon-root {
     color: $hatchBlue;
     font-size: 5em;
@@ -16,23 +24,76 @@ $hatchBlue: #63aba5;
   }
 }
 
-#component-box {
+#root #component-box {
+  display: flex;
+  .MuiFormControl-root {
+    width: 150px;
+    margin-right: 0;
+    flex-direction: column;
+  }
+
   .MuiCard-root {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
+    padding: 20px;
     display: flex;
     overflow-y: auto;
+    margin: 20px;
+  }
+  .MuiCardContent-root {
+    padding: 0;
+    width: inherit;
+    height: inherit;
   }
   .MuiExpansionPanel-root {
     background-color: #2b2b2b;
     color: white;
     border: none;
     box-shadow: none;
+    width: 280px;
+    .MuiTypography-root {
+      text-align: start;
+    }
+  }
+  .MuiExpansionPanelSummary-root {
+    height: 50px;
+    width: 280px;
+    padding: 0;
+    .MuiListItemText-root {
+      margin-top: 13px;
+    }
+  }
+  .MuiTypography-root {
+    justify-content: space-between;
+  }
+  .component-delete {
+    .MuiTypography-root {
+      display: flex;
+      flex-direction: column;
+    }
+    .MuiButtonBase-root {
+      margin-left: auto;
+      margin-right: auto;
+      border-width: 1px;
+      margin-bottom: 3px;
+      border-color: white;
+      color: white;
+      border-style: outset;
+      padding: 0;
+      width: min-content;
+      background-color: $hatchBlue;
+    }
+  }
+  .MuiIconButton-edgeEnd {
+    margin-right: 0;
+  }
+  .MuiIconButton-root {
+    padding: 0;
+  }
+  .MuiSvgIcon-root {
+    color: $hatchBlue;
   }
 }
-// #component-box .MuiCard-root :hover {
-//   box-shadow: black 0px 0px 12px;
-// }
 
 #component-add-box :hover {
   box-shadow: black 0px 0px 12px;
@@ -40,7 +101,9 @@ $hatchBlue: #63aba5;
     box-shadow: none;
   }
 }
-
+.page-components {
+  width: 100vw;
+}
 .page-components button {
   text-decoration: none;
   text-decoration-line: none;
@@ -59,4 +122,12 @@ $hatchBlue: #63aba5;
   border: none;
 
   outline: none;
+}
+
+#root .MuiDialog-paperWidthSm {
+  background-color: #1f1f1f;
+}
+
+#root #component-box .MuiSvgIcon-root :focus {
+  margin-bottom: 0;
 }

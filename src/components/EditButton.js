@@ -26,7 +26,7 @@ export default function EditButton(props) {
       },
     })
       .then((res) => {
-        props.getData()
+        props.getData();
         console.log("DELETE:", res.data);
       })
       .catch((err) => {
@@ -36,13 +36,21 @@ export default function EditButton(props) {
 
   const text = (
     <div>
-      <Textbox mode={mode} getData={props.getData} component_id={props.component_id}></Textbox>
+      <Textbox
+        mode={mode}
+        getData={props.getData}
+        component_id={props.component_id}
+      ></Textbox>
     </div>
   );
 
   const search = (
     <div>
-      <Textbox mode={mode} getData={props.getData} component_id={props.component_id}></Textbox>
+      <Textbox
+        mode={mode}
+        getData={props.getData}
+        component_id={props.component_id}
+      ></Textbox>
     </div>
   );
 
@@ -60,11 +68,13 @@ export default function EditButton(props) {
       {mode === "TEXT" && text}
       {mode === "SEARCH" && search}
       {mode === "VERIFYDELETING" && (
-        <Typography>
-          Are you sure you want to delete?
-          <Button onClick={() => setMode("EDIT")}>No</Button>
-          <Button onClick={() => onDelete()}>Yes</Button>
-        </Typography>
+        <div class="component-delete">
+          <Typography>
+            Delete this box?
+            <Button onClick={() => setMode("EDIT")}>No</Button>
+            <Button onClick={() => onDelete()}>Yes</Button>
+          </Typography>
+        </div>
       )}
     </div>
   );
