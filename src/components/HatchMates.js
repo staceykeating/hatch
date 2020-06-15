@@ -22,12 +22,21 @@ export default function HatchMates(props) {
   };
 
   const onSubmit = () => {
+    const filteredCollaborators = collaborators.filter(newCollaborator => {
+      const exists = props.collaborators.filter(collaborator => collaborator.user_id === newCollaborator.id)
+      if (exists.length === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+
     setSearch(false);
     axios({
       method: "POST",
       url: "/api/collaborators",
       data: {
-        collaborators: collaborators,
+        collaborators: filteredCollaborators,
         trip_id: props.tripID,
       },
     })
@@ -73,7 +82,6 @@ export default function HatchMates(props) {
     <div id="hatch-mates">
       <Card>
         {searchBar}
-        {console.log(user)}
         <div class="hatch-people">
           {props.collaborators.map((collaborator) => {
             if (collaborator.user_id === user.id) {
