@@ -3,17 +3,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 2em;
+  font-family: "Roboto";
+  font-weight: 300;
   background-color: Transparent;
   border: none;
   color: white;
   cursor: pointer;
   outline: none;
-  
+
   &-selected {
     border-bottom: 2px solid white;
   }
   &-not_selected {
     border-bottom: none;
   }
+}
+.tab-not_selected {
+  font-size: x-large;
+  font-family: "Roboto";
+  font-weight: 300;
 }

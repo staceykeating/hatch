@@ -2,8 +2,8 @@ $hatchBlue: #63aba5;
 
 #root #component-add-box {
   .MuiCard-root {
-    width: 320px;
-    height: 320px;
+    width: 420px;
+    height: 420px;
     display: flex;
     overflow-y: auto;
     .MuiCardContent-root {
@@ -33,8 +33,8 @@ $hatchBlue: #63aba5;
   }
 
   .MuiCard-root {
-    width: 280px;
-    height: 280px;
+    width: 380px;
+    height: 380px;
     padding: 20px;
     display: flex;
     overflow-y: auto;
@@ -103,6 +103,7 @@ $hatchBlue: #63aba5;
 }
 .page-components {
   width: 100vw;
+  justify-content: center;
 }
 .page-components button {
   text-decoration: none;
