@@ -36,7 +36,7 @@ export default function UserSearch(props) {
           <TextField
             {...params}
             id="outlined-basic"
-            label="Collaborator Name"
+            label="Collaborators"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />

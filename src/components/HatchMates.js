@@ -6,6 +6,9 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import ListItemText from "@material-ui/core/ListItemText";
 import UserSearch from "./UserSearch";
 import DeleteIcon from "@material-ui/icons/Delete";
+import CloseIcon from "@material-ui/icons/Close";
+import CheckIcon from '@material-ui/icons/Check';
+
 
 import "./HatchMates.scss";
 
@@ -53,8 +56,8 @@ export default function HatchMates(props) {
   const searchBar = search ? (
     <div id="hatch-search">
       <UserSearch setCollaborators={setCollaborators} />
-      <AddCircleIcon onClick={() => onSubmit()} />
-      <DeleteIcon onClick={() => setSearch(false)} />
+      <CheckIcon onClick={() => onSubmit()} />
+      <CloseIcon onClick={() => setSearch(false)} />
     </div>
   ) : (
     <div id="hatch-row">
