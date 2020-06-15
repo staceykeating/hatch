@@ -34,8 +34,8 @@ export default function DashboardItem(props) {
       props.setTrips(res.data)
     })
   }
-    
-  return !props.add 
+
+  return !props.add
   ? (
     <div id="box-container">
       <div id="slider-box">
@@ -49,7 +49,7 @@ export default function DashboardItem(props) {
             })}
           </div>
           <div class="button-container">
-            <Button variant="outlined" ><Link to={`/trip/${props.trip.id}`}>Edit</Link></Button>
+            <Button variant="outlined" ><Link to={`/trip/${props.trip.id}`}>View Trip</Link></Button>
             <Button variant="outlined" onClick={handleOpen}>Delete</Button>
           </div>
       </div>

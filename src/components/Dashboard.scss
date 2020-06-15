@@ -68,3 +68,10 @@
 .slick-slide.slick-active {
   visibility: visible;
 }
+
+.slick-slide img {
+  display: block;
+  position: absolute;
+  top: 1em;
+  padding-left: 6em;
+}

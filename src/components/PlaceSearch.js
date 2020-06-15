@@ -36,7 +36,7 @@ function PlaceSearch(props) {
             <TextField
               {...params}
               onChange={(event) => setInput(event.target.value)}
-              label="*Destination"
+              label="*Destinations"
             />
           );
         }}
