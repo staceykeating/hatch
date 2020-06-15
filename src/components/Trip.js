@@ -20,7 +20,7 @@ export default function Trip(props) {
   const { state, loaded, getData } = useAppData(props.match.params.id);
   const [modes] = useState({ MAIN: "MAIN" });
 
-  const { mode, transition } = useVisualMode();
+  const { mode, transition } = useVisualMode("MAIN");
 
   const user = Cookies.get("user");
 
@@ -40,9 +40,9 @@ export default function Trip(props) {
         destinations={state.destinations}
         transition={transition}
       />
+      {console.log(mode)}
       {mode === "MAIN" && (
         <>
-        {console.log("MAIN", state)}
           <div class="trip-page-column">
             <div class="trip-title-row">
               <TripPageTitle
