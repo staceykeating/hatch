@@ -4,14 +4,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./Dashboard.scss";
-import DashboardItem from './DashboardItem';
-import {Redirect} from 'react-router-dom';
-import Cookies from 'js-cookie';
+import DashboardItem from "./DashboardItem";
+import { Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
+import beachPic from "./images/2019-03-01 07.55.49 3.jpg";
 
-import axios from 'axios';
+import axios from "axios";
 
 export default function Dashboard() {
-  const [trips, setTrips] = useState([])
+  const [trips, setTrips] = useState([]);
 
   const settings = {
     dots: true,
@@ -25,44 +26,45 @@ export default function Dashboard() {
     className: "Photos",
   };
 
-  let user = Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null;
+  let user = Cookies.get("user") ? JSON.parse(Cookies.get("user")) : null;
 
   useEffect(() => {
     if (user) {
       axios
-      .get(`/api/users/${user.id}`)
-      .then(res => {
-        setTrips(res.data);
-      })
-      .catch(err => {
-        console.log(err)
-      })
+        .get(`/api/users/${user.id}`)
+        .then((res) => {
+          setTrips(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  },[])
+  }, []);
 
-  const formattedTrips = trips.length > 0 
-    ? (trips.map(trip => 
-      <DashboardItem 
-        trip={trip.trip.trip} 
-        destinations={trip.destinations}
-        setTrips={setTrips}
-      />))
-    : null;
+  const formattedTrips =
+    trips.length > 0
+      ? trips.map((trip) => (
+          <DashboardItem
+            trip={trip.trip.trip}
+            destinations={trip.destinations}
+            setTrips={setTrips}
+          />
+        ))
+      : null;
 
-  return !user
-  ? (<Redirect to="/login" />)
-  : (
+  return !user ? (
+    <Redirect to="/login" />
+  ) : (
     <>
       <Nav />
       <div id="dash">
-        <div class="dashboard-label">
-        </div>
+        <div class="dashboard-label"></div>
 
         <Slider {...settings}>
           {formattedTrips}
-          <DashboardItem add={true}/>
+          <img src={beachPic} />
+          <DashboardItem add={true} />
         </Slider>
-
       </div>
     </>
   );

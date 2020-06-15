@@ -6,6 +6,7 @@ $hatchBlue: #63aba5;
     height: 420px;
     display: flex;
     overflow-y: auto;
+
     .MuiCardContent-root {
       padding: 0;
       width: inherit;
@@ -26,6 +27,7 @@ $hatchBlue: #63aba5;
 
 #root #component-box {
   display: flex;
+  margin-bottom: 3vw;
   .MuiFormControl-root {
     width: 150px;
     margin-right: 0;
@@ -38,7 +40,6 @@ $hatchBlue: #63aba5;
     padding: 20px;
     display: flex;
     overflow-y: auto;
-    margin: 20px;
   }
   .MuiCardContent-root {
     padding: 0;
@@ -101,9 +102,12 @@ $hatchBlue: #63aba5;
     box-shadow: none;
   }
 }
-.page-components {
+#root .page-components {
   width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
+  margin-left: 2.5vw;
 }
 .page-components button {
   text-decoration: none;
@@ -112,6 +116,11 @@ $hatchBlue: #63aba5;
   text-decoration-color: initial;
   background: none;
   border: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  width: min-content;
+  height: min-content;
 }
 
 .page-components button:focus {
