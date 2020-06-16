@@ -65,10 +65,79 @@ $hatchError: #a14061;
   width: 400px;
   overflow-y: auto;
   margin-bottom: 0;
+
+  .MuiInputBase-input {
+    padding-bottom: 2px;
+  }
+
   .MuiListItem-root {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
     height: 40px;
+    .avatar {
+      &--purple {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #6f5782;
+      }
+      &--pink {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #d6b0d6;
+      }
+      &--red {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #9e5454;
+      }
+      &--light_blue {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #a7cdcf;
+      }
+      &--orange {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #d1a773;
+      }
+      &--yellow {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #e3e0ac;
+      }
+      &--green {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #74a381;
+      }
+      &--blue {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #4a63b0;
+      }
+      &--default {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        color: white;
+        background-color: #63aba5;
+      }
+    }
   }
   .MuiTypography-root {
     font-size: 2em;
