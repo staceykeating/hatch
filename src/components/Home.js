@@ -13,15 +13,15 @@ export default function Home() {
       </div>
       <div class="learn-section">
         <div class="icon-with-text">
-          <h5>Step One: Do a Thing</h5>
+          <h5>Step One: Dream up an idea</h5>
           <img class="globe" src={giffy} alt="world" />
         </div>
         <div class="icon-with-text">
-          <h5>Then do Another Thing</h5>git
+          <h5>Step Two: Invite your friends</h5>
           <img class="globe" src="./globe.png" alt="world" />
         </div>
         <div class="icon-with-text">
-          <h5>Also do this thing!!</h5>
+          <h5>Step Three: Plan it out</h5>
           <img class="globe" src="./globe.png" alt="world" />
         </div>
       </div>
