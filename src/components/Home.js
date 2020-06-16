@@ -4,7 +4,7 @@ import "./Home.scss";
 import mainLogo from "./images/hatch-main-logo-dark.png";
 import searchyWorld from "./images/searchy-world.png";
 import thinkyHead from "./images/thinky-head.png";
-import hatchMates from "./images/hatch-mates-69.png";
+import hatchMates from "./images/hatch-mates.png";
 
 export default function Home() {
   return (
