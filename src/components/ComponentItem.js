@@ -14,6 +14,7 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "70%",
+    display: 'flex'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -70,12 +71,12 @@ export default function ComponentItem(props) {
           id="panel1a-header"
         >
           <ListItemText primary={props.component_item.title} />
-          <IconButton edge="end" aria-label="delete" onClick={() => onDelete()}>
-            <DeleteIcon />
-          </IconButton>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>{text}</ExpansionPanelDetails>
       </ExpansionPanel>
+      <IconButton edge="end" aria-label="delete" onClick={() => onDelete()}>
+        <DeleteIcon />
+      </IconButton>
     </div>
   );
 }

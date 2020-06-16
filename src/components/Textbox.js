@@ -14,14 +14,6 @@ function Textbox(props) {
   const [description, setDescription] = useState("");
   const [place, setPlace] = useState([])
 
-  // t.string   "title"
-  //   t.string   "description"
-  //   t.string   "image_url"
-  //   t.string   "address"
-  //   t.integer  "component_id"
-  //   t.datetime "created_at",   null: false
-  //   t.datetime "updated_at",
-
   const handleClose = () => {
     setOpen(false);
     props.setMode("SHOW")
