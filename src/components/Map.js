@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import icon from "./images/hatch-marker-icon.png";
+import icon1 from "./images/marker-1.png";
+import icon2 from "./images/marker-2.png";
+import icon3 from "./images/marker-3.png";
 const styles = require("./NightModeStyles.json");
 // default map container size
 const containerStyle = {
@@ -42,7 +44,7 @@ function Map(props) {
     return (
       <Marker
         key={item.destination.destination.id}
-        icon={icon}
+        icon={icon3}
         position={{
           lat: Number(item.destination.destination.lat),
           lng: Number(item.destination.destination.lng),
