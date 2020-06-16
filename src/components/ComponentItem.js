@@ -73,9 +73,9 @@ export default function ComponentItem(props) {
   }
 
   const avatarClass = classnames({
-    "avatar--purple": props.component_item.creator_name === "Joey Kishiuchi",
-    "avatar--pink": props.component_item.creator_name === "Stacey Keating",
-    "avatar--red": props.component_item.creator_name === "Jyoti Khabra",
+    "avatar--blue": props.component_item.creator_name === "Joey Kishiuchi",
+    "avatar--orange": props.component_item.creator_name === "Stacey Keating",
+    "avatar--green": props.component_item.creator_name === "Jyoti Khabra",
   });
 
   return (
