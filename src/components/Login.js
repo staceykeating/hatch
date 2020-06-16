@@ -29,7 +29,7 @@ function Login() {
   };
 
   useEffect(() => {
-    axios.get("api/users").then((res) => {
+    axios.get("/api/users").then((res) => {
       const formattedUsers = res.data.map((user) => user.user);
       setUsers(formattedUsers);
     });
