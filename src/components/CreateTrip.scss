@@ -97,7 +97,7 @@ body #root {
   }
   .MuiAutocomplete-root {
     max-height: 78px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .MuiFormLabel-root {
     display: flex;
