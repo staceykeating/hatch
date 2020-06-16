@@ -80,9 +80,12 @@ $hatchError: #a14061;
       margin-top: 37px;
     }
     .google-login {
-      width: 200px;
       margin: 50px auto;
       border-radius: 50px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+
+      border-radius: 45px;
     }
   }
   .login-logo {
