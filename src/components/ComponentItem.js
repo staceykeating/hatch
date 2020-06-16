@@ -10,6 +10,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
+import './Avatar.scss'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +65,7 @@ export default function ComponentItem(props) {
 
   return (
     <div className={classes.root}>
+      <Avatar className="avatar-purple" >JK</Avatar>
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
