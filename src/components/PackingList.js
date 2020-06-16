@@ -42,6 +42,7 @@ export default function PackingList(props) {
                   trip_id={props.tripID}
                   setNewItem={setNewItem}
                   getData={props.getData}
+                  creator_name={item.packing_item.creator_name}
                 />
               );
             })}

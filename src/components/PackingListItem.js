@@ -5,10 +5,15 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
+import Avatar from "@material-ui/core/Avatar";
+import classnames from 'classnames';
+import Cookies from 'js-cookie'
 
 export default function PackingListItem(props) {
   const [checked, setChecked] = useState(props.checked);
   const [text, setText] = useState(props.text ? props.text : "");
+
+  const user = JSON.parse(Cookies.get('user'));
 
   function toggleCheck() {
     if (checked) {
@@ -28,6 +33,7 @@ export default function PackingListItem(props) {
         description: text,
         trip_id: props.trip_id,
         checked: status,
+        creator_name: props.creator_name
       },
     })
     .then(() => {
@@ -46,8 +52,6 @@ export default function PackingListItem(props) {
       },
     }).then(() => {
       props.getData();
-      // props.setPackingList(res.data)
-      // setState({...state, packingList: res.data})
     });
   }
 
@@ -60,6 +64,7 @@ export default function PackingListItem(props) {
         description: text,
         trip_id: props.trip_id,
         checked: checked,
+        creator_name: user.name
       },
     }).then((res) => {
       props.getData();
@@ -75,6 +80,7 @@ export default function PackingListItem(props) {
         description: text,
         trip_id: props.trip_id,
         checked: checked,
+        creator_name: user.name
       },
     }).then((res) => {
       props.getData();
@@ -82,9 +88,6 @@ export default function PackingListItem(props) {
   }
 
   function onBlur() {
-    console.log("props", props.text);
-    console.log("text", text);
-
     if (!props.text && !text) {
       props.setNewItem(false);
     } else if (!props.text) {
@@ -102,8 +105,24 @@ export default function PackingListItem(props) {
     }
   }
 
+  function nameToInitial(name) {
+    if (name) {
+      const split = name.split(" ")[0].charAt(0) + name.split(" ")[1].charAt(0)
+      return split;
+    }
+    return 'H';
+  }
+
+  const avatarClass = classnames({
+    "avatar--blue": props.creator_name === "Joey Kishiuchi",
+    "avatar--orange": props.creator_name === "Stacey Keating", 
+    "avatar--green": props.creator_name === "Jyoti Khabra",
+    "avatar--default": !props.creator_name
+  })
+
   return (
     <ListItem key={props.id} role={undefined} dense button>
+      <Avatar className={avatarClass}>{nameToInitial(props.creator_name)}</Avatar>
       <ListItemIcon class="list-item-icons">
         <Checkbox
           edge="start"
