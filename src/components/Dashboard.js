@@ -43,8 +43,8 @@ export default function Dashboard() {
     trips.length > 0
       ? trips.map((trip) => (
           <>
-            {/* <img width = "30%" src={images[0].url}/> */}
             <DashboardItem
+              key={trip.trip.trip.id}
               trip={trip.trip.trip}
               destinations={trip.destinations}
               setTrips={setTrips}

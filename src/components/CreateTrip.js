@@ -27,12 +27,7 @@ function CreateTrip() {
   const user = JSON.parse(Cookies.get("user"));
 
   function submit() {
-    
-    const exists = collaborators.filter(collaborator => collaborator.user_id === user.id)
-    if (!exists) {
-      collaborators.push(user);
-    }
-
+    collaborators.push(user);
     if (title && description && places) {
       axios({
         method: "POST",
