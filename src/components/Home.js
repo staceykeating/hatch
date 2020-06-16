@@ -2,8 +2,6 @@ import React from "react";
 import HomeProfileButton from "./HomeProfileButton";
 import "./Home.scss";
 import mainLogo from "./images/hatch-main-logo-dark.png";
-import giffy from "./images/screen-recording.gif";
-import happyFriends from "./images/happy-friends.png";
 import searchyWorld from "./images/searchy-world.png";
 import thinkyHead from "./images/thinky-head.png";
 import hatchMates from "./images/hatch-mates-69.png";
