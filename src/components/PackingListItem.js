@@ -112,7 +112,7 @@ export default function PackingListItem(props) {
     }
     return 'H';
   }
-
+ 
   const avatarClass = classnames({
     "avatar--blue": props.creator_name === "Joey Kishiuchi",
     "avatar--orange": props.creator_name === "Stacey Keating", 

@@ -43,7 +43,7 @@ export default function ComponentCard(props) {
             <TextField
               type="text"
               label={
-                props.component.component.component.title ? null : "*Add Title"
+                props.component.component.component.title ? null : "Title"
               }
               value={text}
               onChange={(event) => {

@@ -62,6 +62,18 @@ body #root {
   }
 }
 
+#create-title {
+  font-size: 2em;
+  font-weight: 300;
+  font-family: "Manrope";
+  letter-spacing: 2px;
+  border-bottom: 2px solid #63aba5;
+  width: 250px;
+  margin: 0 auto;
+  padding-bottom: 4px;
+  margin-bottom: 3px;
+}
+
 .MuiPaper-root .MuiButton-outlined {
   border: 1px solid white;
   color: white;

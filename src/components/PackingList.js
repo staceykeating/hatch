@@ -5,9 +5,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import "./PackingList.scss";
+import Cookies from "js-cookie"
 
 export default function PackingList(props) {
   const [newItem, setNewItem] = useState(false);
+
+  const user = JSON.parse(Cookies.get('user'));
 
   const addPackingListItem = () => {
     setNewItem(true);
@@ -18,6 +21,7 @@ export default function PackingList(props) {
       trip_id={props.tripID}
       setNewItem={setNewItem}
       getData={props.getData}
+      creator_name={user.name}
     />
   ) : null;
 

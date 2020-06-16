@@ -9,7 +9,7 @@ export default function InputField(props) {
     <div>
       <TextField
         id="standard-basic"
-        label="*Title"
+        label="Title"
         multiline
         rowsMax={2}
         value={title}
@@ -21,7 +21,7 @@ export default function InputField(props) {
       <br />
       <TextField
         id="standard-basic"
-        label="*Description"
+        label="Description"
         multiline
         rowsMax={5}
         value={description}

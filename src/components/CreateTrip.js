@@ -66,7 +66,7 @@ function CreateTrip() {
       <Nav />
       <div id="create-trip">
         <Card>
-          <img src={hatchLogo} />
+          <h2 id="create-title">start planning.</h2>
           <span class={errorClass}>* Missing mandatory fields</span>
           <form onSubmit={(event) => event.preventDefault()}>
             <InputField setTitle={setTitle} setDescription={setDescription} />
