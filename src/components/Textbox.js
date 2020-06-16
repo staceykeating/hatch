@@ -7,12 +7,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PointsOfInterest from "./PointsOfInterest";
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
 function Textbox(props) {
   const [open, setOpen] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [place, setPlace] = useState([])
+
+  const user = JSON.parse(Cookies.get('user'))
 
   const handleClose = () => {
     setOpen(false);
@@ -28,6 +31,7 @@ function Textbox(props) {
         title: Object.keys(place).length > 0 ? place.description : title,
         description: description,
         component_id: props.component_id,
+        creator_name: user.name,
         place_id: place.place_id
       }
     })

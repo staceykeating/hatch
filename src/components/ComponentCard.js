@@ -60,7 +60,7 @@ export default function ComponentCard(props) {
           {props.component.component_items.map((component_item) => {
             return (
               <ComponentItem
-                key={props.component.component.component.id}
+                key={component_item.component_item.id}
                 component_item={component_item.component_item}
                 component_id={props.component.component.component.id}
                 getData={props.getData}
