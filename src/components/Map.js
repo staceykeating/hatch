@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import icon1 from "./images/marker-1.png";
-import icon2 from "./images/marker-2.png";
 import icon3 from "./images/marker-3.png";
 const styles = require("./NightModeStyles.json");
 // default map container size

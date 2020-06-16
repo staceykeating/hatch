@@ -10,13 +10,13 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
-import './Avatar.scss'
-import classnames from 'classnames'
+import "./Avatar.scss";
+import classnames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "70%",
-    display: 'flex'
+    display: "flex",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -66,17 +66,17 @@ export default function ComponentItem(props) {
 
   function nameToInitial(name) {
     if (name) {
-      const split = name.split(" ")[0].charAt(0) + name.split(" ")[1].charAt(0)
+      const split = name.split(" ")[0].charAt(0) + name.split(" ")[1].charAt(0);
       return split;
     }
-    return 'H';
+    return "H";
   }
 
   const avatarClass = classnames({
     "avatar--purple": props.component_item.creator_name === "Joey Kishiuchi",
-    "avatar--pink": props.component_item.creator_name === "Stacey Keating", 
-    "avatar--red": props.component_item.creator_name === "Jyoti Khabra"
-  })
+    "avatar--pink": props.component_item.creator_name === "Stacey Keating",
+    "avatar--red": props.component_item.creator_name === "Jyoti Khabra",
+  });
 
   return (
     <div className={classes.root}>
@@ -86,7 +86,9 @@ export default function ComponentItem(props) {
           aria-controls="panel2a-content"
           id="panel1a-header"
         >
-          <Avatar className={avatarClass} >{nameToInitial(props.component_item.creator_name)}</Avatar>
+          <Avatar className={avatarClass}>
+            {nameToInitial(props.component_item.creator_name)}
+          </Avatar>
           <ListItemText primary={props.component_item.title} />
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>{text}</ExpansionPanelDetails>
