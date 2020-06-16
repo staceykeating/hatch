@@ -11,6 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
 import './Avatar.scss'
+import classnames from 'classnames'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,15 +64,29 @@ export default function ComponentItem(props) {
     <Typography>{props.component_item.description}</Typography>
   );
 
+  function nameToInitial(name) {
+    if (name) {
+      const split = name.split(" ")[0].charAt(0) + name.split(" ")[1].charAt(0)
+      return split;
+    }
+    return 'H';
+  }
+
+  const avatarClass = classnames({
+    "avatar--purple": props.component_item.creator_name === "Joey Kishiuchi",
+    "avatar--pink": props.component_item.creator_name === "Stacey Keating", 
+    "avatar--red": props.component_item.creator_name === "Jyoti Khabra"
+  })
+
   return (
     <div className={classes.root}>
-      <Avatar className="avatar-purple" >JK</Avatar>
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
           id="panel1a-header"
         >
+          <Avatar className={avatarClass} >{nameToInitial(props.component_item.creator_name)}</Avatar>
           <ListItemText primary={props.component_item.title} />
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>{text}</ExpansionPanelDetails>
