@@ -21,11 +21,9 @@ function Login() {
   const [auth, setAuth] = useState(false);
 
   const responseGoogle = (response) => {
-    // setEmail(response.profileObj.email);
-    // console.log(response)
-    // setEmail(response.profileObj.email);
-    // setURL(response.profileObj.imageUrl);
-    // console.log(response);
+    console.log("RES",response)
+    console.log("EMAIL",response.profileObj.email);
+    console.log("NAME",response.profileObj.name);
   };
 
   useEffect(() => {
@@ -105,7 +103,7 @@ function Login() {
           <GoogleLogin
             className="google-login"
             theme="dark"
-            clientId="570246861484-7fqc25skk6ad3u29n6l1kr5a4slme7si.apps.googleusercontent.com"
+            clientId="570246861484-25ichbk39vud42a6n5innl8p99811kr9.apps.googleusercontent.com"
             buttonText="Continue with Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
