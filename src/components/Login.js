@@ -20,18 +20,20 @@ function Login() {
   const [invalidCred, setInvalidCred] = useState(false);
   const [auth, setAuth] = useState(false);
 
-  const responseGoogle = (response) => {
-    console.log("RES",response)
-    console.log("EMAIL",response.profileObj.email);
-    console.log("NAME",response.profileObj.name);
-  };
-
   useEffect(() => {
     axios.get("/api/users").then((res) => {
       const formattedUsers = res.data.map((user) => user.user);
       setUsers(formattedUsers);
     });
   }, []);
+
+  const googleValidate = (response) => {
+    let currentUser = users.filter((user) => user.email === response.profileObj.email);
+    if (currentUser.length > 0) {
+      setAuth(true);
+      Cookies.set('user', currentUser[0]);
+    }
+  };
 
   function validate() {
     if (email && password) {
@@ -105,8 +107,8 @@ function Login() {
             theme="dark"
             clientId="570246861484-25ichbk39vud42a6n5innl8p99811kr9.apps.googleusercontent.com"
             buttonText="Continue with Google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={googleValidate}
+            onFailure={googleValidate}
             cookiePolicy={"single_host_origin"}
           />
         </Card>
