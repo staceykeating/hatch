@@ -30,8 +30,11 @@ function Login() {
   const googleValidate = (response) => {
     let currentUser = users.filter((user) => user.email === response.profileObj.email);
     if (currentUser.length > 0) {
-      setAuth(true);
+      console.lgo("EXISTS", currentUser[0])
       Cookies.set('user', currentUser[0]);
+      setAuth(true);
+    } else {
+      console.lgo("NOPE")
     }
   };
 
