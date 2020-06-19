@@ -1,6 +1,6 @@
 # hatch
 
-A virtual travel planner website built with ReactJS and a Ruby on Rails back-end.
+A virtual travel planner web application built with ReactJS and a Ruby on Rails back-end.
 
 ## Product Screenshots
 
