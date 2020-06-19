@@ -1,13 +1,14 @@
-# hatch 
+# hatch
 
-A virtual travel planner website built with ReactJS and a Ruby on Rails back-end. 
+A virtual travel planner website built with ReactJS and a Ruby on Rails back-end.
 
 ## Product Screenshots
 
 ## Setup
+
 1. Run 'npm install' to install dependencies.
 2. Create .env.development file based on .env.development.example
-3. Run 'npm start' 
+3. Run 'npm start'
 4. Navigate to 'http://localhost:3000' in the browser
 
 ### `npm start`
@@ -29,11 +30,12 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Dependencies
+
 - React
 - react-google-login
 - react-google-maps
 - axios
-- classnames 
+- classnames
 - lodash
 - material UI
 - moment
@@ -42,6 +44,16 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - openweather-apis
 
 ## Collaborators
+
 [Stacey Keating](https://github.com/staceykeating/)
 [Jyoti Khabra](https://github.com/jyotikhabra)
 [Joey Kishiuchi](https://github.com/joeykishiuchi)
+
+## Screenshots
+
+!["Home"](https://github.com/JyotiKhabra/hatch/blob/master/Docs/HomePage.gif)
+!["Dashboard/Loading"](https://github.com/JyotiKhabra/hatch/blob/master/Docs/Dashboard.gif)
+!["Trip Main"](https://github.com/JyotiKhabra/hatch/blob/master/Docs/TripMain.gif)
+!["Trip Destination"](https://github.com/JyotiKhabra/hatch/blob/master/Docs/TripTabs.gif)
+!["Create Trip"](https://github.com/JyotiKhabra/hatch/blob/master/Docs/CreateTrip.gif)
+!["Trip Edits"](https://github.com/JyotiKhabra/hatch/blob/master/Docs/EditNewTrip.gif)
