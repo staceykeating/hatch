@@ -2,7 +2,8 @@
 
 A virtual travel planner web application built with ReactJS and a Ruby on Rails back-end.
 
-## Product Screenshots
+## Hatch API for back end
+(https://github.com/staceykeating/hatchAPI)
 
 ## Setup
 
